@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Definitive 2026 Guide to AI Ranking & Generative Visibility</title>
+    
+    <!-- Meta -->
+    <meta name="description" content="The operational manual for winning visibility in a zero-click world. How Brands Get Ranked, Cited, and Chosen in ChatGPT, Gemini & AI-Driven Search.">
+    <meta name="author" content="HQAIM">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts: Outfit (Display), Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: { 950: '#020408', 900: '#080C14', 800: '#0F1623', card: '#0a0f18' },
+                        gold: { 400: '#FCD34D', 500: '#D4AF37', 600: '#B45309' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 800: '#1e293b', 900: '#0f172a' },
+                        accent: { light: '#2563eb', dark: '#FCD34D' }
+                    },
+                    fontFamily: {
+                        display: ['"Outfit"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                        'hero-glow': "radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15), transparent 50%)"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- SCHEMA: AI DISCOVERY LAYER -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "@id": "https://hqaim.com/publications/the-definitive-2026-guide-ai-ranking-generative-visibility",
+        "name": "The Definitive 2026 Guide to AI Ranking & Generative Visibility",
+        "alternateName": [
+          "AI Ranking & Generative Visibility Guide",
+          "AI Ranking Playbook 2026"
+        ],
+        "description": "A practical, execution-focused guide explaining how brands rank in AI-powered answer engines like ChatGPT and Gemini, combining traditional SEO with Generative Engine Optimization (GEO) and trust architecture.",
+        "bookEdition": "2026 Edition",
+        "inLanguage": "en",
+        "genre": [
+          "Business",
+          "Technology",
+          "Artificial Intelligence",
+          "Digital Strategy"
+        ],
+        "keywords": [
+          "AI ranking", "generative visibility", "GEO", "AI SEO", "zero-click search"
+        ],
+        "datePublished": "2026-01-01",
+        "publisher": {
+          "@type": "Organization",
+          "name": "HQAIM",
+          "url": "https://hqaim.com"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Abdullah Khan",
+          "url": "https://hqaim.com/about",
+          "sameAs": [
+            "https://www.linkedin.com/in/abdullahkhan"
+          ]
+        },
+        "copyrightHolder": {
+          "@type": "Organization",
+          "name": "HQAIM"
+        },
+        "educationalLevel": "Professional",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": [
+            "Founders", "CMOs", "Growth Leaders", "SEO Professionals"
+          ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://hqaim.com/author/abdullah-khan",
+        "name": "Abdullah Khan",
+        "jobTitle": "AI Visibility Strategist",
+        "description": "Creator of the Hybrid Ranking Protocol (HRP v2.0) and strategist specializing in AI ranking systems.",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "HQAIM",
+          "url": "https://hqaim.com"
+        },
+        "knowsAbout": ["AI Ranking", "GEO", "SEO", "E-E-A-T", "Knowledge Graphs"],
+        "sameAs": ["https://www.linkedin.com/in/abdullahkhan"]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://hqaim.com/#organization",
+        "name": "HQAIM",
+        "url": "https://hqaim.com",
+        "logo": "https://hqaim.com/logo.png",
+        "description": "HQAIM is a Visibility Operating System that helps brands rank inside AI-powered answer engines.",
+        "founder": {
+          "@type": "Person",
+          "name": "Abdullah Khan"
+        },
+        "sameAs": ["https://www.linkedin.com/company/hqaim"],
+        "knowsAbout": ["AI Ranking Systems", "Generative Visibility", "HRP"]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is AI Ranking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI ranking refers to how brands and content are selected, cited, and referenced by AI-powered answer engines like ChatGPT and Gemini, rather than ranked as traditional search links."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Generative Visibility?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Generative visibility is the ability of a brand to appear inside AI-generated answers, summaries, and recommendations, where user decisions are increasingly made."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is this book for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This book is designed for founders, CMOs, growth leaders, SEO professionals, and enterprise teams who want to remain visible and trusted in AI-driven discovery systems."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <style>
+        /* --- CORE PHYSICS --- */
+        :root {
+            --bg-color: #020408;
+            --text-color: #f8fafc;
+            --accent-color: #FCD34D;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+        
+        html.dark {
+            --bg-color: #020408;
+            --text-color: #f8fafc;
+            --accent-color: #FCD34D;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        html:not(.dark) {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --accent-color: #2563eb;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- TYPOGRAPHY UTILS --- */
+        h1, h2, h3, h4, h5, h6 {
+            letter-spacing: -0.02em;
+        }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #06b6d4);
+        }
+        html.dark .text-gradient {
+            background-image: linear-gradient(to right, #FCD34D, #F59E0B);
+        }
+
+        /* --- COMPONENTS --- */
+        .glass-nav {
+            background: rgba(var(--bg-rgb), 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .feature-card {
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: opacity 0.2s;
+        }
+        html.dark .btn-primary {
+            background-image: linear-gradient(to right, #FCD34D, #F59E0B);
+            color: #0f172a;
+        }
+        .btn-primary:hover { opacity: 0.9; }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-color);
+        }
+
+        /* --- PRINT --- */
+        @media print {
+            nav, .theme-toggle, .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .btn-primary, .btn-secondary { border: 1px solid black !important; background: none !important; color: black !important; }
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-blue-500/30 selection:text-blue-900 dark:selection:bg-gold-500/30 dark:selection:text-gold-200">
+
+    <!-- Texture Overlay -->
+    <div class="fixed inset-0 pointer-events-none opacity-[0.03] bg-noise z-0"></div>
+    <div class="fixed inset-0 pointer-events-none bg-hero-glow z-0 dark:opacity-20 opacity-0"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-nav bg-white/90 dark:bg-obsidian-900/90 border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM Icon" class="w-8 h-8">
+                <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase hidden md:block">AI Ranking & Generative Visibility</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Toggle Theme">
+                    <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <a href="#get-the-guide" class="text-sm font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-gold-400 transition-colors">Get the Guide</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative z-10 pt-20 pb-16 md:pt-32 md:pb-24 text-center px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-display font-extrabold leading-tight mb-6 text-slate-900 dark:text-white">
+                The Definitive 2026 Guide to <br>
+                <span class="text-gradient">AI Ranking</span> & Generative Visibility
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-light mb-8 max-w-2xl mx-auto">
+                How Brands Get Ranked, Cited, and Chosen in ChatGPT, Gemini & AI-Driven Search.
+            </p>
+            <p class="text-sm font-mono font-bold tracking-widest text-blue-600 dark:text-gold-400 uppercase mb-10">
+                The operational manual for winning visibility in a zero-click world.
+            </p>
+            
+            <!-- Hero Bullets -->
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 text-sm font-medium text-slate-500 dark:text-slate-400 mb-10">
+                <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Built for founders & CMOs</span>
+                <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Designed for AI answers</span>
+                <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Enterprise-ready</span>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button class="btn-primary flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download the Guide
+                </button>
+                <button class="btn-secondary flex items-center justify-center gap-2">
+                    Request an AI Visibility Audit <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRUST STRIP -->
+    <section class="border-y border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 py-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-6 text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+            <span class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-blue-500 dark:text-gold-400"></i> Built for Post-Search Era</span>
+            <span class="flex items-center gap-3"><i data-lucide="cpu" class="w-5 h-5 text-blue-500 dark:text-gold-400"></i> Real AI Retrieval Logic</span>
+            <span class="flex items-center gap-3"><i data-lucide="layers" class="w-5 h-5 text-blue-500 dark:text-gold-400"></i> Created by HQAIM</span>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="py-20 md:py-32 px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-slate-900 dark:text-white">
+                Search Didn’t Die. <br><span class="text-red-500 dark:text-red-400">It Changed Shape.</span>
+            </h2>
+            <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                In 2026, most discovery no longer ends in a click. AI systems now answer questions directly, recommend brands instantly, and shape decisions before users visit a website.
+            </p>
+            <div class="feature-card border-l-4 border-l-red-500 dark:border-l-red-500 text-left">
+                <p class="font-bold text-xl mb-2 text-slate-900 dark:text-white">The Visibility Gap</p>
+                <p class="text-slate-600 dark:text-slate-400">
+                    You can rank on Google and still be invisible. If your brand isn’t cited inside AI answers, it’s not part of the decision. Most businesses don’t see this until it’s too late.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE SHIFT -->
+    <section class="py-20 bg-slate-900 dark:bg-obsidian-800 text-white relative z-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest mb-4 block">The Shift</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Visibility Is No Longer Marketing. <br>It’s Infrastructure.</h2>
+                <p class="text-slate-300 mb-6 leading-relaxed">
+                    Traditional SEO optimized pages for rankings. AI systems retrieve entities, trust signals, and structured facts.
+                </p>
+                <p class="text-lg font-medium text-white">Modern visibility depends on:</p>
+                <ul class="mt-4 space-y-3">
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-400 w-5 h-5"></i> Entity Clarity</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-400 w-5 h-5"></i> Semantic Depth</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-400 w-5 h-5"></i> Machine-Verifiable Trust</li>
+                </ul>
+            </div>
+            <div class="relative">
+                <!-- Abstract Graphic -->
+                <div class="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full"></div>
+                <div class="relative bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm">
+                    <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+                        <span class="font-mono text-xs uppercase text-slate-400">Old Way</span>
+                        <span class="font-mono text-xs uppercase text-emerald-400">New Way</span>
+                    </div>
+                    <div class="space-y-4 font-mono text-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 line-through">Keywords</span>
+                            <span class="text-white font-bold"><i data-lucide="arrow-right" class="inline w-3 h-3 mx-2 text-slate-500"></i> Entities</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 line-through">Backlinks</span>
+                            <span class="text-white font-bold"><i data-lucide="arrow-right" class="inline w-3 h-3 mx-2 text-slate-500"></i> Citations</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 line-through">Traffic</span>
+                            <span class="text-white font-bold"><i data-lucide="arrow-right" class="inline w-3 h-3 mx-2 text-slate-500"></i> Influence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S INSIDE -->
+    <section class="py-20 md:py-32 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-mono font-bold text-blue-600 dark:text-gold-400 uppercase tracking-widest">The Solution</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 text-slate-900 dark:text-white">What This Guide Actually Gives You</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">This is not another SEO book. This is a working manual for ranking in Google, AI Overviews, ChatGPT, Gemini, and Claude.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6 text-blue-600 dark:text-blue-400">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Core Knowledge</h3>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li>• Why clicks are collapsing</li>
+                        <li>• How AI decides who to cite</li>
+                        <li>• What metrics actually matter</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center mb-6 text-emerald-600 dark:text-emerald-400">
+                        <i data-lucide="hammer" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Execution</h3>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li>• GEO formatting techniques</li>
+                        <li>• Structuring content for RAG</li>
+                        <li>• Engineering E-E-A-T mechanically</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6 text-purple-600 dark:text-purple-400">
+                        <i data-lucide="file-text" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Assets</h3>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li>• The Hybrid Ranking Protocol</li>
+                        <li>• Checklists & Schemas</li>
+                        <li>• Repeatable defense systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE FRAMEWORK -->
+    <section class="py-20 bg-slate-50 dark:bg-white/5 border-y border-slate-200 dark:border-white/10 relative z-10">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-display font-bold mb-8 text-slate-900 dark:text-white">The Hybrid Ranking Protocol (HRP v2.0)</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-12">A four-phase system designed to capture the Blue Link Click AND the AI Citation.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="p-6 bg-white dark:bg-obsidian-900 rounded-lg border border-slate-200 dark:border-white/10 relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">PHASE 1</span>
+                    <h4 class="font-bold mt-2 text-slate-900 dark:text-white">Technical Infrastructure</h4>
+                    <p class="text-xs text-slate-500 mt-2">Ingestion</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-obsidian-900 rounded-lg border border-slate-200 dark:border-white/10 relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">PHASE 2</span>
+                    <h4 class="font-bold mt-2 text-slate-900 dark:text-white">Semantic Engineering</h4>
+                    <p class="text-xs text-slate-500 mt-2">Understanding</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-obsidian-900 rounded-lg border border-slate-200 dark:border-white/10 relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">PHASE 3</span>
+                    <h4 class="font-bold mt-2 text-slate-900 dark:text-white">RAG-Ready Formatting</h4>
+                    <p class="text-xs text-slate-500 mt-2">Retrieval</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-obsidian-900 rounded-lg border border-slate-200 dark:border-white/10 relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">PHASE 4</span>
+                    <h4 class="font-bold mt-2 text-slate-900 dark:text-white">Authority Distribution</h4>
+                    <p class="text-xs text-slate-500 mt-2">Trust</p>
+                </div>
+            </div>
+            <p class="mt-8 text-sm text-slate-500 italic">Skip a phase, and visibility breaks.</p>
+        </div>
+    </section>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="font-bold text-xl mb-6 text-slate-900 dark:text-white flex items-center gap-2">
+                    <i data-lucide="check-circle" class="text-emerald-500"></i> This Guide Is For You If:
+                </h3>
+                <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-500 shrink-0"></i> You’re a founder/exec worried about AI replacing search.</li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-500 shrink-0"></i> You lead marketing, growth, or SEO.</li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-500 shrink-0"></i> You want durable visibility, not short-term hacks.</li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-500 shrink-0"></i> You want to be cited, not just indexed.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-6 text-slate-900 dark:text-white flex items-center gap-2">
+                    <i data-lucide="x-circle" class="text-red-500"></i> This Is NOT For You If:
+                </h3>
+                <ul class="space-y-4 text-slate-600 dark:text-slate-400 text-sm">
+                    <li class="flex gap-3"><i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0"></i> You want quick tricks or shortcuts.</li>
+                    <li class="flex gap-3"><i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0"></i> You rely on keyword stuffing.</li>
+                    <li class="flex gap-3"><i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0"></i> You’re chasing vanity traffic metrics.</li>
+                    <li class="flex gap-3"><i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0"></i> You don’t want to change your systems.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="py-16 text-center border-y border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 relative z-10">
+        <div class="max-w-3xl mx-auto px-6">
+            <h3 class="font-display font-bold text-2xl mb-4 text-slate-900 dark:text-white">Built on How AI Systems Actually Work</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-8">This guide is grounded in real AI retrieval logic (RAG), entity-based optimization, and modern E-E-A-T standards.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-4 py-2 bg-white dark:bg-obsidian-900 rounded border border-slate-200 dark:border-white/10 text-xs font-mono font-bold uppercase">Human-Readable</span>
+                <span class="px-4 py-2 bg-white dark:bg-obsidian-900 rounded border border-slate-200 dark:border-white/10 text-xs font-mono font-bold uppercase">Machine-Interpretable</span>
+                <span class="px-4 py-2 bg-white dark:bg-obsidian-900 rounded border border-slate-200 dark:border-white/10 text-xs font-mono font-bold uppercase">Commercially Executable</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="get-the-guide" class="py-24 px-6 text-center relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-display font-black mb-6 text-slate-900 dark:text-white">Get the Guide</h2>
+            <p class="text-xl text-slate-600 dark:text-slate-300 mb-10">The Definitive 2026 Guide to AI Ranking & Generative Visibility</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6 mb-16">
+                <button class="btn-primary flex items-center justify-center gap-3 text-lg px-8 py-4">
+                    <i data-lucide="download" class="w-6 h-6"></i> Download the Guide
+                </button>
+            </div>
+
+            <div class="p-8 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/10 max-w-2xl mx-auto">
+                <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Want to Know How Visible Your Brand Really Is?</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Most brands don’t realize they’re invisible inside AI answers until competitors start getting cited instead.</p>
+                <button class="btn-secondary w-full">Request an AI Visibility Audit</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT HQAIM -->
+    <section class="py-20 border-t border-slate-200 dark:border-white/10 relative z-10 bg-slate-50 dark:bg-obsidian-900">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- Author Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-slate-900 dark:text-white">About the Author</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        Abdullah Khan is a strategist and systems architect focused on AI ranking, generative visibility, and machine-readable brand infrastructure.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        With over a decade of experience spanning search optimization, digital strategy, and AI-driven discovery systems, Abdullah works at the intersection of human communication and machine interpretation—helping brands remain visible as search shifts from links to answers.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                        He is the creator of the Hybrid Ranking Protocol (HRP v2.0), a practical framework designed to help organizations rank simultaneously in traditional search engines and AI-powered answer systems such as ChatGPT, Gemini, and AI Overviews. His work emphasizes clarity, trust engineering, and execution—moving beyond theory into systems that can be deployed inside real businesses.
+                    </p>
+                    <div class="mt-6">
+                        <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Approach</h4>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Entity-based optimization</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Generative Engine Optimization (GEO)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> E-E-A-T-aligned trust architecture</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Data-backed visibility systems</li>
+                        </ul>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+                        Rather than treating AI as a trend, he treats it as infrastructure—something that must be designed deliberately, maintained continuously, and defended strategically.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+                        His work is used by founders, CMOs, growth leaders, and agencies seeking durable visibility in the post-search era, where being cited matters more than being clicked.
+                    </p>
+                    <blockquote class="text-xl font-display font-bold text-slate-900 dark:text-white mt-8 border-l-4 border-emerald-500 pl-4 italic">
+                        “If the model doesn’t mention you, the market won’t find you.”
+                    </blockquote>
+                </div>
+                <!-- Organization Section -->
+                <div>
+                    <div class="bg-white dark:bg-white/5 p-8 rounded-xl border border-slate-200 dark:border-white/10 h-full flex flex-col">
+                        <div class="mb-6">
+                            <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM" class="w-12 h-12 mb-4">
+                            <h3 class="font-display font-bold text-2xl text-slate-900 dark:text-white">About HQAIM</h3>
+                            <p class="text-slate-500 dark:text-slate-400 uppercase tracking-widest text-xs mt-2">Visibility Operating System for the AI Era</p>
+                        </div>
+                        
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                            HQAIM helps brands, companies, and institutions become discoverable, trustworthy, and cite-worthy inside modern AI systems—where decisions are increasingly shaped by generated answers, not search results.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 font-medium">
+                            HQAIM operates on a simple belief: Visibility is no longer marketing. It is infrastructure.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 text-sm">
+                            Traditional SEO optimized pages for rankings. HQAIM engineers entities for retrieval, verification, and citation.
+                        </p>
+
+                        <div class="mt-auto">
+                            <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">What HQAIM Does</h4>
+                            <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2 mb-6">
+                                <li>• Hybrid Ranking Systems (SEO + GEO)</li>
+                                <li>• Entity & Knowledge Graph Architecture</li>
+                                <li>• RAG-ready Content Design</li>
+                                <li>• Trust Architecture & E-E-A-T Engineering</li>
+                                <li>• AI Visibility Audits & Share of Model Voice Tracking</li>
+                            </ul>
+                            
+                            <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Who HQAIM Is For</h4>
+                            <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2 mb-6">
+                                <li>• Founders and leadership teams</li>
+                                <li>• Enterprise brands</li>
+                                <li>• B2B and SaaS companies</li>
+                                <li>• Agencies and consultancies</li>
+                                <li>• Organizations navigating AI-driven discovery</li>
+                            </ul>
+
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-500/30">
+                                <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                                    <strong>The HQAIM Difference:</strong> HQAIM does not sell tools. It does not chase algorithms. It builds protocol-level visibility—the kind that persists as interfaces, platforms, and models evolve.
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                                    This book is part of that mission. It is not a marketing asset. It is a reference system.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-200 dark:border-white/10 pt-16 text-center">
+                <h4 class="font-bold text-lg mb-6 text-slate-900 dark:text-white">Where to Go Next</h4>
+                <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+                    To learn more about HQAIM, explore resources, or deploy the frameworks outlined in this guide, visit <a href="https://hqaim.com" target="_blank" class="text-blue-600 dark:text-gold-400 font-bold hover:underline">hqaim.com</a>.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-bold text-slate-900 dark:text-white">
+                    <span class="px-4 py-2 bg-white dark:bg-white/5 rounded border border-slate-200 dark:border-white/10">Visibility Audits</span>
+                    <span class="px-4 py-2 bg-white dark:bg-white/5 rounded border border-slate-200 dark:border-white/10">Strategic Advisory</span>
+                    <span class="px-4 py-2 bg-white dark:bg-white/5 rounded border border-slate-200 dark:border-white/10">Enterprise Implementations</span>
+                    <span class="px-4 py-2 bg-white dark:bg-white/5 rounded border border-slate-200 dark:border-white/10">AI-First Publishing Systems</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-slate-200 dark:border-white/10 text-center text-xs font-mono text-slate-400 uppercase tracking-widest relative z-10 bg-slate-50 dark:bg-obsidian-900">
+        <div class="flex flex-wrap justify-center gap-6 mb-6">
+            <a href="https://www.hqaim.com" class="hover:text-slate-900 dark:hover:text-white font-bold">HQAIM.COM</a>
+            <a href="https://www.hqaim.com/p/privacy.html" class="hover:text-slate-900 dark:hover:text-white">Privacy</a>
+            <a href="https://www.hqaim.com/p/terms.html" class="hover:text-slate-900 dark:hover:text-white">Terms</a>
+            <a href="https://www.hqaim.com/p/contact.html" class="hover:text-slate-900 dark:hover:text-white">Contact</a>
+        </div>
+        <p>&copy; 2026 HQAIM Studios · All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if(window.lucide) lucide.createIcons();
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        });
+    </script>
+</body>
+</html>
