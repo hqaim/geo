@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Audit Checklist | GEO Diagnostic Tool | HQAIM</title>
+    <meta name="description" content="Assess your brand's visibility posture across AI systems. A 20-point diagnostic for Entity Salience, Schema, and LLM Trust.">
+    <meta name="author" content="Abdullah Khan">
+    <meta property="og:title" content="Trust Audit Checklist | HQAIM Visibility OS">
+    <meta property="og:url" content="https://geo.hqaim.com/trust_audit.html">
+    <meta property="og:image" content="https://geo.hqaim.com/assets/images/audit-og.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: { dark: '#0B0F19', slate: '#1E293B', blue: '#3B82F6', accent: '#6366F1', surface: '#F8FAFC' }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-grid { background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 40%, transparent 100%); }
+        /* Custom Checkbox */
+        .checkbox-wrapper input:checked + div { background-color: #10B981; border-color: #10B981; }
+        .checkbox-wrapper input:checked + div svg { display: block; }
+    </style>
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-brand-dark/90 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8">
+                <div>
+                    <div class="font-display font-bold text-white text-sm tracking-wide">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-400 uppercase tracking-widest">Visibility OS</div>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a href="shift.html" class="hover:text-white transition-colors">Shift</a>
+                <a href="geo.html" class="hover:text-white transition-colors">GEO</a>
+                <a href="protocol.html" class="hover:text-white transition-colors">Protocol</a>
+                <a href="labs.html" class="hover:text-white transition-colors">Labs</a>
+                <a href="resources.html" class="text-white transition-colors">Resources</a>
+            </div>
+            <a href="website_audit.html" class="px-5 py-2 bg-white text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue hover:text-white transition-colors">
+                Audit My Brand
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-12 container mx-auto px-6 text-center relative">
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] hero-grid pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 border border-emerald-500/30 rounded-full bg-emerald-500/10 text-[10px] uppercase tracking-widest mb-4 text-emerald-400 font-bold">
+                <i class="fas fa-check-circle"></i> Diagnostic Tool
+            </div>
+            <h1 class="font-display font-bold text-4xl md:text-5xl mb-6">Trust Audit Checklist</h1>
+            <p class="text-lg text-slate-400 leading-relaxed">
+                A 20-point diagnostic to score your visibility posture. Evaluate your brand's readiness for the AI-first web across Schema, Content, and Trust signals.
+            </p>
+        </div>
+    </header>
+
+    <!-- Audit Interface -->
+    <section class="pb-24 px-6">
+        <div class="container mx-auto max-w-4xl">
+            
+            <!-- Sticky Score Bar -->
+            <div class="sticky top-24 z-40 bg-brand-dark/95 backdrop-blur border border-white/10 rounded-xl p-4 mb-8 flex items-center justify-between shadow-2xl transition-all duration-300" id="scoreBar">
+                <div class="flex flex-col">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Current Score</span>
+                    <div class="flex items-baseline gap-2">
+                        <span id="scoreDisplay" class="text-3xl font-display font-bold text-white">0</span>
+                        <span class="text-slate-500">/ 100</span>
+                    </div>
+                </div>
+                <div class="flex-1 mx-6 hidden sm:block">
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div id="progressBar" class="h-full bg-gradient-to-r from-brand-blue to-emerald-400 w-0 transition-all duration-500"></div>
+                    </div>
+                </div>
+                <button onclick="calculateResults()" id="finishBtn" class="px-6 py-2 bg-white text-brand-dark font-bold text-sm rounded-lg hover:bg-slate-200 transition-colors opacity-50 cursor-not-allowed" disabled>
+                    Get Results
+                </button>
+            </div>
+
+            <form id="auditForm" class="space-y-8">
+                
+                <!-- Category 1: Entity Identity -->
+                <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                    <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-blue/20 text-brand-blue flex items-center justify-center"><i class="fas fa-fingerprint"></i></div>
+                        <h3 class="text-xl font-bold">1. Entity Identity (Salience)</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Item 1 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-brand-blue">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Organization Schema Present</span>
+                                <span class="text-sm text-slate-500">Valid JSON-LD `Organization` markup exists on the homepage.</span>
+                            </div>
+                        </label>
+                        <!-- Item 2 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-brand-blue">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">SameAs Links Configured</span>
+                                <span class="text-sm text-slate-500">Schema links to at least 3 active social profiles (LinkedIn, X, etc.).</span>
+                            </div>
+                        </label>
+                        <!-- Item 3 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-brand-blue">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Knowledge Graph ID</span>
+                                <span class="text-sm text-slate-500">Brand has a Google Knowledge Panel or Wikidata entry.</span>
+                            </div>
+                        </label>
+                        <!-- Item 4 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-brand-blue">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">High-Res Logo Definition</span>
+                                <span class="text-sm text-slate-500">Logo defined in schema with 1:1 and 16:9 aspect ratios.</span>
+                            </div>
+                        </label>
+                        <!-- Item 5 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-brand-blue">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Author Verification</span>
+                                <span class="text-sm text-slate-500">"About" or "Team" pages link to individual author profiles with `Person` schema.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Category 2: Content Structure -->
+                <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                    <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center"><i class="fas fa-network-wired"></i></div>
+                        <h3 class="text-xl font-bold">2. Content Structure (Density)</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Item 6 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-purple-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Semantic Headings</span>
+                                <span class="text-sm text-slate-500">H1-H3 tags use questions or entity names, not vague slogans.</span>
+                            </div>
+                        </label>
+                        <!-- Item 7 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-purple-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Factual Triplets</span>
+                                <span class="text-sm text-slate-500">Content uses clear Subject-Verb-Object structures for key claims.</span>
+                            </div>
+                        </label>
+                        <!-- Item 8 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-purple-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Structured Lists/Tables</span>
+                                <span class="text-sm text-slate-500">Key data is presented in Markdown tables or bullet lists.</span>
+                            </div>
+                        </label>
+                        <!-- Item 9 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-purple-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Answer-First Format</span>
+                                <span class="text-sm text-slate-500">Direct answers provided in the first 100 words of pages.</span>
+                            </div>
+                        </label>
+                        <!-- Item 10 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-purple-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">PDF Accessibility</span>
+                                <span class="text-sm text-slate-500">Whitepapers/Reports have corresponding HTML summary pages.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Category 3: Authority & Trust -->
+                <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                    <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center"><i class="fas fa-check-double"></i></div>
+                        <h3 class="text-xl font-bold">3. Corroboration (Trust)</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Item 11 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-emerald-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">3rd-Party Knowledge Bases</span>
+                                <span class="text-sm text-slate-500">Profiles on Crunchbase, Pitchbook, or G2 exist.</span>
+                            </div>
+                        </label>
+                        <!-- Item 12 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-emerald-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Digital PR Mentions</span>
+                                <span class="text-sm text-slate-500">Recent citations on high-DR industry news sites.</span>
+                            </div>
+                        </label>
+                        <!-- Item 13 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-emerald-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">NAP Consistency</span>
+                                <span class="text-sm text-slate-500">Name, Address, Phone are identical across all directories.</span>
+                            </div>
+                        </label>
+                        <!-- Item 14 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-emerald-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Employee Linking</span>
+                                <span class="text-sm text-slate-500">Active employee profiles on LinkedIn linked to company page.</span>
+                            </div>
+                        </label>
+                        <!-- Item 15 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-emerald-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Citation Loops</span>
+                                <span class="text-sm text-slate-500">External articles link back to core entity pages (not just home).</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Category 4: Technical Hygiene -->
+                <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                    <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center"><i class="fas fa-server"></i></div>
+                        <h3 class="text-xl font-bold">4. Technical Hygiene</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Item 16 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-orange-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">AI Crawler Access</span>
+                                <span class="text-sm text-slate-500">Robots.txt allows GPTBot, CCBot, and Google-Extended.</span>
+                            </div>
+                        </label>
+                        <!-- Item 17 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-orange-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Sitemap Health</span>
+                                <span class="text-sm text-slate-500">XML Sitemap is error-free and updated automatically.</span>
+                            </div>
+                        </label>
+                        <!-- Item 18 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-orange-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">HTTPS Security</span>
+                                <span class="text-sm text-slate-500">Valid SSL certificate across all subdomains.</span>
+                            </div>
+                        </label>
+                        <!-- Item 19 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-orange-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Mobile Responsiveness</span>
+                                <span class="text-sm text-slate-500">Site passes Google Mobile-Friendly test.</span>
+                            </div>
+                        </label>
+                        <!-- Item 20 -->
+                        <label class="checkbox-wrapper flex items-start gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" value="5">
+                            <div class="w-6 h-6 border-2 border-slate-600 rounded-md flex items-center justify-center transition-colors mt-1 group-hover:border-orange-500">
+                                <svg class="w-4 h-4 text-brand-dark hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Core Web Vitals</span>
+                                <span class="text-sm text-slate-500">LCP, FID, and CLS scores are in the 'Good' range.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- Results Modal (Hidden by default) -->
+            <div id="resultsModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6">
+                <div class="bg-[#0f111a] border border-white/20 rounded-3xl max-w-2xl w-full p-8 relative shadow-2xl animate-fade-in-up">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+                    
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold mb-2">Visibility Posture Audit</h2>
+                        <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-400" id="resultDate"></div>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center mb-8">
+                        <div class="relative w-40 h-40 flex items-center justify-center">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle cx="80" cy="80" r="70" stroke="#1e293b" stroke-width="10" fill="none"/>
+                                <circle id="resultCircle" cx="80" cy="80" r="70" stroke="#3B82F6" stroke-width="10" fill="none" stroke-dasharray="440" stroke-dashoffset="440" class="transition-all duration-1000 ease-out"/>
+                            </svg>
+                            <div class="absolute text-center">
+                                <span id="finalScore" class="text-4xl font-bold text-white block">0</span>
+                                <span id="finalGrade" class="text-xl font-bold text-brand-blue"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="recommendationBox" class="bg-brand-slate p-6 rounded-xl border border-white/10 mb-6">
+                        <h4 class="font-bold text-white mb-2 flex items-center gap-2"><i class="fas fa-lightbulb text-yellow-400"></i> Priority Action</h4>
+                        <p id="recommendationText" class="text-sm text-slate-400"></p>
+                    </div>
+
+                    <div class="flex justify-center gap-4">
+                        <button onclick="window.print()" class="px-6 py-3 border border-white/20 rounded-lg text-sm font-bold hover:bg-white/5">
+                            <i class="fas fa-print mr-2"></i> Print Report
+                        </button>
+                        <a href="protocol.html" class="px-6 py-3 bg-brand-blue rounded-lg text-sm font-bold hover:bg-blue-600 text-white">
+                            View Protocol Fixes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                <div>
+                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-6">
+                    <p class="text-slate-400 text-sm max-w-sm mb-6">
+                        Building the credibility infrastructure for the AI-first web.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-12 text-sm text-slate-400">
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Protocol</h4>
+                        <ul class="space-y-2">
+                            <li><a href="shift.html" class="hover:text-brand-blue">The Shift</a></li>
+                            <li><a href="geo.html" class="hover:text-brand-blue">GEO Playbook</a></li>
+                            <li><a href="protocol.html" class="hover:text-brand-blue">Framework</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Studio</h4>
+                        <ul class="space-y-2">
+                            <li><a href="about.html" class="hover:text-brand-blue">About HQAIM</a></li>
+                            <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 HQAIM Studios. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const progressBar = document.getElementById('progressBar');
+        const finishBtn = document.getElementById('finishBtn');
+        const resultsModal = document.getElementById('resultsModal');
+        
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateScore);
+        });
+
+        function updateScore() {
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const score = checked.length * 5; // 20 items * 5 = 100
+            
+            scoreDisplay.textContent = score;
+            progressBar.style.width = `${score}%`;
+
+            if (checked.length > 0) {
+                finishBtn.disabled = false;
+                finishBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                finishBtn.classList.add('hover:bg-slate-200');
+            } else {
+                finishBtn.disabled = true;
+                finishBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        function calculateResults() {
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const score = checked.length * 5;
+            
+            let grade = 'F';
+            let color = '#EF4444'; // Red
+            let rec = "Your visibility is critical. You are likely invisible to AI models. Start by implementing basic Organization Schema.";
+
+            if (score >= 90) { grade = 'A+'; color = '#10B981'; rec = "Excellent. You are AI-native. Focus on maintaining citation velocity through Digital PR."; }
+            else if (score >= 80) { grade = 'A'; color = '#10B981'; rec = "Strong posture. Refine your entity triplets to maximize information gain."; }
+            else if (score >= 70) { grade = 'B'; color = '#3B82F6'; rec = "Good foundation. You have schema, but need more corroboration from external sources."; }
+            else if (score >= 50) { grade = 'C'; color = '#F59E0B'; rec = "At risk. Your content is readable but lacks the structured signals LLMs trust."; }
+            else { grade = 'D'; color = '#EF4444'; rec = "Low visibility. Immediate intervention needed on Technical Hygiene and Schema."; }
+
+            document.getElementById('finalScore').textContent = score;
+            document.getElementById('finalGrade').textContent = grade;
+            document.getElementById('finalGrade').style.color = color;
+            document.getElementById('resultCircle').style.stroke = color;
+            
+            // Animate Circle
+            const dashOffset = 440 - (440 * score / 100);
+            document.getElementById('resultCircle').style.strokeDashoffset = dashOffset;
+            
+            document.getElementById('recommendationText').textContent = rec;
+            document.getElementById('resultDate').textContent = new Date().toLocaleDateString();
+
+            resultsModal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            resultsModal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
