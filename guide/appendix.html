@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appendix | The Definitive 2026 Guide to AI Ranking</title>
+    
+    <!-- Meta -->
+    <meta name="description" content="Assess your brand's visibility posture across AI systems. A 20-point diagnostic for Entity Salience, Schema, and LLM Trust.">
+    <meta name="author" content="Abdullah Khan">
+    <link rel="canonical" href="https://geo.hqaim.com/guide/appendix.html">
+    <meta property="og:title" content="Trust Audit Checklist | HQAIM Visibility OS">
+    <meta property="og:url" content="https://geo.hqaim.com/guide/appendix.html">
+    <meta property="og:image" content="https://geo.hqaim.com/assets/images/audit-og.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts: Outfit (Display), Inter (Body), JetBrains Mono (Code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: { 950: '#020408', 900: '#080C14', 800: '#0F1623', card: '#0a0f18' },
+                        gold: { 400: '#FCD34D', 500: '#D4AF37', 600: '#B45309' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 800: '#1e293b', 900: '#0f172a' },
+                        accent: { light: '#2563eb', dark: '#FCD34D' }
+                    },
+                    fontFamily: {
+                        display: ['"Outfit"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "name": "Appendix: Templates, Checklists & Schemas",
+      "headline": "The Practical Execution Toolkit for AI Ranking & Generative Visibility",
+      "description": "Actionable infrastructure including launch checklists, HRP v2.0 master checklist, and schema templates for AI ranking.",
+      "author": {
+        "@type": "Person",
+        "name": "Abdullah Khan"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HQAIM",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://aiartisan.hqaim.com/images/HQAIM_ICON.svg"
+        }
+      }
+    }
+    </script>
+
+    <style>
+        /* --- CORE PHYSICS --- */
+        :root {
+            --bg-color: #020408;
+            --text-color: #f8fafc;
+            --accent-color: #FCD34D;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+        
+        html.dark {
+            --bg-color: #020408;
+            --text-color: #f8fafc;
+            --accent-color: #FCD34D;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        html:not(.dark) {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --accent-color: #2563eb;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- TYPOGRAPHY UTILS --- */
+        h1, h2, h3, h4, h5, h6 {
+            letter-spacing: -0.02em;
+        }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #06b6d4);
+        }
+        html.dark .text-gradient {
+            background-image: linear-gradient(to right, #FCD34D, #F59E0B);
+        }
+
+        /* --- COMPONENTS --- */
+        .glass-nav {
+            background: rgba(var(--bg-rgb), 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .insight-card {
+            border-left: 4px solid var(--accent-color);
+            background: var(--card-bg);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .checklist-box {
+            min-width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.25rem;
+            display: grid;
+            place-items: center;
+            color: var(--accent-color);
+        }
+
+        /* --- PRINT ENGINEERING (A4 OPTIMIZATION) --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+
+            /* Hide UI */
+            nav, .theme-toggle, .no-print, .copy-btn {
+                display: none !important;
+            }
+
+            /* Layout Reset */
+            .max-w-3xl { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+            .min-h-screen { min-height: auto !important; }
+            
+            /* Flow Control */
+            h1, h2, h3 { 
+                page-break-after: avoid; 
+                break-after: avoid; 
+                color: black !important;
+            }
+            
+            p, li, .insight-card, pre {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Component Resets */
+            .insight-card {
+                border-left: 4px solid #000 !important;
+                background: #f3f4f6 !important;
+                color: #000 !important;
+            }
+            
+            pre {
+                border: 1px solid #ccc !important;
+                background: #f9fafb !important;
+                color: #000 !important;
+                white-space: pre-wrap !important;
+            }
+
+            /* Links */
+            a { text-decoration: none !important; color: #000 !important; }
+            a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-blue-500/30 selection:text-blue-900 dark:selection:bg-gold-500/30 dark:selection:text-gold-200">
+
+    <!-- Texture Overlay -->
+    <div class="fixed inset-0 pointer-events-none opacity-[0.03] bg-noise z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-nav bg-white/90 dark:bg-obsidian-900/90 border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM Icon" class="w-8 h-8">
+                <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase hidden md:block">AI Ranking & Generative Visibility</span>
+                <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase md:hidden">AI Ranking</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Print to PDF">
+                    <i data-lucide="printer" class="w-5 h-5"></i>
+                </button>
+                <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Toggle Theme">
+                    <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-3xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Header -->
+        <header class="text-center mb-20 border-b border-slate-200 dark:border-white/10 pb-12">
+            <div class="inline-block mb-4 px-3 py-1 border border-slate-300 dark:border-white/20 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">
+                Execution Toolkit
+            </div>
+            <h1 class="text-4xl md:text-5xl font-display font-black leading-tight mb-6 text-slate-900 dark:text-white">
+                <span class="text-gradient">APPENDIX</span>
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+                Templates, Checklists & Schemas. The Practical Execution Toolkit for AI Ranking & Generative Visibility.
+            </p>
+        </header>
+
+        <!-- Intro Block -->
+        <section class="mb-16">
+            <p class="text-slate-600 dark:text-slate-400 mb-6">
+                This appendix translates the book into actionable infrastructure. Every framework, checklist, and template here is designed to support the Hybrid Ranking Protocol (HRP v2.0) and modern E-E-A-T standards.
+            </p>
+            <div class="insight-card">
+                <p class="font-bold text-slate-900 dark:text-white mb-2">Use this appendix as:</p>
+                <ul class="list-none space-y-1 text-sm text-slate-600 dark:text-slate-300">
+                    <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-emerald-500"></i> A launch checklist</li>
+                    <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-emerald-500"></i> An internal operating manual</li>
+                    <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-emerald-500"></i> A quarterly audit system</li>
+                    <li class="flex items-center gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-emerald-500"></i> A training resource for teams and clients</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- A1. Checklist -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A1. Monday-Morning Launch Checklist (HRP v2.0)</h3>
+            <p class="text-sm text-slate-500 mb-6">Use this checklist to move from strategy to execution immediately.</p>
+            
+            <div class="space-y-8">
+                <div>
+                    <h4 class="font-mono text-xs font-bold text-blue-600 dark:text-gold-400 uppercase tracking-widest mb-4">Technical Infrastructure (Ingestion Layer)</h4>
+                    <ul class="space-y-2">
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">HTTPS enabled across all pages</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Mobile performance score acceptable (Core Web Vitals)</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Clean HTML (no hidden or cloaked text)</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Text-to-HTML ratio above 15%</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">CSS and JavaScript minified</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-xs font-bold text-blue-600 dark:text-gold-400 uppercase tracking-widest mb-4">AI Bot Access</h4>
+                    <ul class="space-y-2">
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">GPTBot allowed in robots.txt</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Google-Extended allowed</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">ClaudeBot allowed</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">No blanket AI bot blocking rules</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-xs font-bold text-blue-600 dark:text-gold-400 uppercase tracking-widest mb-4">Schema Implementation</h4>
+                    <ul class="space-y-2">
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Organization schema live</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">FAQPage schema added to priority pages</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Author (Person) schema implemented</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Speakable schema applied where relevant</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-xs font-bold text-blue-600 dark:text-gold-400 uppercase tracking-widest mb-4">Content Structure</h4>
+                    <ul class="space-y-2">
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">First 100 words answer the core question</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">H1 and H2 use Subject → Predicate → Object</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">TL;DR block added to key pages</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Tables used for comparisons and pricing</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-xs font-bold text-blue-600 dark:text-gold-400 uppercase tracking-widest mb-4">Trust Signals</h4>
+                    <ul class="space-y-2">
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Author bios linked and complete</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Case study with metrics published</span></li>
+                        <li class="checklist-item"><div class="checklist-box"></div> <span class="text-slate-700 dark:text-slate-300">Third-party profiles updated and consistent</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-6 italic">If every box above is checked, your brand is AI-eligible.</p>
+        </article>
+
+        <!-- A2. Master Checklist -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A2. Hybrid Ranking Protocol (HRP v2.0) Master Checklist</h3>
+            
+            <div class="space-y-6">
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 1: Technical Infrastructure</h4>
+                    <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
+                        <li>☐ Schema hyper-definition complete</li>
+                        <li>☐ Token efficiency optimized</li>
+                        <li>☐ AI crawlers verified</li>
+                        <li>☐ Performance and accessibility validated</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 2: Semantic Engineering</h4>
+                    <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
+                        <li>☐ Core entities clearly defined</li>
+                        <li>☐ Semantic triplets embedded</li>
+                        <li>☐ Contextual vocabulary present</li>
+                        <li>☐ Topic focus maintained per page</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 3: RAG-Ready Formatting</h4>
+                    <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
+                        <li>☐ Tables used where comparisons exist</li>
+                        <li>☐ Definition lists for features/services</li>
+                        <li>☐ Stat-fact density achieved</li>
+                        <li>☐ Answer snippets formatted</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 4: Authority Distribution</h4>
+                    <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
+                        <li>☐ External mentions secured</li>
+                        <li>☐ Author entities verified</li>
+                        <li>☐ Case studies data-backed</li>
+                        <li>☐ Risk reversal clearly stated</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">This checklist should be reviewed quarterly.</p>
+        </article>
+
+        <!-- A3. Robots.txt -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A3. Robots.txt – AI Visibility Template</h3>
+            <p class="text-sm text-slate-500 mb-4">Use this template to ensure AI systems can legally and technically access your content.</p>
+            
+            <div class="relative group mb-4">
+                <button onclick="copyToClipboard('robots-code')" class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-slate-700 rounded text-xs text-white">Copy</button>
+                <pre id="robots-code" class="bg-slate-100 dark:bg-obsidian-900 border border-slate-200 dark:border-white/10 p-4 rounded-lg text-xs font-mono overflow-x-auto text-slate-800 dark:text-slate-300">
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: *
+Disallow:</pre>
+            </div>
+            <div class="insight-card py-3 my-2">
+                <p class="text-xs font-bold text-slate-900 dark:text-white">Important:</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Blocking these agents means zero AI citations, regardless of content quality.</p>
+            </div>
+        </article>
+
+        <!-- A4. Org Schema -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A4. Organization Schema (JSON-LD Template)</h3>
+            <p class="text-sm text-slate-500 mb-4">Use this as a base and customize for your brand. This connects your brand to trusted knowledge graph nodes.</p>
+            
+            <div class="relative group">
+                <button onclick="copyToClipboard('org-schema')" class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-slate-700 rounded text-xs text-white">Copy</button>
+                <pre id="org-schema" class="bg-slate-100 dark:bg-obsidian-900 border border-slate-200 dark:border-white/10 p-4 rounded-lg text-xs font-mono overflow-x-auto text-slate-800 dark:text-slate-300">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Your Brand Name",
+  "url": "https://www.yoursite.com",
+  "logo": "https://www.yoursite.com/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/company/yourbrand",
+    "https://twitter.com/yourbrand",
+    "https://www.crunchbase.com/organization/yourbrand"
+  ]
+}</pre>
+            </div>
+        </article>
+
+        <!-- A5. FAQ Schema -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A5. FAQPage Schema (AI Answer Accelerator)</h3>
+            <p class="text-sm text-slate-500 mb-4">Use FAQ schema to increase direct answer eligibility. Keep answers Short, Direct, and Non-promotional.</p>
+            
+            <div class="relative group">
+                <button onclick="copyToClipboard('faq-schema')" class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-slate-700 rounded text-xs text-white">Copy</button>
+                <pre id="faq-schema" class="bg-slate-100 dark:bg-obsidian-900 border border-slate-200 dark:border-white/10 p-4 rounded-lg text-xs font-mono overflow-x-auto text-slate-800 dark:text-slate-300">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Generative Engine Optimization (GEO)?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Generative Engine Optimization is the process of structuring content so it can be retrieved, cited, and used by AI answer engines like ChatGPT and Gemini."
+    }
+  }]
+}</pre>
+            </div>
+        </article>
+
+        <!-- A6. Author Bio -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A6. Author Bio Page Template (E-E-A-T Critical)</h3>
+            <p class="text-sm text-slate-500 mb-4">Every author must have a dedicated page. This converts content into expert-authored knowledge.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-sm uppercase mb-2">Required Sections</h4>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                        <li>• Full name</li>
+                        <li>• Role and expertise</li>
+                        <li>• Years of experience</li>
+                        <li>• Credentials or certifications</li>
+                        <li>• Real photo (not stock)</li>
+                        <li>• SameAs links (LinkedIn, Twitter)</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-sm uppercase mb-2">Example Structure</h4>
+                    <div class="text-sm text-slate-600 dark:text-slate-400 space-y-1 font-mono text-xs">
+                        <p><strong>Name:</strong> Jane Smith</p>
+                        <p><strong>Role:</strong> AI Visibility Strategist</p>
+                        <p><strong>Experience:</strong> 12+ years in SEO</p>
+                        <p><strong>Specialty:</strong> GEO, Schema Architecture</p>
+                        <p><strong>As seen in:</strong> Industry blogs, podcasts</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- A7. Case Study -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A7. Case Study Template (Proof-Driven Trust)</h3>
+            <p class="text-sm text-slate-500 mb-4">Replace vague testimonials. AI systems trust data more than quotes.</p>
+            <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <strong class="block text-slate-900 dark:text-white">Client Context</strong>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Industry, size, problem</p>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-900 dark:text-white">Before</strong>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Baseline metrics (traffic, revenue, visibility)</p>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-900 dark:text-white">Intervention</strong>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">What was implemented (HRP phase, tools)</p>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-900 dark:text-white">After</strong>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Clear results with numbers</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <strong class="block text-slate-900 dark:text-white">Evidence</strong>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Screenshot of analytics, Dashboard image, Short Loom video</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- A8 - A12 condensed -->
+        <article class="mb-16 print:break-inside-avoid">
+            <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">Additional Protocols</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">A8. Triangulated Authority Checklist</h4>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                        <li>☐ Claim stated clearly on your site</li>
+                        <li>☐ Claim supported by data or metrics</li>
+                        <li>☐ Claim validated by at least one external source</li>
+                        <li>☐ Language consistent across platforms</li>
+                    </ul>
+                    <p class="text-xs text-slate-500 mt-2 italic">If one leg is missing, trust weakens.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">A9. AI Visibility Audit Template</h4>
+                    <p class="text-xs text-slate-500 mb-2">Run monthly using ChatGPT, Gemini, Perplexity.</p>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                        <li><strong>Prompts:</strong> "Best [category]", "How to [solve problem]"</li>
+                        <li><strong>Record:</strong> Brands cited, Language used</li>
+                        <li><strong>Action:</strong> Gap analysis & Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">A10. AI Metrics Dashboard</h4>
+                    <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                        <li>• Share of Model Voice (SoMV)</li>
+                        <li>• Citation frequency</li>
+                        <li>• Brand mentions inside AI answers</li>
+                        <li>• Branded search growth</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">A11. Risk Reversal Copy</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 italic">
+                        "If you’re not satisfied within 30 days, we’ll refund you in full—no questions asked. You keep all delivered materials."
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10 md:col-span-2">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">A12. Quarterly Maintenance</h4>
+                    <div class="flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400">
+                        <span>☐ Update timestamps</span>
+                        <span>☐ Refresh stats</span>
+                        <span>☐ Add case study</span>
+                        <span>☐ Secure 3rd-party mention</span>
+                        <span>☐ Re-run audit</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Final Note -->
+        <div class="insight-card my-12 text-center">
+            <p class="font-bold text-slate-900 dark:text-white mb-2">Final Appendix Note</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+                This appendix is not optional reading. It is the execution layer of the book. Use it. Reuse it. Build systems with it.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-200 dark:border-white/10 text-center text-xs font-mono text-slate-400 uppercase tracking-widest relative z-10 bg-slate-50 dark:bg-obsidian-900">
+        <div class="flex flex-wrap justify-center gap-6 mb-6">
+            <a href="https://www.hqaim.com" class="hover:text-slate-900 dark:hover:text-white font-bold">HQAIM.COM</a>
+            <a href="https://www.hqaim.com/p/privacy.html" class="hover:text-slate-900 dark:hover:text-white">Privacy</a>
+            <a href="https://www.hqaim.com/p/terms.html" class="hover:text-slate-900 dark:hover:text-white">Terms</a>
+            <a href="https://www.hqaim.com/p/contact.html" class="hover:text-slate-900 dark:hover:text-white">Contact</a>
+        </div>
+        <p>&copy; 2026 HQAIM Studios · All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // --- LOGIC KERNEL ---
+        
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        function copyToClipboard(id) {
+            const el = document.getElementById(id);
+            navigator.clipboard.writeText(el.innerText).then(() => {
+                alert('Copied to clipboard');
+            });
+        }
+
+        // Init Theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            // Default to system, but prefer dark for this aesthetic
+            document.documentElement.classList.remove('dark');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if(window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
