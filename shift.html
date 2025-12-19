@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Click Is Dead | The Shift to Prompt-First Discovery | HQAIM</title>
+    <meta name="description" content="Discover why traditional SEO is losing ground to Generative Engine Optimization (GEO). 61% drop in organic clicks. Analyze the AI shift from links to answers.">
+    <meta name="author" content="Abdullah Khan">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Click Is Dead | HQAIM Visibility OS">
+    <meta property="og:description" content="Explore the fall of link-based discovery and the rise of prompt-native brand architecture. GEO is the new SEO.">
+    <meta property="og:url" content="https://geo.hqaim.com/shift.html">
+    <meta property="og:image" content="https://geo.hqaim.com/assets/images/shift-hero-graph.svg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            slate: '#1E293B',
+                            blue: '#3B82F6',
+                            accent: '#6366F1',
+                            surface: '#F8FAFC'
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-grid { background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 40%, transparent 100%); }
+    </style>
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased">
+
+    <!-- Navigation (Exact Match) -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-brand-dark/90 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8">
+                <div>
+                    <div class="font-display font-bold text-white text-sm tracking-wide">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-400 uppercase tracking-widest">Visibility OS</div>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a href="shift.html" class="text-white transition-colors">Shift</a>
+                <a href="geo.html" class="hover:text-white transition-colors">GEO</a>
+                <a href="protocol.html" class="hover:text-white transition-colors">Protocol</a>
+                <a href="labs.html" class="hover:text-white transition-colors">Labs</a>
+                <a href="resources.html" class="hover:text-white transition-colors">Resources</a>
+            </div>
+            <a href="https://hqaim.com" class="px-5 py-2 bg-white text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue hover:text-white transition-colors">
+                Audit My Brand
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-16 container mx-auto px-6 text-center relative">
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] hero-grid pointer-events-none"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="font-display font-bold text-5xl md:text-7xl mb-6">The Click Is Dead</h1>
+            <p class="text-xl md:text-2xl text-slate-400 font-light leading-relaxed">
+                <strong class="text-white">Prompt-first discovery</strong> is reshaping how users interact with information. Traditional SEO is being displaced by generative engines that don’t index pages—they synthesize entities, verify claims, and cite sources.
+            </p>
+        </div>
+    </header>
+
+    <!-- Section: What's Changing (Data & Chart) -->
+    <section class="py-16 bg-brand-slate/20 border-y border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-block px-3 py-1 mb-4 border border-brand-blue/30 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold uppercase tracking-widest">
+                        Market Shift
+                    </div>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl mb-6">What’s Changing?</h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        The foundation of search is collapsing. Users aren’t scanning blue links—they’re relying on language models like Gemini, Claude, and ChatGPT to answer questions. <span class="text-white">If your brand is not mentioned in the model’s world, you’re excluded from the outcome.</span>
+                    </p>
+                    
+                    <!-- Insight Card -->
+                    <div class="glass-panel p-6 rounded-xl border-l-4 border-l-brand-blue bg-brand-slate/40">
+                        <div class="flex items-center gap-4">
+                            <div class="text-3xl text-red-500"><i class="fas fa-arrow-trend-down"></i></div>
+                            <div>
+                                <h4 class="text-xs font-mono text-slate-400 uppercase tracking-widest">Market Stat (2024)</h4>
+                                <p class="text-xl font-bold text-white">61% drop in organic CTR</p>
+                                <p class="text-sm text-slate-500">For queries triggering AI Overviews (YoY).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Container -->
+                <div class="glass-panel rounded-2xl p-6 h-80 relative shadow-2xl">
+                    <div class="absolute top-4 right-4 text-[10px] text-slate-500 font-mono">SEARCH DECLINE VS LLM GROWTH</div>
+                    <canvas id="shiftChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: The Risk of Invisibility -->
+    <section class="py-24 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="font-display font-bold text-3xl md:text-4xl mb-6 text-white">The Risk of Invisibility</h2>
+            <p class="text-lg text-slate-400 leading-relaxed mb-8">
+                Even if you rank #1 on Google, LLMs may skip your content if it lacks structure. They ignore pages that don’t present factual triplets, missing metadata, or vague brand attribution.
+            </p>
+            <div class="inline-block px-6 py-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-sm">
+                <i class="fas fa-triangle-exclamation mr-2"></i> Unstructured content = digital anonymity in AI ecosystems.
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Prompt > SERP & Timeline -->
+    <section class="py-24 bg-brand-dark border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Prompt > SERP Content -->
+                <div>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl mb-6">Prompt > SERP</h2>
+                    <p class="text-slate-400 text-lg mb-8">
+                        We are entering a prompt-native ecosystem. Influence now means optimizing for citation, retrieval, and entity linking—not keywords. <strong class="text-brand-blue">GEO (Generative Engine Optimization)</strong> is the new protocol for being <em>known</em> in the machine mind.
+                    </p>
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 flex items-center justify-center">
+                        <img src="https://geo.hqaim.com/assets/images/prompt-to-ranking-loop.svg" alt="Prompt to Ranking Transformation" class="w-full h-auto max-w-sm opacity-80 hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-center text-slate-500 italic\'><i class=\'fas fa-sync fa-2x mb-2\'></i><br>Prompt-to-Ranking Loop Visualization</div>'">
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div>
+                    <h3 class="font-bold text-xl mb-8 text-white border-b border-white/10 pb-4">Evolution of Discovery</h3>
+                    <div class="relative border-l-2 border-white/10 ml-3 space-y-12 pl-8">
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-600 border-2 border-brand-dark"></div>
+                            <div>
+                                <span class="text-slate-500 font-mono text-xs block mb-1">2000 - 2022</span>
+                                <h4 class="font-bold text-lg text-slate-300">The Search Era</h4>
+                                <p class="text-slate-500 text-sm mt-2">Users query keywords. Google returns 10 blue links. SEO is about keywords and backlinks.</p>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="relative">
+                            <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-brand-blue border-2 border-brand-dark animate-pulse"></div>
+                            <div>
+                                <span class="text-brand-blue font-mono text-xs block mb-1">2023 - 2025</span>
+                                <h4 class="font-bold text-lg text-white">The Hybrid Shift</h4>
+                                <p class="text-slate-400 text-sm mt-2">Google SGE and Bing Chat push organic results below the fold. "Zero-click" searches dominate.</p>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="relative">
+                            <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-purple-500 border-2 border-brand-dark"></div>
+                            <div>
+                                <span class="text-purple-400 font-mono text-xs block mb-1">2026+</span>
+                                <h4 class="font-bold text-lg text-white">The Model API Layer</h4>
+                                <p class="text-slate-400 text-sm mt-2">Search engines bypassed. Discovery via Voice, Agents, & APIs. Only "Trusted Entities" retrieved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Implications for Brands -->
+    <section class="py-24 bg-brand-slate/10">
+        <div class="container mx-auto px-6">
+            <h2 class="font-display font-bold text-3xl text-center mb-12">Implications for Brands</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-brand-dark border border-white/10 p-6 rounded-xl hover:border-red-500/50 transition-colors group">
+                    <div class="text-red-500 mb-4 text-2xl"><i class="fas fa-calendar-xmark"></i></div>
+                    <h4 class="font-bold text-white mb-2">Content Decay</h4>
+                    <p class="text-sm text-slate-400">Traditional content calendars are not enough. High volume, low density content is ignored.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-brand-dark border border-white/10 p-6 rounded-xl hover:border-orange-500/50 transition-colors group">
+                    <div class="text-orange-500 mb-4 text-2xl"><i class="fas fa-newspaper"></i></div>
+                    <h4 class="font-bold text-white mb-2">Lost Signal</h4>
+                    <p class="text-sm text-slate-400">PR coverage without proper schema markup is a lost signal to the Knowledge Graph.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-brand-dark border border-white/10 p-6 rounded-xl hover:border-blue-500/50 transition-colors group">
+                    <div class="text-blue-500 mb-4 text-2xl"><i class="fas fa-file-pdf"></i></div>
+                    <h4 class="font-bold text-white mb-2">Invisible Assets</h4>
+                    <p class="text-sm text-slate-400">PDFs and brochures are often invisible to answer engines. They must be structured.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-brand-dark border border-white/10 p-6 rounded-xl hover:border-purple-500/50 transition-colors group">
+                    <div class="text-purple-500 mb-4 text-2xl"><i class="fas fa-gavel"></i></div>
+                    <h4 class="font-bold text-white mb-2">Unforgiving AI</h4>
+                    <p class="text-sm text-slate-400">LLMs are unforgiving—only factual, structured, and corroborated sources survive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Section -->
+    <section class="py-24 text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="font-display font-bold text-4xl mb-6">Action Now</h2>
+            <p class="text-xl text-slate-400 mb-10">
+                The opportunity is brief. Early brands that build machine-readable trust will dominate answer visibility. GEO is not a trend. It’s the new infrastructure.
+            </p>
+            <a href="geo.html" class="px-8 py-4 bg-brand-blue rounded-full font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                Start the Transformation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer (Exact Match) -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                <div>
+                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-6">
+                    <p class="text-slate-400 text-sm max-w-sm mb-6">
+                        Building the credibility infrastructure for the AI-first web. Helping brands become recognizable, retrievable, and reputable.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/hqaim_studios/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-12 text-sm text-slate-400">
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Protocol</h4>
+                        <ul class="space-y-2">
+                            <li><a href="shift.html" class="hover:text-brand-blue">The Shift</a></li>
+                            <li><a href="geo.html" class="hover:text-brand-blue">GEO Playbook</a></li>
+                            <li><a href="protocol.html" class="hover:text-brand-blue">Framework</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Studio</h4>
+                        <ul class="space-y-2">
+                            <li><a href="https://www.hqaim.com/p/about.html" class="hover:text-brand-blue">About HQAIM</a></li>
+                            <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue">Contact</a></li>
+                            <li><a href="https://www.hqaim.com/p/privacy.html" class="hover:text-brand-blue">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 HQAIM Studios. All rights reserved.</p>
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    Systems Operational
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('shiftChart');
+        if(ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2023', '2024', '2025', '2026'],
+                    datasets: [
+                        { label: 'Organic CTR', data: [100, 75, 49, 39], borderColor: '#ef4444', tension: 0.4, borderWidth: 2, pointBackgroundColor: '#ef4444' },
+                        { label: 'AI Citations', data: [5, 30, 65, 90], borderColor: '#3b82f6', tension: 0.4, borderWidth: 2, pointBackgroundColor: '#3b82f6' }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8' } } },
+                    scales: { y: { display: false, grid: { color: '#334155' } }, x: { grid: { display: false }, ticks: { color: '#94a3b8' } } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
