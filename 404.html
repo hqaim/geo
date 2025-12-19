@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Entity Not Found | HQAIM Visibility OS</title>
+    <meta name="description" content="Signal lost. The requested entity or page could not be found in the HQAIM Visibility Operating System.">
+    <meta name="author" content="Abdullah Khan">
+    <link rel="canonical" href="https://geo.hqaim.com/404.html">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            slate: '#1E293B',
+                            blue: '#3B82F6',
+                            accent: '#6366F1',
+                            surface: '#F8FAFC'
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-grid { background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 40%, transparent 100%); }
+    </style>
+</head>
+<body class="bg-brand-dark text-white antialiased selection:bg-brand-blue selection:text-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-brand-dark/90 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8 group-hover:opacity-80 transition-opacity">
+                <div>
+                    <div class="font-display font-bold text-white text-sm tracking-wide">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-400 uppercase tracking-widest">Visibility OS</div>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a href="shift.html" class="hover:text-white transition-colors">Shift</a>
+                <a href="geo.html" class="hover:text-white transition-colors">GEO</a>
+                <a href="protocol.html" class="hover:text-white transition-colors">Protocol</a>
+                <a href="labs.html" class="hover:text-white transition-colors">Labs</a>
+                <a href="resources.html" class="hover:text-white transition-colors">Resources</a>
+            </div>
+            <a href="https://hqaim.com" class="px-5 py-2 bg-white text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue hover:text-white transition-colors">
+                Audit My Brand
+            </a>
+        </div>
+    </nav>
+
+    <!-- 404 CONTENT -->
+    <main class="flex-grow flex items-center justify-center relative overflow-hidden py-32 md:py-48">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.05] hero-grid pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 border border-red-500/30 rounded-full bg-red-500/10 text-[10px] uppercase tracking-widest mb-8 text-red-400 font-bold">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                Error 404: Signal Lost
+            </div>
+            
+            <h1 class="font-display font-bold text-8xl md:text-9xl mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-600 tracking-tighter">
+                404
+            </h1>
+            
+            <h2 class="text-2xl md:text-3xl text-white font-bold mb-6">Entity Not Found in Vector Space.</h2>
+            
+            <p class="text-slate-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+                The URL you requested has not been indexed, has drifted out of the context window, or never existed in this dimension.
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="index.html" class="px-8 py-4 bg-brand-blue rounded-full font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                    Return to Protocol Base
+                </a>
+                <a href="labs.html" class="px-8 py-4 border border-white/20 rounded-full font-bold text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2 group">
+                    <i class="fas fa-flask group-hover:text-brand-blue transition-colors"></i> Run Diagnostics (Labs)
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10 border-t border-white/10 mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                <div>
+                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-6">
+                    <p class="text-slate-400 text-sm max-w-sm mb-6">
+                        Building the credibility infrastructure for the AI-first web.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-12 text-sm text-slate-400">
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Protocol</h4>
+                        <ul class="space-y-2">
+                            <li><a href="shift.html" class="hover:text-brand-blue">The Shift</a></li>
+                            <li><a href="geo.html" class="hover:text-brand-blue">GEO Playbook</a></li>
+                            <li><a href="protocol.html" class="hover:text-brand-blue">Framework</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Studio</h4>
+                        <ul class="space-y-2">
+                            <li><a href="about.html" class="hover:text-brand-blue">About HQAIM</a></li>
+                            <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 HQAIM Studios. All rights reserved.</p>
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    Systems Operational
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
