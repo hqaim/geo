@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Visibility Scanner | Automated GEO Audit Tool | HQAIM</title>
+    <meta name="description" content="Automated 20-point diagnostic tool to score any website's visibility in AI search. Scans for Schema, Entity Salience, and Technical Hygiene.">
+    <meta name="author" content="Abdullah Khan">
+    <meta property="og:title" content="AI Visibility Scanner | HQAIM">
+    <meta property="og:image" content="https://geo.hqaim.com/assets/images/audit-tool-og.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: { dark: '#0B0F19', slate: '#1E293B', blue: '#3B82F6', accent: '#6366F1', surface: '#F8FAFC' }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-grid { background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 40%, transparent 100%); }
+        .scan-line {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #3B82F6, transparent);
+            animation: scan 2s linear infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(400%); opacity: 0; }
+        }
+        .terminal-text { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased min-h-screen flex flex-col">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-brand-dark/90 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8">
+                <div>
+                    <div class="font-display font-bold text-white text-sm tracking-wide">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-400 uppercase tracking-widest">Visibility OS</div>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a href="shift.html" class="hover:text-white transition-colors">Shift</a>
+                <a href="geo.html" class="hover:text-white transition-colors">GEO</a>
+                <a href="protocol.html" class="hover:text-white transition-colors">Protocol</a>
+                <a href="labs.html" class="hover:text-white transition-colors">Labs</a>
+                <a href="resources.html" class="hover:text-white transition-colors">Resources</a>
+            </div>
+            <a href="website_audit.html" class="px-5 py-2 bg-white text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue hover:text-white transition-colors">
+                Audit My Brand
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Scanner Interface -->
+    <main class="flex-grow pt-32 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] hero-grid pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-5xl">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 border border-cyan-500/30 rounded-full bg-cyan-500/10 text-[10px] uppercase tracking-widest mb-4 text-cyan-400 font-bold">
+                    <i class="fas fa-radar"></i> Live Diagnostic
+                </div>
+                <h1 class="font-display font-bold text-4xl md:text-6xl mb-6">AI Visibility Scanner</h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+                    Evaluate any URL against the 20-point GEO protocol. Detects schema gaps, entity weaknesses, and technical blockers preventing LLM citation.
+                </p>
+            </div>
+
+            <!-- Scanner Input -->
+            <div class="glass-panel p-8 rounded-3xl shadow-2xl mb-12 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <div class="relative z-10">
+                    <label class="block text-xs font-mono text-slate-400 uppercase tracking-widest mb-3">Target URL</label>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="url" id="targetUrl" placeholder="https://www.yourdomain.com" class="flex-1 bg-brand-dark/80 border border-white/10 rounded-xl px-6 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-brand-blue/50 font-mono transition-all shadow-inner">
+                        <button onclick="startAudit()" id="scanBtn" class="px-8 py-4 bg-gradient-to-r from-brand-blue to-purple-600 rounded-xl font-bold text-white shadow-lg hover:shadow-brand-blue/25 transition-all flex items-center justify-center gap-2 min-w-[200px]">
+                            <i class="fas fa-search-location"></i> Run Audit
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCANNING STATE (Hidden by default) -->
+            <div id="scanningState" class="hidden glass-panel p-8 rounded-3xl border border-brand-blue/30 relative mb-12">
+                <div class="absolute top-0 left-0 w-full h-1 bg-brand-dark overflow-hidden rounded-t-3xl">
+                    <div class="h-full bg-brand-blue animate-progress w-full origin-left transition-transform duration-[4000ms] ease-linear" style="transform: scaleX(0)" id="scanProgress"></div>
+                </div>
+                
+                <div class="font-mono text-sm space-y-2 h-48 overflow-y-auto custom-scrollbar" id="scanLog">
+                    <!-- Logs injected via JS -->
+                </div>
+            </div>
+
+            <!-- RESULTS DASHBOARD (Hidden by default) -->
+            <div id="resultsDashboard" class="hidden animate-fade-in-up">
+                
+                <!-- Score Cards -->
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <!-- Overall Score -->
+                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+                        <h3 class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">Visibility Score</h3>
+                        <div class="relative w-32 h-32 flex items-center justify-center mb-2">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle cx="64" cy="64" r="56" stroke="#1e293b" stroke-width="8" fill="none"/>
+                                <circle id="scoreCircle" cx="64" cy="64" r="56" stroke="#10B981" stroke-width="8" fill="none" stroke-dasharray="351" stroke-dashoffset="351" class="transition-all duration-1000"/>
+                            </svg>
+                            <span id="scoreText" class="absolute text-4xl font-bold text-white">0</span>
+                        </div>
+                        <div id="scoreGrade" class="px-3 py-1 rounded-full bg-white/10 text-xs font-bold border border-white/10">Calculating...</div>
+                    </div>
+
+                    <!-- Radar Chart -->
+                    <div class="glass-panel p-6 rounded-2xl md:col-span-2 relative">
+                        <h3 class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-4 absolute top-6 left-6">Vector Analysis</h3>
+                        <div class="h-full flex items-center justify-center pt-4">
+                            <canvas id="auditRadar" class="max-h-[200px]"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed 20-Point Breakdown -->
+                <div class="space-y-8">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <h2 class="text-2xl font-display font-bold">Detailed Report</h2>
+                        <button onclick="window.print()" class="text-xs font-bold text-slate-400 hover:text-white flex items-center gap-2"><i class="fas fa-download"></i> Export PDF</button>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8" id="reportContent">
+                        <!-- Content Injected via JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10 border-t border-white/10 mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                <div>
+                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-6">
+                    <p class="text-slate-400 text-sm max-w-sm mb-6">
+                        Building the credibility infrastructure for the AI-first web. Helping brands become recognizable, retrievable, and reputable.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/hqaim_studios/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-12 text-sm text-slate-400">
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Protocol</h4>
+                        <ul class="space-y-2">
+                            <li><a href="shift.html" class="hover:text-brand-blue">The Shift</a></li>
+                            <li><a href="geo.html" class="hover:text-brand-blue">GEO Playbook</a></li>
+                            <li><a href="protocol.html" class="hover:text-brand-blue">Framework</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Studio</h4>
+                        <ul class="space-y-2">
+                            <li><a href="about.html" class="hover:text-brand-blue">About HQAIM</a></li>
+                            <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue">Contact</a></li>
+                            <li><a href="https://www.hqaim.com/p/privacy.html" class="hover:text-brand-blue">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 HQAIM Studios. All rights reserved.</p>
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    Systems Operational
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Audit Configuration - 4 Categories x 5 Points = 20 Points Total
+        const auditCategories = {
+            identity: {
+                label: "Entity Identity",
+                color: "#3B82F6", // Blue
+                checks: [
+                    { id: "orgSchema", label: "Organization Schema", impact: "High" },
+                    { id: "sameAs", label: "SameAs Social Links", impact: "High" },
+                    { id: "kgId", label: "Knowledge Graph ID", impact: "High" },
+                    { id: "logo", label: "High-Res Logo Definition", impact: "Medium" },
+                    { id: "author", label: "Author Verification", impact: "Medium" }
+                ]
+            },
+            content: {
+                label: "Content Density",
+                color: "#A855F7", // Purple
+                checks: [
+                    { id: "headings", label: "Semantic Headings (H1-H3)", impact: "High" },
+                    { id: "triplets", label: "Factual Triplets", impact: "High" },
+                    { id: "tables", label: "Structured Tables/Lists", impact: "Medium" },
+                    { id: "answerFirst", label: "Answer-First Format", impact: "Medium" },
+                    { id: "pdf", label: "PDF Accessibility", impact: "Low" }
+                ]
+            },
+            trust: {
+                label: "Corroboration",
+                color: "#10B981", // Emerald
+                checks: [
+                    { id: "kb", label: "3rd-Party Knowledge Base", impact: "High" },
+                    { id: "pr", label: "Digital PR Mentions", impact: "High" },
+                    { id: "nap", label: "NAP Consistency", impact: "Medium" },
+                    { id: "employee", label: "Employee Linking", impact: "Low" },
+                    { id: "loops", label: "Citation Loops", impact: "High" }
+                ]
+            },
+            tech: {
+                label: "Tech Hygiene",
+                color: "#F97316", // Orange
+                checks: [
+                    { id: "crawler", label: "AI Crawler Access", impact: "Critical" },
+                    { id: "sitemap", label: "Sitemap Health", impact: "High" },
+                    { id: "https", label: "HTTPS Security", impact: "Critical" },
+                    { id: "mobile", label: "Mobile Responsiveness", impact: "High" },
+                    { id: "vitals", label: "Core Web Vitals", impact: "Medium" }
+                ]
+            }
+        };
+
+        function startAudit() {
+            const url = document.getElementById('targetUrl').value;
+            if (!url) return alert("Please enter a valid URL.");
+
+            // UI Reset
+            document.getElementById('scanningState').classList.remove('hidden');
+            document.getElementById('resultsDashboard').classList.add('hidden');
+            document.getElementById('scanBtn').disabled = true;
+            document.getElementById('scanBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scanning...';
+            
+            const logContainer = document.getElementById('scanLog');
+            logContainer.innerHTML = '';
+            
+            // Start Simulation Sequence
+            const steps = [
+                "Initializing crawler...",
+                `Connecting to ${url}...`,
+                "Fetching Robots.txt...",
+                "Analyzing HTML structure...",
+                "Extracting JSON-LD Schema...",
+                "Checking Vector Embeddings...",
+                "Querying Knowledge Graph API...",
+                "Validating SSL & Security...",
+                "Calculating Entity Salience...",
+                "Finalizing Report..."
+            ];
+
+            let delay = 0;
+            steps.forEach((step, index) => {
+                delay += Math.random() * 600 + 400; // Random delay between 400-1000ms
+                setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.className = "text-green-400";
+                    div.innerHTML = `<span class="text-slate-500">[${new Date().toLocaleTimeString()}]</span> > ${step}`;
+                    logContainer.appendChild(div);
+                    logContainer.scrollTop = logContainer.scrollHeight;
+                    
+                    // Update progress bar
+                    document.getElementById('scanProgress').style.transform = `scaleX(${(index + 1) / steps.length})`;
+
+                    if (index === steps.length - 1) {
+                        finishAudit();
+                    }
+                }, delay);
+            });
+        }
+
+        function finishAudit() {
+            document.getElementById('scanningState').classList.add('hidden');
+            document.getElementById('resultsDashboard').classList.remove('hidden');
+            document.getElementById('scanBtn').disabled = false;
+            document.getElementById('scanBtn').innerHTML = '<i class="fas fa-search-location"></i> Run Audit';
+
+            // Generate Random Score (Simulation Logic)
+            // In a real app, this would come from the backend analysis
+            const finalScore = Math.floor(Math.random() * 30) + 60; // 60-90 range for demo
+            
+            // Render Score
+            const scoreCircle = document.getElementById('scoreCircle');
+            const scoreText = document.getElementById('scoreText');
+            const scoreGrade = document.getElementById('scoreGrade');
+            
+            scoreText.textContent = finalScore;
+            
+            // Calculate Circle Dash Offset (351 is circumference of r=56)
+            const circumference = 351;
+            const offset = circumference - (finalScore / 100) * circumference;
+            scoreCircle.style.strokeDashoffset = offset;
+            
+            // Set Color & Grade
+            if (finalScore >= 80) {
+                scoreCircle.style.stroke = "#10B981"; // Emerald
+                scoreGrade.textContent = "GRADE: A";
+                scoreGrade.className = "px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold border border-green-500/20";
+            } else if (finalScore >= 60) {
+                scoreCircle.style.stroke = "#F59E0B"; // Amber
+                scoreGrade.textContent = "GRADE: B-";
+                scoreGrade.className = "px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/20";
+            } else {
+                scoreCircle.style.stroke = "#EF4444"; // Red
+                scoreGrade.textContent = "GRADE: C";
+                scoreGrade.className = "px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-xs font-bold border border-red-500/20";
+            }
+
+            // Render Radar Chart
+            renderChart();
+
+            // Render Detailed Breakdown
+            renderBreakdown();
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('auditRadar');
+            
+            // Randomize category scores
+            const identityScore = Math.floor(Math.random() * 40) + 60;
+            const contentScore = Math.floor(Math.random() * 40) + 60;
+            const trustScore = Math.floor(Math.random() * 40) + 60;
+            const techScore = Math.floor(Math.random() * 40) + 60;
+
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Identity', 'Content Density', 'Trust/Auth', 'Tech Hygiene'],
+                    datasets: [{
+                        label: 'Audit Score',
+                        data: [identityScore, contentScore, trustScore, techScore],
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: '#3B82F6',
+                        pointBackgroundColor: '#3B82F6',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#3B82F6'
+                    }]
+                },
+                options: {
+                    elements: { line: { borderWidth: 2 } },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            pointLabels: { color: '#94a3b8', font: { size: 10 } },
+                            ticks: { display: false, backdropColor: 'transparent' },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function renderBreakdown() {
+            const container = document.getElementById('reportContent');
+            container.innerHTML = '';
+
+            Object.entries(auditCategories).forEach(([key, category]) => {
+                const card = document.createElement('div');
+                card.className = "glass-panel p-6 rounded-2xl border-t-4";
+                card.style.borderColor = category.color;
+
+                let itemsHtml = '';
+                category.checks.forEach(check => {
+                    // Simulate Pass/Fail (80% chance pass for demo)
+                    const passed = Math.random() > 0.3; 
+                    const icon = passed ? '<i class="fas fa-check-circle text-green-500"></i>' : '<i class="fas fa-exclamation-triangle text-amber-500"></i>';
+                    const textClass = passed ? 'text-slate-300' : 'text-amber-200';
+                    const badge = !passed ? `<span class="text-[9px] bg-red-500/20 text-red-400 px-2 py-0.5 rounded ml-auto">Fix</span>` : '';
+
+                    itemsHtml += `
+                        <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+                            ${icon}
+                            <span class="text-sm ${textClass}">${check.label}</span>
+                            ${badge}
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <h3 class="text-lg font-bold mb-4" style="color: ${category.color}">${category.label}</h3>
+                    <div class="space-y-1">
+                        ${itemsHtml}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
