@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generative Visibility OS | HQAIM - The Post-Search Protocol</title>
-    <meta name="description" content="The global framework for AI citation, LLM trust, and post-search brand discovery. GEO is the new SEO. Welcome to the Visibility Operating System.">
+    <meta name="description" content="The definitive 2026 guide to AI ranking. Shift from SEO to GEO (Generative Engine Optimization). Master Entity Salience, Vector Density, and LLM Trust.">
     <meta name="author" content="Abdullah Khan">
+    <meta name="keywords" content="GEO, Generative Engine Optimization, AI SEO, LLM Ranking, Search Collapse, Zero-Click Search, HQAIM">
     <link rel="canonical" href="https://geo.hqaim.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Generative Visibility OS | HQAIM">
-    <meta property="og:description" content="AI doesn’t browse links. It synthesizes truth. If you’re not cited—you’re invisible.">
+    <meta property="og:title" content="The Post-Search Era | HQAIM Visibility OS">
+    <meta property="og:description" content="Organic CTR is down 61%. Discovery is now via synthesis, not browsing. This is your protocol for survival.">
     <meta property="og:image" content="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg">
     <meta property="og:url" content="https://geo.hqaim.com">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons (Required for the Toggle) -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Fonts -->
@@ -46,30 +50,16 @@
           ]
         },
         {
-          "@type": "Product",
-          "name": "Generative Visibility Protocol",
-          "description": "A strategic framework for optimizing brand visibility in Large Language Models (LLMs) and Answer Engines.",
-          "brand": {
-            "@type": "Brand",
-            "name": "HQAIM"
-          }
-        },
-        {
           "@type": "Person",
           "name": "Abdullah Khan",
-          "url": "https://www.linkedin.com/in/abdullah-khan-hqaim/",
-          "jobTitle": "Lead Researcher"
+          "jobTitle": "Lead Researcher & Systems Architect",
+          "url": "https://www.linkedin.com/in/abdullah-khan-hqaim",
+          "knowsAbout": ["Generative Engine Optimization", "AI Ranking", "Search Strategy"]
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [{
-            "@type": "Question",
-            "name": "What is GEO (Generative Engine Optimization)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "GEO is the practice of structuring content and data to be discovered, cited, and trusted by AI models like ChatGPT and Gemini, rather than just ranking on search engines."
-            }
-          }]
+          "@type": "Product",
+          "name": "Generative Visibility Protocol",
+          "brand": { "@type": "Brand", "name": "HQAIM" }
         }
       ]
     }
@@ -91,12 +81,22 @@
                             slate: '#1E293B',
                             blue: '#3B82F6',
                             accent: '#6366F1',
-                            surface: '#F8FAFC'
+                            surface: '#F8FAFC',
+                            light: '#F1F5F9'
                         }
                     },
                     backgroundImage: {
                         'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
-                        'grid-pattern-light': "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -104,62 +104,114 @@
     </script>
 
     <style>
-        /* Adaptive Glass Panels */
-        .glass-panel { 
-            background: rgba(255, 255, 255, 0.95); 
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        /* Smooth Transition for Theme Switch */
+        body, .glass-panel, nav, h1, h2, h3, p, a, div, span, button {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         }
+
+        /* Adaptive Glass Panels */
+        .glass-panel {
+            /* Light Mode Default */
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        /* Dark Mode Override */
         .dark .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: none;
         }
 
-        /* Adaptive Text Gradients */
-        .gradient-text { background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .dark .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-panel:hover {
+            /* Light Mode Hover */
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 20px -3px rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+        .dark .glass-panel:hover {
+            /* Dark Mode Hover */
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         /* Adaptive Hero Grid */
-        .hero-grid { 
-            background-size: 40px 40px; 
-            mask-image: linear-gradient(to bottom, black 40%, transparent 100%); 
-            background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+        .hero-grid {
+            background-size: 40px 40px;
+            /* Light Mode Grid */
+            background-image: linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
         }
         .dark .hero-grid {
+            /* Dark Mode Grid */
             background-image: linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-blue selection:text-white font-sans transition-colors duration-300 dark:bg-brand-dark dark:text-white">
+<body class="bg-brand-light dark:bg-brand-dark text-slate-900 dark:text-white antialiased selection:bg-brand-blue selection:text-white font-sans">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md dark:bg-brand-dark/90 dark:border-white/10 transition-colors duration-300">
+    <nav class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-white/5 bg-white/90 dark:bg-brand-dark/90 backdrop-blur-xl transition-colors duration-300 shadow-sm dark:shadow-none">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM" class="w-8 h-8">
+            <!-- 1. Logo (Left) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8 group-hover:opacity-80 transition-opacity">
                 <div>
-                    <div class="font-display font-bold text-slate-900 dark:text-white text-sm tracking-wide">HQAIM</div>
-                    <div class="text-[9px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest">Visibility OS</div>
+                    <div class="font-display font-bold text-slate-900 dark:text-white text-sm tracking-wide transition-colors">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest transition-colors">Visibility OS</div>
                 </div>
-            </div>
+            </a>
             
-            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
-                <a href="#shift" class="hover:text-brand-blue dark:hover:text-white transition-colors">The Shift</a>
-                <a href="#protocol" class="hover:text-brand-blue dark:hover:text-white transition-colors">The Protocol</a>
-                <a href="#resources" class="hover:text-brand-blue dark:hover:text-white transition-colors">Resources</a>
+            <!-- 2. Tabs (Center) -->
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                <a href="https://geo.hqaim.com/geo.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    GEO
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="shift.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Era
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="protocol.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Protocol
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="labs.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Labs
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="resources.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Kit
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
             </div>
 
+            <!-- 3. Actions (Right) -->
             <div class="flex items-center gap-4">
-                <!-- Theme Toggle (Exact Match from Temp Guide) -->
-                <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Toggle Theme">
-                    <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
-                    <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20 transition-all focus:outline-none ring-offset-2 focus:ring-2 ring-brand-blue/50" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
                 </button>
 
-                <!-- Audit Link -->
-                <a href="https://geo.hqaim.com/website_audit.html" class="px-5 py-2 bg-brand-dark text-white font-bold text-xs rounded-full hover:bg-brand-blue transition-colors dark:bg-white dark:text-brand-dark dark:hover:bg-brand-blue dark:hover:text-white">
+                <!-- Audit Button -->
+                <a href="https://geo.hqaim.com/website_audit.html" target="_blank" class="px-5 py-2.5 bg-brand-dark dark:bg-white text-white dark:text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue dark:hover:bg-brand-blue hover:text-white dark:hover:text-white transition-all shadow-lg hover:shadow-brand-blue/25 transform hover:-translate-y-0.5">
                     Audit My Brand
                 </a>
             </div>
@@ -169,15 +221,18 @@
     <!-- HERO SECTION -->
     <header class="relative pt-32 pb-24 overflow-hidden min-h-screen flex items-center">
         <!-- Background Grid -->
-        <div class="absolute inset-0 hero-grid pointer-events-none opacity-60 dark:opacity-[0.03]"></div>
+        <div class="absolute inset-0 opacity-[0.3] dark:opacity-[0.03] hero-grid pointer-events-none"></div>
         
+        <!-- Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-blue/20 rounded-full blur-[120px] pointer-events-none dark:opacity-40 opacity-20"></div>
+
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 border border-brand-blue/30 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-widest mb-8 text-brand-blue font-bold animate-fade-in-up">
-                <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-blue/20 rounded-full bg-brand-blue/5 backdrop-blur-sm text-[10px] uppercase tracking-widest mb-8 text-brand-blue font-bold animate-fade-in-up shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse-slow"></span>
                 System Live: 2026 Protocol
             </div>
             
-            <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-8 leading-tight tracking-tight text-slate-900 dark:text-white">
+            <h1 class="font-display font-bold text-6xl md:text-7xl lg:text-9xl mb-8 leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm">
                 GEO is the<br>
                 <span class="gradient-text">New SEO.</span>
             </h1>
@@ -188,10 +243,10 @@
             </p>
             
             <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="#protocol" class="px-8 py-4 bg-brand-blue text-white rounded-full font-bold text-sm hover:bg-brand-blue/90 hover:scale-105 transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                <a href="protocol.html" class="px-8 py-4 bg-brand-blue text-white rounded-full font-bold text-sm hover:bg-blue-600 dark:hover:bg-white dark:hover:text-brand-blue transition-all shadow-[0_4px_14px_rgba(59,130,246,0.4)] dark:shadow-[0_0_30px_rgba(59,130,246,0.4)] transform hover:scale-105">
                     Explore the Protocol
                 </a>
-                <a href="#shift" class="px-8 py-4 border border-slate-300 dark:border-white/20 rounded-full font-bold text-sm hover:bg-slate-100 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2 group text-slate-700 dark:text-white">
+                <a href="shift.html" class="px-8 py-4 border border-slate-300 dark:border-white/20 text-slate-700 dark:text-white rounded-full font-bold text-sm hover:bg-slate-100 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2 group bg-white/50 dark:bg-transparent backdrop-blur-sm">
                     <i class="fas fa-chart-line group-hover:text-brand-blue transition-colors"></i> Benchmark Visibility
                 </a>
             </div>
@@ -199,281 +254,277 @@
     </header>
 
     <!-- SECTION 1: THE SHIFT -->
-    <section id="shift" class="py-24 bg-slate-50 dark:bg-brand-slate/30 border-y border-slate-200 dark:border-white/5 transition-colors duration-300">
+    <section id="shift" class="py-24 bg-white dark:bg-brand-slate/30 border-y border-slate-200 dark:border-white/5 transition-colors">
         <div class="container mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-brand-blue font-mono text-xs uppercase tracking-widest mb-4">Market Intelligence</h2>
-                    <h3 class="font-display font-bold text-4xl md:text-5xl mb-6 text-slate-900 dark:text-white">The Click is Dead.<br>Discovery Begins at the Prompt.</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
-                        Traditional search behavior is collapsing. Users are no longer "Googling" for a list of links; they are asking AI agents for a synthesized answer.
-                    </p>
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-brand-blue font-mono text-xs uppercase tracking-widest mb-4">Market Intelligence</h2>
+                        <h3 class="font-display font-bold text-4xl md:text-5xl mb-6 text-slate-900 dark:text-white leading-tight">The Click is Dead.<br>Discovery via Synthesis.</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                            Traditional search behavior is collapsing. Users are no longer "Googling" for a list of links; they are asking AI agents for a synthesized answer. <span class="text-slate-900 dark:text-white font-medium">Zero-click search isn't a bug—it's a feature.</span> If the AI can answer without navigating your site, traditional rankings become irrelevant.
+                        </p>
+                    </div>
                     
-                    <ul class="space-y-8">
-                        <li class="flex items-center gap-6 group">
-                            <!-- Enhanced Round Percentage Icon -->
-                            <div class="w-20 h-20 rounded-full bg-white dark:bg-red-500/10 border-2 border-red-100 dark:border-red-500/30 flex items-center justify-center shadow-lg dark:shadow-[0_0_25px_rgba(239,68,68,0.15)] flex-shrink-0 relative overflow-hidden transition-all group-hover:scale-105">
-                                <div class="absolute inset-0 bg-red-50 dark:bg-red-500/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                                <span class="text-red-600 dark:text-red-500 font-display font-bold text-2xl relative z-10">61%</span>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Drop in Organic Clicks</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">From queries triggering AI Overviews (YoY).</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-6 group">
-                            <!-- Enhanced Round Percentage Icon -->
-                            <div class="w-20 h-20 rounded-full bg-white dark:bg-orange-500/10 border-2 border-orange-100 dark:border-orange-500/30 flex items-center justify-center shadow-lg dark:shadow-[0_0_25px_rgba(249,115,22,0.15)] flex-shrink-0 relative overflow-hidden transition-all group-hover:scale-105">
-                                <div class="absolute inset-0 bg-orange-50 dark:bg-orange-500/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                                <span class="text-orange-600 dark:text-orange-500 font-display font-bold text-2xl relative z-10">40%</span>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Uncited Content</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">Branded content ignored by LLMs due to poor structure.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-6 group">
-                            <!-- Enhanced Round Percentage Icon -->
-                            <div class="w-20 h-20 rounded-full bg-white dark:bg-blue-500/10 border-2 border-blue-100 dark:border-blue-500/30 flex items-center justify-center shadow-lg dark:shadow-[0_0_25px_rgba(59,130,246,0.15)] flex-shrink-0 relative overflow-hidden transition-all group-hover:scale-105">
-                                <div class="absolute inset-0 bg-blue-50 dark:bg-blue-500/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                                <span class="text-blue-600 dark:text-blue-500 font-display font-bold text-2xl relative z-10">25%</span>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Volume Shrinkage</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">Projected decline in traditional search by 2026 (Gartner).</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-center hover:border-red-500/30 transition-colors">
+                            <div class="text-3xl font-bold text-red-500 mb-1">61%</div>
+                            <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">CTR Collapse</div>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">Drop in organic clicks for queries triggering AI Overviews.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-center hover:border-orange-500/30 transition-colors">
+                            <div class="text-3xl font-bold text-orange-500 mb-1">40%</div>
+                            <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">Uncited Content</div>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">Branded content ignored by LLMs due to lack of structure.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-center hover:border-blue-500/30 transition-colors">
+                            <div class="text-3xl font-bold text-blue-500 mb-1">25%</div>
+                            <div class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">Vol. Shrinkage</div>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">Projected decline in traditional search volume by 2026.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Chart Container -->
-                <div class="glass-panel rounded-2xl p-8 h-80 relative bg-white dark:bg-brand-dark/50">
-                    <div class="absolute top-4 right-4 text-[10px] text-slate-400 dark:text-slate-500 font-mono">LIVE DATA // 2023-2026</div>
+                <div class="glass-panel rounded-2xl p-8 h-[400px] relative shadow-2xl bg-white/60 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 flex flex-col justify-center">
+                    <div class="absolute top-6 right-6 text-[10px] text-slate-400 font-mono tracking-widest border border-slate-200 dark:border-white/10 px-2 py-1 rounded">LIVE DATA // 2023-2026</div>
                     <canvas id="shiftChart"></canvas>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: WHAT IS GEO? -->
-    <section class="py-24 bg-white dark:bg-brand-dark transition-colors duration-300">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center mb-16">
-                <div class="inline-block px-6 py-3 border border-brand-blue/30 bg-brand-blue/5 rounded-xl mb-8">
-                    <p class="font-mono text-sm text-brand-blue">
+    <!-- SECTION 2: THE 3 LAYERS OF VISIBILITY -->
+    <section class="py-24 bg-brand-light dark:bg-brand-dark transition-colors relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center mb-20">
+                <div class="inline-block px-8 py-6 border border-brand-blue/30 bg-brand-blue/5 rounded-2xl mb-12 backdrop-blur-sm shadow-xl max-w-3xl mx-auto">
+                    <p class="font-mono text-brand-blue mb-2 text-sm tracking-wide">
                         <span class="font-bold">DEF:</span> GEO (Generative Engine Optimization)
                     </p>
-                    <p class="text-slate-600 dark:text-slate-300 mt-2 text-lg">
-                        The practice of structuring your content, data, and digital footprint to be found, cited, and trusted by LLMs, not search spiders.
+                    <p class="text-slate-700 dark:text-slate-200 text-xl font-medium leading-relaxed">
+                        "The practice of structuring your content, data, and digital footprint to be found, cited, and trusted by LLMs, not search spiders."
                     </p>
                 </div>
-                <h2 class="font-display font-bold text-3xl text-slate-900 dark:text-white">The 3 Layers of AI Visibility</h2>
+                
+                <h2 class="font-display font-bold text-4xl text-slate-900 dark:text-white mb-6">The Architecture of an AI Recommendation</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto">
+                    The practice of structuring your content, data, and digital footprint to be found, cited, and trusted by LLMs, not search spiders.
+                </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Layer 1 -->
-                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
-                    <div class="w-14 h-14 rounded-full bg-brand-blue/10 dark:bg-brand-blue/20 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <a href="geo.html" class="glass-panel p-10 rounded-3xl hover:bg-white/80 dark:hover:bg-white/5 transition-all duration-300 group block border-t-4 border-t-brand-blue h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-blue/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-brand-blue/20 text-brand-blue flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-blue-500/10">
                         <i class="fas fa-fingerprint"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-2 text-slate-900 dark:text-white">1. Entity Salience</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 font-mono uppercase tracking-wider">Who are you?</p>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Ensuring the AI can unambiguously identify your brand as a distinct entity in its vector space.</p>
-                </div>
+                    <h3 class="font-bold text-2xl mb-3 text-slate-900 dark:text-white group-hover:text-brand-blue transition-colors">1. Entity Salience</h3>
+                    <p class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6 border-b border-slate-200 dark:border-white/10 pb-4">Identity Assurance</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        LLMs do not see pages; they see entities. Salience is the confidence score a model assigns to your brand. We use <strong>Schema Injection</strong> to anchor your identity in the knowledge graph.
+                    </p>
+                </a>
 
                 <!-- Layer 2 -->
-                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
-                    <div class="w-14 h-14 rounded-full bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <a href="geo.html" class="glass-panel p-10 rounded-3xl hover:bg-white/80 dark:hover:bg-white/5 transition-all duration-300 group block border-t-4 border-t-purple-500 h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="w-16 h-16 rounded-2xl bg-purple-100 dark:bg-purple-500/20 text-purple-500 dark:text-purple-400 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/10">
                         <i class="fas fa-network-wired"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-2 text-slate-900 dark:text-white">2. Vector Density</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 font-mono uppercase tracking-wider">What do you know?</p>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Packing content with semantic richness so it mathematically matches user intent vectors.</p>
-                </div>
+                    <h3 class="font-bold text-2xl mb-3 text-slate-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors">2. Vector Density</h3>
+                    <p class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6 border-b border-slate-200 dark:border-white/10 pb-4">Information Gain</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Information gain is the new ranking factor. We use <strong>Semantic Triplet Layering</strong> (Subject-Verb-Object) and <strong>Markdown Injection</strong> to create dense, fact-rich content.
+                    </p>
+                </a>
 
                 <!-- Layer 3 -->
-                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
-                    <div class="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <a href="geo.html" class="glass-panel p-10 rounded-3xl hover:bg-white/80 dark:hover:bg-white/5 transition-all duration-300 group block border-t-4 border-t-emerald-500 h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-500 dark:text-emerald-400 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-500/10">
                         <i class="fas fa-check-double"></i>
                     </div>
-                    <h3 class="font-bold text-xl mb-2 text-slate-900 dark:text-white">3. Corroboration</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 font-mono uppercase tracking-wider">Who confirms it?</p>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Building citation loops from trusted third-party sources to verify your authority.</p>
-                </div>
+                    <h3 class="font-bold text-2xl mb-3 text-slate-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">3. Corroboration</h3>
+                    <p class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6 border-b border-slate-200 dark:border-white/10 pb-4">Trust Signals</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        AI hallucinates. To prevent this, it seeks grounding. We build <strong>Citation Loops</strong> and digital PR footprints across high-authority sources to verify your claims.
+                    </p>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: HQAIM PROTOCOL -->
-    <section id="protocol" class="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-brand-slate/50 dark:to-brand-dark transition-colors duration-300">
+    <!-- SECTION 3: THE 7-STEP PROTOCOL -->
+    <section id="protocol" class="py-24 bg-slate-50 dark:bg-gradient-to-b dark:from-brand-slate/50 dark:to-brand-dark transition-colors border-t border-slate-200 dark:border-white/5">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-xs font-mono text-brand-blue uppercase tracking-widest mb-4">The HQAIM Protocol</h2>
-                <h3 class="font-display font-bold text-4xl text-slate-900 dark:text-white">Built from the ground up for LLM-based discovery.</h3>
+                <h2 class="text-xs font-mono text-brand-blue dark:text-blue-300 uppercase tracking-widest mb-4">The HQAIM Protocol</h2>
+                <h3 class="font-display font-bold text-4xl text-slate-900 dark:text-white">7-Step Action Plan for 2026</h3>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-6 rounded-xl hover:border-brand-blue/50 transition-colors shadow-sm dark:shadow-none">
-                    <div class="text-brand-blue mb-4"><i class="fas fa-layer-group text-2xl"></i></div>
-                    <h4 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Trust Signal Architecture</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400">Engineering E-E-A-T signals that machines can parse and verify.</p>
+                <!-- Step 1 -->
+                <a href="protocol.html" class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:border-brand-blue/50 hover:shadow-xl hover:-translate-y-1 transition-all group block h-full relative">
+                    <div class="absolute top-4 right-4 text-slate-200 dark:text-white/5 font-display font-bold text-4xl group-hover:text-brand-blue/10 transition-colors">01</div>
+                    <div class="text-brand-blue mb-6 group-hover:scale-110 transition-transform origin-left"><i class="fas fa-search-location text-3xl"></i></div>
+                    <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Audit & Foundations</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Map your "overview coverage" and clarify primary entities. Ensure brand names are consistent across the web.</p>
+                </a>
+                <!-- Step 2 -->
+                <a href="protocol.html" class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:border-brand-blue/50 hover:shadow-xl hover:-translate-y-1 transition-all group block h-full relative">
+                    <div class="absolute top-4 right-4 text-slate-200 dark:text-white/5 font-display font-bold text-4xl group-hover:text-purple-500/10 transition-colors">02</div>
+                    <div class="text-purple-500 dark:text-purple-400 mb-6 group-hover:scale-110 transition-transform origin-left"><i class="fas fa-code text-3xl"></i></div>
+                    <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Technical Schema</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Implement "GEO Hygiene": Organization, Product, and FAQ schema on every core page to feed the Knowledge Graph.</p>
+                </a>
+                <!-- Step 3 -->
+                <a href="protocol.html" class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:border-brand-blue/50 hover:shadow-xl hover:-translate-y-1 transition-all group block h-full relative">
+                    <div class="absolute top-4 right-4 text-slate-200 dark:text-white/5 font-display font-bold text-4xl group-hover:text-emerald-500/10 transition-colors">03</div>
+                    <div class="text-emerald-500 dark:text-emerald-400 mb-6 group-hover:scale-110 transition-transform origin-left"><i class="fas fa-link text-3xl"></i></div>
+                    <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Authority Building</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Launch Digital PR for unlinked mentions. Create "Citation Loops" where internal and external hubs reference each other.</p>
+                </a>
+                <!-- Step 4 -->
+                <a href="protocol.html" class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:border-brand-blue/50 hover:shadow-xl hover:-translate-y-1 transition-all group block h-full relative">
+                    <div class="absolute top-4 right-4 text-slate-200 dark:text-white/5 font-display font-bold text-4xl group-hover:text-orange-500/10 transition-colors">04</div>
+                    <div class="text-orange-500 dark:text-orange-400 mb-6 group-hover:scale-110 transition-transform origin-left"><i class="fas fa-chart-pie text-3xl"></i></div>
+                    <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">AI-Friendly Content</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Write for answers. Use bullet lists, markdown tables, and subject-verb-object clarity to win the "answer spot".</p>
+                </a>
+                <!-- Step 5 -->
+                <a href="protocol.html" class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:border-brand-blue/50 hover:shadow-xl hover:-translate-y-1 transition-all group block h-full relative">
+                    <div class="absolute top-4 right-4 text-slate-200 dark:text-white/5 font-display font-bold text-4xl group-hover:text-brand-blue/10 transition-colors">05</div>
+                    <div class="text-blue-500 dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform origin-left"><i class="fas fa-file-code text-3xl"></i></div>
+                    <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Semantic Engineering</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Structure data for machines. Use JSON-LD and semantic HTML to ensure your content is machine-readable.</p>
+                </a>
+                <!-- Step 6 -->
+                <a href="protocol.html" class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:border-brand-blue/50 hover:shadow-xl hover:-translate-y-1 transition-all group block h-full relative">
+                    <div class="absolute top-4 right-4 text-slate-200 dark:text-white/5 font-display font-bold text-4xl group-hover:text-purple-500/10 transition-colors">06</div>
+                    <div class="text-indigo-500 dark:text-indigo-400 mb-6 group-hover:scale-110 transition-transform origin-left"><i class="fas fa-project-diagram text-3xl"></i></div>
+                    <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Citation Optimization</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Optimize for citations. Ensure your brand is referenced in high-authority sources to build trust.</p>
+                </a>
+                <!-- Step 7 -->
+                <a href="protocol.html" class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-8 rounded-2xl hover:border-brand-blue/50 hover:shadow-xl hover:-translate-y-1 transition-all group block h-full relative lg:col-span-2">
+                    <div class="absolute top-4 right-4 text-slate-200 dark:text-white/5 font-display font-bold text-4xl group-hover:text-emerald-500/10 transition-colors">07</div>
+                    <div class="text-teal-500 dark:text-teal-400 mb-6 group-hover:scale-110 transition-transform origin-left"><i class="fas fa-shield-alt text-3xl"></i></div>
+                    <h4 class="font-bold text-lg mb-3 text-slate-900 dark:text-white">Defensive Moats</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Build defensive moats around your brand. Ensure your content is unique, authoritative, and difficult to replicate by AI.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3.5: THE TRUST STACK -->
+    <section class="py-24 border-t border-slate-200 dark:border-white/5 bg-white dark:bg-brand-slate/10 transition-colors">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <!-- Diagram/Visual -->
+                <div class="glass-panel p-10 rounded-[2rem] relative bg-slate-50/50 dark:bg-white/5 backdrop-blur-xl border border-slate-200 dark:border-white/10">
+                    <div class="absolute -top-5 -left-5 bg-brand-blue text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg transform rotate-[-2deg]">Advanced Credibility</div>
+                    <div class="space-y-8 mt-4">
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 rounded-2xl bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400 flex items-center justify-center text-2xl shadow-inner group-hover:scale-110 transition-transform"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-1">Digital PR & Brand Mentions</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Research shows high-authority mentions are the #1 factor AI uses for citation.</p>
+                            </div>
+                        </div>
+                        <div class="h-10 w-0.5 bg-dashed border-r-2 border-slate-300 dark:border-white/20 border-dashed ml-8"></div>
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 rounded-2xl bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl shadow-inner group-hover:scale-110 transition-transform"><i class="fas fa-sync"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-1">Citation Loops</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Interlinking partner pages to create multi-source corroboration chains.</p>
+                            </div>
+                        </div>
+                        <div class="h-10 w-0.5 bg-dashed border-r-2 border-slate-300 dark:border-white/20 border-dashed ml-8"></div>
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl shadow-inner group-hover:scale-110 transition-transform"><i class="fas fa-user-shield"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-1">Verified Entity Signals</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Linking content to real, verified author profiles (LinkedIn, Knowledge Panel).</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-6 rounded-xl hover:border-brand-blue/50 transition-colors shadow-sm dark:shadow-none">
-                    <div class="text-purple-600 dark:text-purple-400 mb-4"><i class="fas fa-code text-2xl"></i></div>
-                    <h4 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Digital Schema Stack</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400">Advanced JSON-LD injection for nested entity relationships.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-6 rounded-xl hover:border-brand-blue/50 transition-colors shadow-sm dark:shadow-none">
-                    <div class="text-emerald-600 dark:text-emerald-400 mb-4"><i class="fas fa-list-ol text-2xl"></i></div>
-                    <h4 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">Visibility Blueprint</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400">A 7-step roadmap to transition from SEO to GEO.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 p-6 rounded-xl hover:border-brand-blue/50 transition-colors shadow-sm dark:shadow-none">
-                    <div class="text-orange-600 dark:text-orange-400 mb-4"><i class="fas fa-chart-pie text-2xl"></i></div>
-                    <h4 class="font-bold text-lg mb-2 text-slate-900 dark:text-white">GEO KPIs</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400">Measuring Share of Model Voice (SoMV) and Retrieval Rate.</p>
+
+                <!-- Content -->
+                <div>
+                    <h2 class="font-display font-bold text-4xl mb-6 text-slate-900 dark:text-white leading-tight">The "Trust Stack"</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg mb-6 leading-relaxed">
+                        Building trust is now a technical process. The E-E-A-T principles still apply—but for AI, they translate into measurable signals like <strong>Vector Proximity</strong> and <strong>Sentiment Density</strong>.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg mb-10 leading-relaxed">
+                        In practice, this means a well-executed PR push is as important as backlinks. Even an unlinked mention acts as a "vote" for your brand in the AI's training data.
+                    </p>
+                    <a href="https://geo.hqaim.com/guide/index.html" class="inline-flex items-center gap-3 text-brand-blue font-bold hover:text-slate-900 dark:hover:text-white transition-colors group">
+                        <span>Learn to Engineer Trust</span>
+                        <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3.5: THE VISIBILITY OS (MODULE VI) -->
-    <section class="py-24 bg-slate-900 dark:bg-brand-dark relative overflow-hidden text-white transition-colors duration-300">
-        <!-- Background Glow -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <!-- SECTION 4: HQAIM LABS TEASER -->
+    <section class="py-32 bg-slate-900 dark:bg-brand-dark relative overflow-hidden transition-colors">
+        <!-- Intense Blurs -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-blue/20 dark:bg-brand-blue/10 blur-[150px] rounded-full pointer-events-none mix-blend-screen"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-full bg-purple-600/20 dark:bg-purple-600/10 blur-[150px] rounded-full pointer-events-none mix-blend-screen"></div>
 
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 border border-brand-blue/30 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-widest mb-4 text-brand-blue font-bold">
-                    System Architecture
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-purple-500/30 rounded-full bg-purple-500/10 text-[10px] uppercase tracking-widest mb-6 text-purple-400 font-bold backdrop-blur-sm">
+                    <i class="fas fa-flask"></i> HQAIM Labs
                 </div>
-                <h2 class="font-display font-bold text-4xl mb-4 text-white">The Visibility OS: IP-Led Positioning</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Frameworks to dominate generative engines. Move beyond optimization to systemic authority.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Visual Frameworks List -->
-                <div class="space-y-8">
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-blue">
-                            <i class="fas fa-sync-alt text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg mb-1">HQAIM Visibility Loop</h4>
-                            <p class="text-sm text-slate-400">A continuous feedback mechanism where brand signals reinforce model training data, creating a flywheel of citations.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
-                            <i class="fas fa-search-location text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg mb-1">GEO Audit Framework</h4>
-                            <p class="text-sm text-slate-400">A rigorous diagnostic process to identify "Retrieval Gaps" and "Hallucination Risks" in your current digital footprint.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-                            <i class="fas fa-quote-right text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg mb-1">Model Citation Index (MCI)</h4>
-                            <p class="text-sm text-slate-400">The definitive metric for success. Tracking the frequency and sentiment of your brand's appearance in synthesized answers.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Visual: Visibility OS Schematic -->
-                <div class="glass-panel p-8 rounded-2xl relative h-96 flex items-center justify-center border-white/10 bg-white/5">
-                    <!-- Central Node -->
-                    <div class="relative z-10 w-32 h-32 rounded-full border-2 border-brand-blue/50 flex items-center justify-center bg-brand-dark/80 backdrop-blur shadow-[0_0_30px_rgba(59,130,246,0.3)]">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-white">OS</div>
-                            <div class="text-[10px] text-brand-blue uppercase tracking-widest">Core</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Orbiting Nodes -->
-                    <div class="absolute w-64 h-64 border border-white/5 rounded-full animate-[spin_10s_linear_infinite]">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-purple-500 rounded-full shadow-[0_0_10px_#a855f7]"></div>
-                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981]"></div>
-                    </div>
-                    
-                    <div class="absolute w-80 h-80 border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]">
-                        <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full"></div>
-                        <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-
-                    <!-- Labels -->
-                    <div class="absolute top-8 left-8 text-xs font-mono text-slate-500">INPUT: Structured Data</div>
-                    <div class="absolute bottom-8 right-8 text-xs font-mono text-slate-500">OUTPUT: Model Authority</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4: WHO IT'S FOR -->
-    <section class="py-24 border-t border-slate-200 dark:border-white/5 bg-white dark:bg-brand-dark transition-colors duration-300">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="font-display font-bold text-3xl mb-12 text-slate-900 dark:text-white">Designed for the Transition</h2>
-            <div class="flex flex-wrap justify-center gap-12">
-                <div class="max-w-xs">
-                    <div class="w-16 h-16 bg-slate-100 dark:bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm dark:shadow-none">📉</div>
-                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">CMOs Losing Visibility</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400">Seeing organic traffic erode despite consistent spend.</p>
-                </div>
-                <div class="max-w-xs">
-                    <div class="w-16 h-16 bg-slate-100 dark:bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm dark:shadow-none">⚙️</div>
-                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">SEO Leads</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400">Adapting strategies from keyword stuffing to entity management.</p>
-                </div>
-                <div class="max-w-xs">
-                    <div class="w-16 h-16 bg-slate-100 dark:bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm dark:shadow-none">🔬</div>
-                    <h4 class="font-bold text-slate-900 dark:text-white mb-2">Research B2Bs</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400">Companies with high-value data that needs to be cited, not just read.</p>
-                </div>
+                <h2 class="font-display font-bold text-5xl md:text-6xl mb-8 text-white tracking-tight">Execution Portal</h2>
+                <p class="text-slate-300 dark:text-slate-400 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Where theory meets execution. Deploy live tools like the <strong class="text-white font-semibold">Gemini Content Optimizer</strong> and <strong class="text-white font-semibold">Retrieval Simulator</strong> to elevate your content from indexed to cited.
+                </p>
+                <a href="https://geo.hqaim.com/labs.html" class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-purple-600 to-brand-blue rounded-full text-white font-bold text-sm shadow-xl hover:shadow-purple-500/40 transition-all transform hover:-translate-y-1 hover:scale-105">
+                    Launch Labs <i class="fas fa-rocket"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- SECTION 5: RESOURCES -->
-    <section id="resources" class="py-24 bg-brand-surface dark:bg-brand-surface text-slate-900 dark:text-brand-dark transition-colors duration-300">
+    <section id="resources" class="py-24 bg-brand-surface dark:bg-brand-surface text-brand-dark">
         <div class="container mx-auto px-6">
-            <h2 class="font-display font-bold text-4xl mb-12 text-center text-slate-900 dark:text-slate-900">Protocol Resources</h2>
+            <h2 class="font-display font-bold text-4xl mb-16 text-center text-slate-900 dark:text-brand-dark">Protocol Resources</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Book Tile -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 flex flex-col items-start hover:-translate-y-1 transition-transform cursor-pointer group">
-                    <div class="bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">Flagship</div>
-                    <h3 class="font-bold text-2xl mb-2 group-hover:text-brand-blue transition-colors text-slate-900">The Definitive Guide</h3>
-                    <p class="text-sm text-slate-500 mb-6 flex-grow">The 2026 Strategic Visibility Book. Full breakdown of the physics of AI ranking.</p>
-                    <a href="research_presentation.html" class="text-sm font-bold flex items-center gap-2 border-b-2 border-slate-900 pb-1 group-hover:border-brand-blue group-hover:text-brand-blue transition-all text-slate-900">
-                        Read the Book <i class="fas fa-arrow-right"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-slate-200 transition-all duration-300 flex flex-col items-start cursor-pointer group h-full hover:-translate-y-2">
+                    <div class="bg-brand-blue/10 text-brand-blue px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">Flagship</div>
+                    <h3 class="font-bold text-2xl mb-3 group-hover:text-brand-blue transition-colors text-slate-900">The Definitive Guide</h3>
+                    <p class="text-sm text-slate-500 mb-8 flex-grow leading-relaxed">The 2026 Strategic Visibility Book. Full breakdown of the physics of AI ranking.</p>
+                    <a href="https://geo.hqaim.com/guide/index.html" class="text-sm font-bold flex items-center gap-2 border-b-2 border-slate-900 pb-1 group-hover:border-brand-blue group-hover:text-brand-blue transition-all text-slate-900">
+                        Download PDF <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <!-- Tool Tile -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 flex flex-col items-start hover:-translate-y-1 transition-transform cursor-pointer group">
-                    <div class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">Beta Access</div>
-                    <h3 class="font-bold text-2xl mb-2 group-hover:text-purple-600 transition-colors text-slate-900">AI Schema Generator</h3>
-                    <p class="text-sm text-slate-500 mb-6 flex-grow">Generate nested JSON-LD schema optimized for LLM parsing and entity linking.</p>
-                    <span class="text-sm font-bold flex items-center gap-2 border-b-2 border-transparent text-slate-400 pb-1">
-                        Coming Soon
-                    </span>
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-slate-200 transition-all duration-300 flex flex-col items-start cursor-pointer group h-full hover:-translate-y-2">
+                    <div class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">Beta Access</div>
+                    <h3 class="font-bold text-2xl mb-3 group-hover:text-purple-600 transition-colors text-slate-900">AI Schema Generator</h3>
+                    <p class="text-sm text-slate-500 mb-8 flex-grow leading-relaxed">Generate nested JSON-LD schema optimized for LLM parsing and entity linking.</p>
+                    <a href="https://geo.hqaim.com/labs.html" class="text-sm font-bold flex items-center gap-2 border-b-2 border-brand-dark pb-1 group-hover:border-purple-600 group-hover:text-purple-600 transition-all text-slate-900">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
 
                 <!-- Checklist Tile -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 flex flex-col items-start hover:-translate-y-1 transition-transform cursor-pointer group">
-                    <div class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">Tool</div>
-                    <h3 class="font-bold text-2xl mb-2 group-hover:text-emerald-600 transition-colors text-slate-900">Trust Audit Checklist</h3>
-                    <p class="text-sm text-slate-500 mb-6 flex-grow">A 20-point diagnostic to test your brand's current visibility in Answer Engines.</p>
-                    <a href="#" class="text-sm font-bold flex items-center gap-2 border-b-2 border-slate-900 pb-1 group-hover:border-emerald-600 group-hover:text-emerald-600 transition-all text-slate-900">
-                        Start Audit <i class="fas fa-arrow-right"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-slate-200 transition-all duration-300 flex flex-col items-start cursor-pointer group h-full hover:-translate-y-2">
+                    <div class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">Tool</div>
+                    <h3 class="font-bold text-2xl mb-3 group-hover:text-emerald-600 transition-colors text-slate-900">Trust Audit Checklist</h3>
+                    <p class="text-sm text-slate-500 mb-8 flex-grow leading-relaxed">A 20-point diagnostic to test your brand's current visibility in Answer Engines.</p>
+                    <a href="https://geo.hqaim.com/trust_audit.html" class="text-sm font-bold flex items-center gap-2 border-b-2 border-brand-dark pb-1 group-hover:border-emerald-600 group-hover:text-emerald-600 transition-all text-slate-900">
+                        Get Checklist <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -481,80 +532,209 @@
     </section>
 
     <!-- SECTION 6: ABOUT THE AUTHOR & HQAIM -->
-    <section class="py-20 bg-slate-100 dark:bg-brand-slate border-t border-slate-200 dark:border-white/5 transition-colors duration-300">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="glass-panel p-12 rounded-3xl flex flex-col md:flex-row items-center gap-12 relative overflow-hidden bg-white dark:bg-brand-dark border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-none">
-                <!-- Background Gradient -->
-                <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none"></div>
+    <section class="py-24 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-800 dark:to-slate-900 border-t border-slate-200 dark:border-white/10 relative overflow-hidden transition-colors">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.05] hero-grid pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
                 
-                <!-- Author Image -->
-                <div class="flex-shrink-0 relative">
-                    <div class="w-32 h-32 rounded-full border-4 border-slate-200 dark:border-white/10 overflow-hidden bg-brand-dark shadow-2xl relative z-10">
-                        <img src="https://geo.hqaim.com/assets/images/Abdullah-Khan_Photo.svg" alt="Abdullah Khan" class="w-full h-full object-cover">
+                <!-- About the Author (Left Column) -->
+                <div class="glass-panel p-10 rounded-[2.5rem] border border-white/40 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-2xl hover:border-brand-blue/30 transition-all duration-500 group h-full flex flex-col">
+                    <div class="flex flex-col md:flex-row items-center gap-8 text-center md:text-left mb-8">
+                        <div class="relative flex-shrink-0">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-brand-blue rounded-full opacity-0 group-hover:opacity-50 blur transition duration-700"></div>
+                            <img src="https://geo.hqaim.com/assets/images/Abdullah-Khan_Photo.svg" 
+                                 alt="Abdullah Khan" 
+                                 class="relative w-32 h-32 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-xl"
+                                 onerror="this.src='https://placehold.co/128x128/1e293b/white?text=AK'">
+                            <div class="absolute bottom-1 right-1 bg-blue-500 text-white rounded-full p-1 border-2 border-white dark:border-slate-800" title="Verified">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-display font-bold text-3xl text-slate-900 dark:text-white mb-2">Abdullah Khan</h3>
+                            <div class="text-sm font-mono text-brand-blue uppercase tracking-widest mb-1">Strategist & Systems Architect</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Creator of Hybrid Ranking Protocol (HRP v2.0)</div>
+                        </div>
                     </div>
-                    <!-- Verified Badge -->
-                    <div class="absolute bottom-0 right-0 bg-blue-500 text-white text-xs w-8 h-8 flex items-center justify-center rounded-full border-2 border-white dark:border-brand-slate z-20" title="Verified Author">
-                        <i class="fas fa-check"></i>
+                    
+                    <div class="prose prose-sm dark:prose-invert text-slate-600 dark:text-slate-300 mb-8 flex-grow">
+                        <p class="leading-relaxed mb-4">
+                            Abdullah Khan is a strategist and systems architect focused on AI ranking, generative visibility, and machine-readable brand infrastructure. With over a decade of experience, he helps brands remain visible as search shifts from links to answers.
+                        </p>
+                        <p class="leading-relaxed mb-4">
+                            He is the creator of the <strong>Hybrid Ranking Protocol (HRP v2.0)</strong>, a framework helping organizations rank in both traditional search and AI answer engines like ChatGPT and Gemini.
+                        </p>
+                        <p class="leading-relaxed mb-6 font-medium italic text-slate-800 dark:text-white border-l-2 border-brand-blue pl-4">
+                            "If the model doesn’t mention you, the market won’t find you."
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-4 text-xs font-bold text-slate-700 dark:text-slate-200">
+                            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Entity-Based Optimization</div>
+                            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Generative Engine Optimization</div>
+                            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> E-E-A-T Trust Architecture</div>
+                            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Data-Backed Visibility</div>
+                        </div>
                     </div>
+
+                    <a href="https://www.linkedin.com/in/abdullah-khan-hqaim" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0077b5] hover:bg-[#006097] text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-[#0077b5]/30 w-full sm:w-auto text-sm font-bold">
+                        <i class="fab fa-linkedin text-lg"></i> Connect on LinkedIn
+                    </a>
                 </div>
 
-                <!-- Content -->
-                <div class="flex-grow text-center md:text-left">
-                    <h2 class="font-display font-bold text-2xl text-slate-900 dark:text-white mb-2">Abdullah Khan</h2>
-                    <div class="text-brand-blue text-xs font-mono uppercase tracking-widest mb-6">Lead Researcher & Digital Strategist</div>
-                    
-                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8">
-                        Pioneering the transition from SEO to GEO. Abdullah leads the research division at HQAIM, defining the protocols for visibility in the Agentic Web. His work focuses on the intersection of Large Language Models, semantic retrieval, and brand authority.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <!-- Updated LinkedIn Link -->
-                        <a href="https://www.linkedin.com/in/abdullah-khan-hqaim/" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-full text-xs font-bold text-slate-700 dark:text-white hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all group">
-                            <i class="fab fa-linkedin group-hover:scale-110 transition-transform"></i> Connect on LinkedIn
-                        </a>
-                        <a href="https://www.hqaim.com/p/about.html" class="inline-flex items-center gap-2 px-4 py-2 bg-transparent border border-slate-300 dark:border-white/10 rounded-full text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-white/30 transition-all">
-                            About HQAIM Studio
-                        </a>
+                <!-- About HQAIM (Right Column) -->
+                <div class="glass-panel p-10 rounded-[2.5rem] border border-white/40 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-2xl hover:border-purple-500/30 transition-all duration-500 group h-full flex flex-col relative overflow-hidden">
+                    <!-- Decorative Background Element -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-bl-full pointer-events-none"></div>
+
+                    <div class="mb-8">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 text-[10px] font-bold uppercase tracking-widest mb-4 border border-purple-200 dark:border-purple-500/20">
+                            Visibility Operating System
+                        </div>
+                        <h3 class="font-display font-bold text-3xl text-slate-900 dark:text-white mb-4">About HQAIM</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            HQAIM helps brands become discoverable, trustworthy, and cite-worthy inside modern AI systems. We operate on a simple belief: <strong>Visibility is no longer marketing. It is infrastructure.</strong>
+                        </p>
                     </div>
+
+                    <div class="space-y-6 mb-8 flex-grow">
+                        <div class="p-4 rounded-xl bg-white/50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                            <h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-3 border-b border-slate-200 dark:border-white/10 pb-2">What We Do</h4>
+                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Hybrid Ranking Systems (SEO + GEO)</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Entity & Knowledge Graph Architecture</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>RAG-Ready Content Design</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Share of Model Voice Tracking</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Who We Serve</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-xs font-medium">Founders</span>
+                                <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-xs font-medium">Enterprise Brands</span>
+                                <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-xs font-medium">B2B SaaS</span>
+                                <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 text-xs font-medium">Consultancies</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.hqaim.com" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-slate-300 dark:border-white/20 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-white rounded-full transition-all w-full sm:w-auto text-sm font-bold">
+                        Explore HQAIM Studio <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: ENGAGEMENT MODELS (NEW SECTION) -->
+    <section id="engagement" class="py-24 bg-brand-surface dark:bg-brand-surface text-brand-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-xs font-mono text-purple-600 uppercase tracking-widest mb-4">Deployment Protocols</h2>
+                <h3 class="font-display font-bold text-4xl text-slate-900">Partner with HQAIM</h3>
+                <p class="text-slate-500 max-w-2xl mx-auto mt-4">Select your level of engagement to begin the transition to Agentic Visibility.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Diagnostic -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 hover:-translate-y-2 transition-transform duration-300 group flex flex-col">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue mb-6 group-hover:scale-110 transition-transform">
+                        <!-- Replaced fa-radar with fa-magnifying-glass-chart -->
+                        <i class="fas fa-magnifying-glass-chart text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-2xl mb-2 text-slate-900">Visibility Audit</h4>
+                    <p class="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">
+                        A comprehensive 20-point diagnostic of your brand's current standing in LLM ecosystems. Identifies schema gaps, entity weaknesses, and citation opportunities.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> <span>Technical Hygiene Check</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> <span>Entity Salience Score</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> <span>Actionable Roadmap</span></li>
+                    </ul>
+                    <a href="website_audit.html" class="block w-full py-3 text-center border-2 border-brand-blue text-brand-blue font-bold rounded-lg hover:bg-brand-blue hover:text-white transition-colors">
+                        Run Diagnostic
+                    </a>
+                </div>
+
+                <!-- Card 2: Strategy -->
+                <div class="bg-brand-dark p-8 rounded-2xl shadow-2xl border border-purple-500/30 hover:-translate-y-2 transition-transform duration-300 group relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 bg-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">RECOMMENDED</div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chess text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-2xl mb-2 text-white">Strategic Advisory</h4>
+                    <p class="text-sm text-slate-400 mb-6 leading-relaxed flex-grow">
+                        Quarterly guidance to implement the Hybrid Ranking Protocol (HRP v2.0). We work with your content and tech teams to realign infrastructure for AI.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> <span>Semantic Engineering</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> <span>Content Formatting Playbooks</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> <span>Trust Architecture Build</span></li>
+                    </ul>
+                    <a href="https://www.hqaim.com/p/contact.html" class="block w-full py-3 text-center bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-colors shadow-lg hover:shadow-purple-500/25">
+                        Inquire Now
+                    </a>
+                </div>
+
+                <!-- Card 3: Enterprise -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 hover:-translate-y-2 transition-transform duration-300 group flex flex-col">
+                    <div class="w-12 h-12 rounded-xl bg-brand-dark/10 flex items-center justify-center text-brand-dark mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-building-shield text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-2xl mb-2 text-slate-900">Enterprise System</h4>
+                    <p class="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">
+                        Full-stack deployment of the Visibility OS for large organizations. Includes custom Knowledge Graph construction and defensive moat engineering.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-slate-800 text-xs"></i> <span>Custom Schema Stack</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-slate-800 text-xs"></i> <span>Defensive Brand Moats</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-slate-800 text-xs"></i> <span>Cross-Team Training</span></li>
+                    </ul>
+                    <a href="https://www.hqaim.com/p/contact.html" class="block w-full py-3 text-center border-2 border-brand-dark text-brand-dark font-bold rounded-lg hover:bg-brand-dark hover:text-white transition-colors">
+                        Contact Enterprise
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 dark:bg-brand-dark text-white pt-20 pb-10 border-t border-slate-800 dark:border-white/10 transition-colors duration-300">
+    <footer class="bg-brand-dark text-white pt-24 pb-12 border-t border-white/10">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
                 <div>
-                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" alt="HQAIM Logo" class="h-8 mb-6">
-                    <p class="text-slate-400 text-sm max-w-sm mb-6">
+                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-8">
+                    <p class="text-slate-400 text-sm max-w-sm mb-8 leading-relaxed">
                         Building the credibility infrastructure for the AI-first web. Helping brands become recognizable, retrievable, and reputable.
                     </p>
                     <div class="flex gap-4">
-                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors text-slate-400 hover:text-white" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue hover:text-white text-slate-400 transition-all" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors text-slate-400 hover:text-white" aria-label="YouTube">
+                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue hover:text-white text-slate-400 transition-all" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="https://www.instagram.com/hqaim_studios/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors text-slate-400 hover:text-white" aria-label="Instagram">
+                        <a href="https://www.instagram.com/hqaim_studios/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue hover:text-white text-slate-400 transition-all" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-12 text-sm text-slate-400">
+                <div class="grid grid-cols-2 gap-16 text-sm text-slate-400">
                     <div>
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Protocol</h4>
-                        <ul class="space-y-2">
-                            <li><a href="shift.html" class="hover:text-brand-blue transition-colors">The Shift</a></li>
-                            <li><a href="geo.html" class="hover:text-brand-blue transition-colors">GEO Playbook</a></li>
+                        <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Protocol</h4>
+                        <ul class="space-y-4">
+                            <li><a href="shift.html" class="hover:text-brand-blue transition-colors">Era</a></li>
+                            <li><a href="https://geo.hqaim.com/geo.html" class="hover:text-brand-blue transition-colors">GEO Playbook</a></li>
                             <li><a href="protocol.html" class="hover:text-brand-blue transition-colors">Framework</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Studio</h4>
-                        <ul class="space-y-2">
+                        <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Studio</h4>
+                        <ul class="space-y-4">
                             <li><a href="https://www.hqaim.com/p/about.html" class="hover:text-brand-blue transition-colors">About HQAIM</a></li>
                             <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue transition-colors">Contact</a></li>
                             <li><a href="https://www.hqaim.com/p/privacy.html" class="hover:text-brand-blue transition-colors">Privacy</a></li>
@@ -563,10 +743,10 @@
                 </div>
             </div>
             
-            <div class="border-t border-slate-800 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
                 <p>&copy; 2026 HQAIM Studios. All rights reserved.</p>
                 <div class="flex items-center gap-2 mt-4 md:mt-0">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
                     Systems Operational
                 </div>
             </div>
@@ -575,60 +755,134 @@
 
     <!-- Interactive Scripts -->
     <script>
+        // --- Init Lucide Icons ---
         lucide.createIcons();
 
-        // --- THEME LOGIC KERNEL ---
+        // --- Theme Logic ---
+        const htmlRoot = document.documentElement;
+        
+        // 1. Check LocalStorage or System Preference
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+            htmlRoot.classList.add('dark');
+        } else {
+            htmlRoot.classList.remove('dark');
+        }
+
+        // 2. Toggle Function
         function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            renderChart(); // Re-render chart on theme switch
-        }
-
-        // Init Theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            document.documentElement.classList.remove('dark');
-        } else if (savedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            document.documentElement.classList.remove('dark');
-        }
-
-        // Chart.js Visualization for The Shift
-        let chartInstance = null;
-
-        function renderChart() {
-            const ctx = document.getElementById('shiftChart');
-            if(!ctx) return;
-
-            const isDark = document.documentElement.classList.contains('dark');
-            const gridColor = isDark ? '#334155' : '#e2e8f0';
-            const textColor = isDark ? '#94a3b8' : '#64748b';
-
-            if (chartInstance) {
-                chartInstance.destroy();
+            htmlRoot.classList.toggle('dark');
+            
+            // Save preference
+            if (htmlRoot.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
             }
 
-            chartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['2023', '2024', '2025', '2026'],
-                    datasets: [
-                        { label: 'Organic CTR', data: [100, 75, 49, 39], borderColor: '#ef4444', tension: 0.4, borderWidth: 2, pointBackgroundColor: '#ef4444' },
-                        { label: 'AI Citations', data: [5, 30, 65, 90], borderColor: '#3b82f6', tension: 0.4, borderWidth: 2, pointBackgroundColor: '#3b82f6' }
-                    ]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { labels: { color: textColor } } },
-                    scales: { y: { display: false, grid: { color: gridColor } }, x: { grid: { display: false }, ticks: { color: textColor } } }
-                }
-            });
+            // Update Chart Colors
+            if (typeof updateChartColors === 'function') {
+                updateChartColors();
+            }
+        }
+
+        // --- Chart Logic ---
+        let shiftChartInstance = null;
+
+        function getChartColors() {
+            const isDark = htmlRoot.classList.contains('dark');
+            return {
+                gridColor: isDark ? '#334155' : '#e2e8f0', // slate-700 vs slate-200
+                tickColor: isDark ? '#94a3b8' : '#0f172a'  // slate-400 vs slate-900
+            };
+        }
+
+        function updateChartColors() {
+            if (!shiftChartInstance) return;
+            const colors = getChartColors();
+            
+            shiftChartInstance.options.scales.x.grid.color = 'transparent'; 
+            shiftChartInstance.options.scales.y.grid.color = colors.gridColor;
+            shiftChartInstance.options.scales.x.ticks.color = colors.tickColor;
+            shiftChartInstance.options.plugins.legend.labels.color = colors.tickColor;
+            shiftChartInstance.update();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderChart();
+            const ctx = document.getElementById('shiftChart');
+            if(ctx) {
+                const colors = getChartColors();
+                
+                shiftChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2023', '2024', '2025', '2026'],
+                        datasets: [
+                            {
+                                label: 'Organic CTR',
+                                data: [100, 75, 49, 39],
+                                borderColor: '#ef4444',
+                                tension: 0.4,
+                                borderWidth: 3,
+                                pointBackgroundColor: '#ef4444',
+                                pointRadius: 4,
+                                pointHoverRadius: 6
+                            },
+                            {
+                                label: 'AI Citations',
+                                data: [5, 30, 65, 90],
+                                borderColor: '#3b82f6',
+                                tension: 0.4,
+                                borderWidth: 3,
+                                pointBackgroundColor: '#3b82f6',
+                                pointRadius: 4,
+                                pointHoverRadius: 6
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { 
+                                labels: { 
+                                    color: colors.tickColor,
+                                    font: { family: "'Inter', sans-serif", size: 12, weight: 'bold' },
+                                    usePointStyle: true,
+                                    padding: 20
+                                } 
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                                titleFont: { family: "'Outfit', sans-serif", size: 14 },
+                                bodyFont: { family: "'Inter', sans-serif", size: 13 },
+                                padding: 12,
+                                cornerRadius: 8,
+                                displayColors: true
+                            }
+                        },
+                        scales: {
+                            y: { 
+                                display: true, 
+                                grid: { color: colors.gridColor, borderDash: [5, 5] },
+                                ticks: { color: colors.tickColor, font: { family: "'Inter', sans-serif", size: 10 } },
+                                border: { display: false }
+                            },
+                            x: { 
+                                grid: { display: false }, 
+                                ticks: { color: colors.tickColor, font: { family: "'Inter', sans-serif", size: 10 } },
+                                border: { display: false }
+                            }
+                        },
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                    }
+                });
+            }
         });
     </script>
 </body>
