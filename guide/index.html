@@ -32,29 +32,39 @@
     <!-- Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // --- PRODUCTION CONFIGURATION ---
+        const firebaseConfig = {
+          apiKey: "AIzaSyBBjhUHKFKnPXoSqkRxDhGBWR2xN4zSaG4",
+          authDomain: "ai-ranking-guide.firebaseapp.com",
+          projectId: "ai-ranking-guide",
+          storageBucket: "ai-ranking-guide.firebasestorage.app",
+          messagingSenderId: "736008955492",
+          appId: "1:736008955492:web:50d6529d4c797e36c86171",
+          measurementId: "G-2CLNGX8ETN"
+        };
+
         // Initialize Firebase
-        const firebaseConfig = JSON.parse(__firebase_config);
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
-        // Auth Logic
+        // --- GOOGLE SHEETS INTEGRATION ---
+        // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE AFTER FOLLOWING THE GUIDE
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzaOTpwM1EujzXR14K5neAuwL96-VmMyiOvCq1eOk4RcRZlgBk_YvjoziehsuZh3OKi/exec"; 
+
+        // Auth Logic (Anonymous Only for Production)
         const initAuth = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
+            if (!auth.currentUser) {
+                try {
                     await signInAnonymously(auth);
+                } catch (error) {
+                    console.error("Anonymous auth failed:", error);
                 }
-            } catch (error) {
-                console.error("Auth failed:", error);
             }
         };
-        // Initial auth call
         initAuth();
 
         // Form Submission Logic
@@ -67,6 +77,7 @@
             // Extract values
             const email = form.email.value;
             const website = form.website.value;
+            const timestamp = new Date().toISOString();
 
             // UI Loading State
             submitBtn.disabled = true;
@@ -74,19 +85,32 @@
             if(window.lucide) lucide.createIcons();
 
             // Ensure Auth
-            if (!auth.currentUser) {
-                 await initAuth(); 
-            }
+            await initAuth();
 
             try {
-                // Write to Firestore - Correct Path
-                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'leads'), {
+                // 1. Write to Firebase (Primary Data Store)
+                await addDoc(collection(db, 'leads'), {
                     email: email,
                     website: website || 'Not Provided',
                     source: 'guide_landing_page',
                     timestamp: serverTimestamp(),
                     type: 'audit_request'
                 });
+
+                // 2. Send to Google Sheets (Backup/Notification)
+                if(GOOGLE_SCRIPT_URL) {
+                    // We use 'no-cors' mode to prevent CORS errors, 
+                    // this means we won't know if the sheet script succeeded or failed, 
+                    // but it will send the data.
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', 
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email, website, timestamp })
+                    });
+                }
 
                 // Success State
                 submitBtn.innerHTML = '<i data-lucide="check" class="w-4 h-4 mr-2 inline-block"></i> Request Sent!';
@@ -158,131 +182,6 @@
                 }
             }
         }
-    </script>
-
-    <!-- SCHEMA: HQAIM Advanced Entity Graph -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Book",
-      "@id": "https://hqaim.com/ai-ranking-generative-visibility-guide#book",
-      "name": "The Definitive 2026 Guide to AI Ranking & Generative Visibility",
-      "alternateName": [
-        "AI Ranking & Generative Visibility Guide",
-        "AI Ranking Guide 2026"
-      ],
-      "description": "An operational manual explaining how brands get ranked, cited, and chosen in AI-driven search systems such as ChatGPT and Gemini. The guide introduces the Hybrid Ranking Protocol (HRP v2.0), Generative Engine Optimization (GEO), and trust architecture for AI visibility.",
-      "bookEdition": "2026 Edition",
-      "inLanguage": "en",
-      "genre": [
-        "Business",
-        "Artificial Intelligence",
-        "Digital Strategy",
-        "Marketing"
-      ],
-      "keywords": [
-        "AI ranking",
-        "generative visibility",
-        "Generative Engine Optimization",
-        "GEO",
-        "AI SEO",
-        "ChatGPT visibility",
-        "Gemini AI ranking",
-        "AI discovery",
-        "E-E-A-T",
-        "AI trust architecture"
-      ],
-      "datePublished": "2026-01-01",
-      "publisher": {
-        "@type": "Organization",
-        "@id": "https://hqaim.com#organization"
-      },
-      "author": {
-        "@type": "Person",
-        "@id": "https://www.linkedin.com/in/abdullah-khan-hqaim/"
-      },
-      "educationalLevel": "Professional",
-      "audience": {
-        "@type": "Audience",
-        "audienceType": [
-          "Founders",
-          "CMOs",
-          "Growth Leaders",
-          "SEO Professionals",
-          "Enterprise Strategy Teams"
-        ]
-      }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://www.linkedin.com/in/abdullah-khan-hqaim/",
-      "name": "Abdullah Khan",
-      "jobTitle": "AI Ranking & Generative Visibility Architect",
-      "description": "Creator of the Hybrid Ranking Protocol (HRP v2.0) and specialist in AI ranking systems, generative visibility, and machine-readable trust architecture.",
-      "worksFor": {
-        "@type": "Organization",
-        "@id": "https://hqaim.com#organization"
-      },
-      "knowsAbout": [
-        "AI Ranking",
-        "Generative Visibility",
-        "Generative Engine Optimization",
-        "SEO",
-        "E-E-A-T",
-        "AI Search",
-        "Knowledge Graphs",
-        "RAG Systems"
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/in/abdullah-khan-hqaim/"
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://hqaim.com#organization",
-      "name": "HQAIM",
-      "url": "https://hqaim.com",
-      "logo": "https://hqaim.com/logo.png",
-      "description": "HQAIM is a Visibility Operating System that helps brands rank, get cited, and build trust inside AI-powered answer engines such as ChatGPT and Gemini.",
-      "founder": {
-        "@type": "Person",
-        "@id": "https://www.linkedin.com/in/abdullah-khan-hqaim/"
-      },
-      "knowsAbout": [
-        "AI Ranking Systems",
-        "Generative Visibility",
-        "Hybrid Ranking Protocol",
-        "GEO",
-        "AI Discovery",
-        "Trust Architecture"
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/company/hqaim"
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "name": "AI Ranking & Generative Visibility Guide (2026)",
-      "isAccessibleForFree": true,
-      "learningResourceType": "Guide",
-      "educationalUse": "Professional Development",
-      "creator": {
-        "@type": "Person",
-        "@id": "https://www.linkedin.com/in/abdullah-khan-hqaim/"
-      }
-    }
     </script>
 
     <style>
@@ -367,158 +266,252 @@
             color: var(--accent-color);
         }
 
-        /* --- 3D BOOK: REALISTIC CUBOID MODEL --- */
-        .book-container { 
-            perspective: 2500px; /* Enhanced depth for realism */
-            transform-style: preserve-3d;
+        /* --- NEXT-GEN 3D BOOK ENGINEERING --- */
+        .book-container {
+            perspective: 2500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px; /* Allocated space */
         }
-        
-        .book {
-            width: 340px;
+
+        .book-3d {
+            width: 320px;
             height: 500px;
             position: relative;
             transform-style: preserve-3d;
-            /* Improved Initial Angle for Professional Realistic View */
-            transform: rotateY(-20deg) rotateX(10deg) rotateZ(-2deg);
-            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 35px 35px 70px rgba(0,0,0,0.5), -5px 0 20px rgba(0,0,0,0.2); 
-            margin: 0 auto; 
-            
-            /* Thickness definition for calculation clarity */
-            --thickness: 60px;
-        }
-        
-        .book:hover {
-            transform: rotateY(-15deg) rotateX(5deg) scale(1.02) translateZ(15px);
-            box-shadow: 40px 40px 80px rgba(0,0,0,0.6);
+            transform: rotateY(-30deg) rotateX(10deg) rotateZ(-2deg);
+            transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+            box-shadow: 30px 40px 80px rgba(0,0,0,0.5), -10px 10px 20px rgba(0,0,0,0.2); 
+            margin: 0 auto;
         }
 
-        /* Common Face Properties */
-        .book-face {
+        .book-3d:hover {
+            transform: rotateY(-15deg) rotateX(5deg) scale(1.02) translateZ(10px);
+            box-shadow: 40px 50px 100px rgba(0,0,0,0.6);
+        }
+
+        /* FRONT COVER - Volumetric Board */
+        .cover-front {
             position: absolute;
-            backface-visibility: hidden; /* Important for realism */
-        }
-
-        /* Front Cover - UPGRADED DESIGN */
-        .book-front {
-            width: 340px; height: 500px;
-            /* Deep, premium obsidian base */
-            background: #020408; 
-            border: 1px solid rgba(255,255,255,0.1);
+            width: 320px;
+            height: 500px;
+            background: #09090b; /* Deep Obsidian */
             
-            /* Enhanced Textures: Matte finish with subtle gloss highlights */
+            /* High-End Matte Texture */
             background-image: 
-                /* Subtle noise for texture */
-                url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.03%22/%3E%3C/svg%3E'),
-                /* Gradient sheen */
-                linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.4) 100%),
-                /* Tech grid overlay - very subtle */
-                linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-            background-size: cover, cover, 40px 40px, 40px 40px;
+                /* Subtle vertical data lines */
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                /* Noise texture */
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"),
+                /* Deep gradient for depth */
+                linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%, rgba(0,0,0,0.8) 100%);
+            background-size: 40px 40px, cover, cover;
             
-            border-radius: 2px 6px 6px 2px;
-            display: flex; flex-direction: column;
-            padding: 40px 30px;
+            /* 3D Board Shape */
+            border-radius: 4px 1px 1px 4px; 
+            
+            transform: translateZ(20px); 
             z-index: 2;
             
-            /* Position: Push forward by half thickness (30px) */
-            transform: translateZ(30px);
+            /* Spine Groove & Edge Highlight */
+            box-shadow: inset 15px 0 20px -10px rgba(0,0,0,1), inset -1px 0 2px rgba(255,255,255,0.2);
+            border-left: 1px solid rgba(255,255,255,0.05);
             
-            /* Spine fold effect */
-            box-shadow: inset 15px 0 20px -10px rgba(0,0,0,0.8), inset -2px 0 5px rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 50px 35px;
+            overflow: hidden;
+            
+            /* Physical Edge Thickness (Right) */
+            border-right: 2px solid #1a1a1a;
         }
 
-        /* Back Cover (for solidity) */
-        .book-back {
-            width: 340px; height: 500px;
-            background: #080C14;
-            border: 1px solid rgba(255,255,255,0.05);
-            /* Position: Push back by half thickness and flip */
-            transform: translateZ(-30px) rotateY(180deg);
-            box-shadow: inset 10px 0 20px rgba(0,0,0,0.5);
+        /* Abstract Graphic Element (Bottom Overlay) */
+        .cover-graphic-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+        
+        /* Cover Thickness (Top) */
+        .cover-front::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: 0;
+            width: 100%; height: 4px;
+            background: #1a1a1a;
+            transform: rotateX(90deg);
+            transform-origin: bottom;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Spine (Left Side) - UPGRADED */
-        .book-spine {
-            width: 60px; /* Thickness */
+        /* Cover Thickness (Right) - The Clean Straight Edge */
+        .cover-front::after {
+            content: '';
+            position: absolute;
+            top: 0; right: -4px;
+            width: 4px; height: 100%;
+            background: #151515;
+            background-image: linear-gradient(to right, #151515 0%, #2a2a2a 100%);
+            transform: rotateY(90deg);
+            transform-origin: left;
+            border-left: 1px solid rgba(255,255,255,0.2); /* Highlight corner */
+        }
+
+        /* BACK COVER */
+        .cover-back {
+            position: absolute;
+            width: 320px;
             height: 500px;
-            background: #0B0F19; /* Slightly lighter than cover */
-            border-left: 1px solid rgba(255,255,255,0.1);
-            border-right: 1px solid rgba(0,0,0,0.5);
-            display: flex; align-items: center; justify-content: center;
+            background: #09090b;
+            transform: translateZ(-20px) rotateY(180deg);
+            border-radius: 1px 3px 3px 1px;
+            box-shadow: inset 8px 0 15px rgba(0,0,0,0.6);
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* SPINE - Rounded Volume - Thinner */
+        .book-spine {
+            position: absolute;
+            width: 40px; /* Thinner Spine width */
+            height: 500px;
+            background: #0F172A; 
+            /* Curved Gradient */
+            background-image: linear-gradient(to right, 
+                rgba(255,255,255,0.05), 
+                rgba(255,255,255,0.15) 20%, 
+                rgba(0,0,0,0.6) 50%, 
+                rgba(0,0,0,0.8) 85%, 
+                rgba(255,255,255,0.05));
             
-            /* Position: Center X, Rotate -90 (Face Left), Move out to left edge (170px) */
+            /* Center positioning logic */
             left: 50%;
-            transform: translateX(-50%) rotateY(-90deg) translateZ(170px);
+            transform: translateX(-50%) rotateY(-90deg) translateZ(160px); /* 320/2 */
             
-            /* Realistic rounded spine shading */
-            background-image: linear-gradient(to right, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.2) 80%, rgba(255,255,255,0.05) 100%);
+            display: flex; align-items: center; justify-content: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .spine-text {
             writing-mode: vertical-rl; 
-            transform: rotate(180deg); /* Text orientation fix */
-            color: #E2E8F0; 
+            transform: rotate(180deg); 
+            color: #94a3b8; 
             font-family: 'Outfit', sans-serif; 
-            font-size: 14px; 
-            letter-spacing: 4px; 
+            font-size: 11px; 
+            letter-spacing: 3px; 
             font-weight: 700;
             white-space: nowrap;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
         }
 
-        /* Pages (Right Side) */
-        .book-side {
-            width: 60px; /* Thickness */
-            height: 494px; /* Slightly shorter than cover */
-            top: 3px; /* Centered vertically relative to cover */
-            background: #F1F5F9;
-            /* Realistic page lines */
-            background: repeating-linear-gradient(90deg, #f8fafc 0px, #f8fafc 1px, #cbd5e1 1px, #cbd5e1 2px);
+        /* PAGES (Text Block) - Realistic Stack - Thinner */
+        .book-pages {
+            position: absolute;
+            width: 308px; /* Inset from cover */
+            height: 492px; /* Inset from cover */
+            background: #f1f5f9;
             
-            /* Position: Center X, Rotate 90 (Face Right), Move out to right edge (168px - inset slightly) */
+            /* Layered Paper Texture */
+            background-image: repeating-linear-gradient(90deg, 
+                #f1f5f9 0px, #f1f5f9 1px, 
+                #cbd5e1 1px, #cbd5e1 2px,
+                #f8fafc 2px, #f8fafc 3px);
+            
+            top: 4px; /* Centered vertically */
+            
+            /* Positioning inside */
             left: 50%;
-            transform: translateX(-50%) rotateY(90deg) translateZ(167px);
+            transform: translateX(-50%) rotateY(90deg) translateZ(154px); /* Slightly recessed from edge */
+            
+            /* Block Dimensions (thickness of book body) */
+            width: 38px; /* Thinner */
+            
+            /* Inner Shadows */
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.1), inset 0 5px 10px rgba(0,0,0,0.05);
             border: 1px solid #cbd5e1;
-            /* Curved page effect shadow */
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
         }
 
-        /* Blueprint Node Visualization on Cover */
-        .node-viz {
+        /* TEXT STYLES */
+        .foil-gold {
+            color: transparent;
+            background: linear-gradient(to bottom, #cfc09f 20%, #ffecb3 50%, #a47e3b 60%, #996a1e 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+            letter-spacing: 0.15em;
+        }
+        
+        .title-main {
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(255,255,255,0.05);
+        }
+        
+        /* NEW CENTER GRAPHIC: "SEARCH VISIBILITY" */
+        .viz-search-visibility {
             position: relative;
-            width: 140px;
-            height: 140px;
+            width: 140px; height: 140px;
             margin: auto;
-            border: 1px solid rgba(59, 130, 246, 0.5); /* Brand Blue */
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
-        }
-        .node-viz::before, .node-viz::after {
-            content: ''; position: absolute;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 50%;
-        }
-        .node-viz::before { width: 160%; height: 160%; border-style: dashed; animation: spin 20s linear infinite; }
-        .node-viz::after { width: 60%; height: 60%; background: rgba(59, 130, 246, 0.1); }
-        .node-dot {
-            width: 8px; height: 8px; background: #3B82F6; border-radius: 50%;
-            box-shadow: 0 0 15px #3B82F6, 0 0 5px #fff;
+            display: flex; justify-content: center; align-items: center;
         }
         
-        .node-line {
-            position: absolute; width: 1px; height: 100%; background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
-            left: 50%; top: 0; transform: translateX(-50%);
-        }
-        .node-line-h {
-            position: absolute; height: 1px; width: 100%; background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.5), transparent);
-            top: 50%; left: 0; transform: translateY(-50%);
+        /* Pulse Ring */
+        .viz-pulse {
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
         }
         
-        @keyframes spin { 
-            from { transform: rotate(0deg); } to { transform: rotate(360deg); } 
+        /* Glass Magnifier */
+        .viz-glass {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15), inset 0 0 10px rgba(255,255,255,0.05);
+            display: flex; justify-content: center; align-items: center;
+            backdrop-filter: blur(2px);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* The "Eye/Target" inside */
+        .viz-target {
+            width: 30px; height: 30px;
+            border: 2px solid #3B82F6;
+            border-radius: 50%;
+            position: relative;
+        }
+        .viz-target::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 8px; height: 8px; background: #fff; border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px #3B82F6;
+        }
+        
+        /* Search Handle */
+        .viz-handle {
+            position: absolute;
+            width: 4px; height: 30px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+            bottom: 20px; right: 25px;
+            transform: rotate(-45deg);
+            border-radius: 4px;
+            z-index: 1;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
         }
 
         /* --- CALLOUT BOX --- */
@@ -617,21 +610,20 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="relative z-10 pt-28 pb-32 px-6 border-b border-slate-200 dark:border-white/5 overflow-hidden bg-slate-50 dark:bg-transparent">
+    <header class="relative z-10 pt-24 pb-32 px-6 border-b border-slate-200 dark:border-white/5 overflow-hidden bg-slate-50 dark:bg-transparent">
         <!-- New Atmospheric Background for Hero (Dark Mode Only) -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#020408] via-[#0B0F19] to-[#020408] z-0 hidden dark:block"></div>
         <!-- Atmospheric Background (Light Mode Only) -->
         <div class="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50 z-0 block dark:hidden"></div>
         
-        <!-- Glows -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none opacity-60"></div>
-        <div class="absolute inset-0 bg-[url('https://aiartisan.hqaim.com/images/grid.svg')] opacity-[0.03] z-0 pointer-events-none"></div>
-
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-20 relative z-10">
+        <!-- Glows & Spotlight -->
+        <div class="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/20 rounded-full blur-[100px] pointer-events-none opacity-40"></div>
+        
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
             
             <!-- Hero Copy -->
             <div class="flex-1 order-1 text-center md:text-left">
-                <!-- Strategic Manual Tag (Updated) -->
+                <!-- Strategic Manual Tag -->
                 <div class="flex flex-wrap gap-3 mb-8 justify-center md:justify-start text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
                     <span class="px-3 py-1.5 border border-emerald-500/30 rounded-full bg-emerald-500/10 flex items-center gap-2 shadow-[0_0_15px_rgba(52,211,153,0.1)] backdrop-blur-sm">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></span>
@@ -639,7 +631,7 @@
                     </span>
                 </div>
 
-                <h1 class="font-display font-bold text-5xl md:text-7xl text-slate-900 dark:text-white leading-[1.1] mb-8 tracking-tight drop-shadow-xl">
+                <h1 class="font-display font-bold text-4xl md:text-6xl text-slate-900 dark:text-white leading-[1.1] mb-8 tracking-tight drop-shadow-xl">
                     A Practical Guide to Ranking in <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-blue-400 drop-shadow-lg">ChatGPT, Gemini,</span> <br>and AI Search
                 </h1>
@@ -649,7 +641,7 @@
                 </p>
 
                 <!-- Executive Summary Block -->
-                <div class="mb-10 p-6 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl relative overflow-hidden backdrop-blur-md shadow-2xl">
+                <div class="mb-10 p-6 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl relative overflow-hidden backdrop-blur-md shadow-2xl text-left">
                     <div class="absolute top-0 left-0 w-1 h-full bg-brand-blue"></div>
                     <p class="text-xs font-bold text-brand-blue mb-2 uppercase tracking-wider flex items-center gap-2">
                         <i data-lucide="file-text" class="w-3 h-3"></i> Executive Summary
@@ -663,72 +655,74 @@
                     <button class="btn btn-primary" onclick="document.getElementById('get-the-guide').scrollIntoView({behavior: 'smooth'})">
                         <i data-lucide="download" class="w-4 h-4 mr-2"></i> Download Manual
                     </button>
-                    <button class="btn btn-secondary" onclick="document.getElementById('lead-form').scrollIntoView({behavior: 'smooth'})">
+                    <a href="https://geo.hqaim.com/website_audit.html" class="btn btn-secondary">
                         Start Audit
-                    </button>
+                    </a>
                 </div>
             </div>
 
-            <!-- 3D Book: Protocol Blueprint Design (Upgraded) -->
-            <div class="book-container order-2 flex-shrink-0">
-                <div class="book">
-                    <!-- Front Face -->
-                    <div class="book-face book-front">
-                        <!-- Top Bar / Edition -->
-                        <div class="w-full flex justify-between items-start relative z-10 mb-6">
-                            <div class="px-3 py-1 border border-white/20 rounded-full bg-white/5 backdrop-blur-md">
-                                <span class="font-mono text-[9px] text-emerald-400 font-bold tracking-widest uppercase">2026 Edition</span>
-                            </div>
-                            <div class="flex gap-1">
-                                <div class="w-1 h-1 bg-white/20 rounded-full"></div>
-                                <div class="w-1 h-1 bg-white/20 rounded-full"></div>
-                            </div>
-                        </div>
+            <!-- 3D Book Stage -->
+            <div class="book-container order-2 flex-shrink-0 book-stage transform -translate-y-20">
+                <div class="book-3d">
+                    
+                    <!-- Back Cover -->
+                    <div class="cover-back"></div>
+                    
+                    <!-- Page Block -->
+                    <div class="book-pages"></div>
+                    
+                    <!-- Spine -->
+                    <div class="book-spine">
+                        <span class="spine-text">HRP v2.0 &nbsp; // &nbsp; HQAIM</span>
+                    </div>
 
-                        <!-- Title Group -->
-                        <div class="w-full text-left relative z-10">
-                            <h3 class="font-sans font-medium text-xs text-slate-400 uppercase tracking-[0.2em] mb-2">The Definitive Guide to</h3>
-                            <div class="font-display font-bold text-3xl text-white leading-[0.9]">
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-white drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]">AI Ranking</span>
-                                <br>
-                                <span class="text-2xl text-slate-200">& Generative</span>
-                                <br>
-                                <span class="text-2xl text-slate-200">Visibility</span>
-                            </div>
-                        </div>
+                    <!-- Front Cover -->
+                    <div class="cover-front">
+                        <!-- Abstract Graphic Elements -->
+                        <div class="cover-graphic-overlay"></div>
                         
-                        <!-- Mid (Visual System) -->
-                        <div class="node-viz my-auto scale-90">
-                            <div class="node-line"></div>
-                            <div class="node-line-h"></div>
-                            <div class="node-dot"></div>
+                        <!-- Top Section -->
+                        <div class="relative z-10">
+                            <!-- Top Bar -->
+                            <div class="w-full flex justify-between items-start mb-10">
+                                <div class="px-3 py-1 border border-white/20 rounded-full bg-white/5 backdrop-blur-md">
+                                    <span class="font-mono text-[9px] text-emerald-400 font-bold tracking-widest uppercase">2026 Edition</span>
+                                </div>
+                                <div class="flex gap-1">
+                                    <div class="w-1 h-1 bg-white/30 rounded-full"></div>
+                                    <div class="w-1 h-1 bg-white/30 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <!-- Title Area -->
+                            <div class="w-full text-left">
+                                <h3 class="font-sans font-medium text-[10px] text-slate-400 uppercase tracking-[0.25em] mb-4">The Definitive Guide to</h3>
+                                <div class="font-display font-bold text-[34px] leading-[1.2] tracking-tight">
+                                    <span class="text-brand-blue drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]">AI</span> <span class="text-white drop-shadow-md">Ranking</span><br>
+                                    <span class="title-main">& Generative</span><br>
+                                    <span class="title-main">Visibility</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Bottom -->
+                        <!-- Bottom Area -->
                         <div class="w-full mt-auto relative z-10">
-                            <p class="font-sans text-[11px] text-slate-300 font-medium leading-relaxed mb-6 border-l-2 border-brand-blue pl-3">
-                                How Brands Get Cited, Trusted<br>and Chosen in AI-Driven Search
-                            </p>
+                            <div class="pl-4 border-l-2 border-brand-blue/50 mb-10">
+                                <p class="font-sans text-[11px] text-slate-300 font-medium leading-relaxed uppercase tracking-wide opacity-80">
+                                    How Brands Get Cited,<br>Trusted and Chosen<br>in AI-Driven Search
+                                </p>
+                            </div>
 
-                            <div class="flex justify-between items-end border-t border-white/10 pt-4">
+                            <div class="flex justify-between items-end border-t border-white/10 pt-6">
                                 <div>
-                                    <span class="block font-display text-[10px] font-bold text-white uppercase tracking-widest">Abdullah Khan</span>
-                                    <span class="block font-mono text-[9px] text-slate-500 uppercase mt-1">HQAIM STUDIOS</span>
+                                    <!-- Increased Author Name Size -->
+                                    <span class="block font-display text-[14px] font-bold text-white uppercase tracking-widest mb-1">Abdullah Khan</span>
+                                    <span class="block font-mono text-[10px] uppercase tracking-widest font-bold foil-gold">HQAIM STUDIOS</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Spine Face -->
-                    <div class="book-face book-spine">
-                        <span class="spine-text">HRP v2.0 &nbsp; // &nbsp; HQAIM</span>
-                    </div>
-
-                    <!-- Side Face (Pages) -->
-                    <div class="book-face book-side"></div>
-                    
-                    <!-- Back Face (Solid) -->
-                    <div class="book-face book-back"></div>
                 </div>
             </div>
         </div>
@@ -798,51 +792,85 @@
     </section>
 
     <!-- NEW SECTION: THE SHIFT (FULL DATA) -->
-    <section id="shift" class="py-24 bg-brand-slate/30 border-y border-white/5">
-        <div class="container mx-auto px-6 max-w-6xl">
+    <section id="shift" class="py-24 relative overflow-hidden bg-slate-50 dark:bg-brand-dark border-y border-slate-200 dark:border-white/5">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-[url('https://aiartisan.hqaim.com/images/grid.svg')] opacity-[0.03] pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-brand-blue font-mono text-xs uppercase tracking-widest mb-4">Market Intelligence</h2>
-                    <h3 class="font-display font-bold text-slate-900 dark:text-white text-4xl md:text-5xl mb-6">The Click is Dead.<br>Discovery via Synthesis.</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
-                        Traditional search behavior is collapsing. Users are no longer "Googling" for a list of links; they are asking AI agents for a synthesized answer. <span class="text-slate-900 dark:text-white font-bold">Zero-click search isn't a bug—it's a feature.</span> If the AI can answer without navigating your site, traditional rankings become irrelevant.
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        <h2 class="text-brand-blue font-mono text-xs uppercase tracking-widest font-bold">Market Intelligence</h2>
+                    </div>
+                    
+                    <h3 class="font-display font-bold text-slate-900 dark:text-white text-4xl md:text-5xl mb-6 leading-tight">The Click is Dead.<br><span class="text-slate-400">Discovery via Synthesis.</span></h3>
+                    
+                    <p class="text-slate-600 dark:text-slate-400 text-lg mb-10 leading-relaxed">
+                        Traditional search behavior is collapsing. Users are no longer "Googling" for a list of links; they are asking AI agents for a synthesized answer. <span class="text-slate-900 dark:text-white font-bold border-b-2 border-brand-blue/30">Zero-click search isn't a bug—it's a feature.</span>
                     </p>
                     
-                    <ul class="space-y-6">
-                        <li class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 font-bold text-2xl shadow-[0_0_20px_rgba(239,68,68,0.2)] flex-shrink-0">
-                                61%
+                    <!-- Stats Grid -->
+                    <div class="grid gap-4">
+                        <!-- Stat 1 -->
+                        <div class="group p-5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-red-500/30 transition-all hover:translate-x-1 hover:shadow-lg dark:hover:shadow-none hover:shadow-red-500/5">
+                            <div class="flex items-center gap-5">
+                                <div class="w-14 h-14 rounded-lg bg-red-50 dark:bg-red-500/10 border border-red-100 dark:border-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center font-display font-bold text-xl group-hover:scale-110 transition-transform">
+                                    61%
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">CTR Collapse</h4>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Drop in organic clicks for queries triggering AI Overviews (YoY).</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">CTR Collapse</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-500">Drop in organic clicks for queries triggering AI Overviews (YoY).</p>
+                        </div>
+
+                        <!-- Stat 2 -->
+                        <div class="group p-5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-orange-500/30 transition-all hover:translate-x-1 hover:shadow-lg dark:hover:shadow-none hover:shadow-orange-500/5">
+                            <div class="flex items-center gap-5">
+                                <div class="w-14 h-14 rounded-lg bg-orange-50 dark:bg-orange-500/10 border border-orange-100 dark:border-orange-500/20 text-orange-600 dark:text-orange-400 flex items-center justify-center font-display font-bold text-xl group-hover:scale-110 transition-transform">
+                                    40%
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Uncited Content</h4>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Branded content ignored by LLMs due to lack of structured entities.</p>
+                                </div>
                             </div>
-                        </li>
-                        <li class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500 font-bold text-2xl shadow-[0_0_20px_rgba(249,115,22,0.2)] flex-shrink-0">
-                                40%
+                        </div>
+
+                        <!-- Stat 3 -->
+                        <div class="group p-5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-blue-500/30 transition-all hover:translate-x-1 hover:shadow-lg dark:hover:shadow-none hover:shadow-blue-500/5">
+                            <div class="flex items-center gap-5">
+                                <div class="w-14 h-14 rounded-lg bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-display font-bold text-xl group-hover:scale-110 transition-transform">
+                                    25%
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Volume Shrinkage</h4>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Projected decline in traditional search volume by 2026 (Gartner).</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Uncited Content</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-500">Branded content ignored by LLMs due to lack of structure.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-6">
-                            <div class="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 font-bold text-2xl shadow-[0_0_20px_rgba(59,130,246,0.2)] flex-shrink-0">
-                                25%
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Volume Shrinkage</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-500">Projected decline in traditional search volume by 2026 (Gartner).</p>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Chart Container -->
-                <div class="glass-panel rounded-2xl p-8 h-96 relative shadow-2xl bg-white dark:bg-brand-dark/50">
-                    <div class="absolute top-4 right-4 text-[10px] text-slate-500 font-mono">LIVE DATA // 2023-2026</div>
-                    <canvas id="shiftChart"></canvas>
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-500/20 via-transparent to-blue-500/20 rounded-2xl blur-xl opacity-50 dark:opacity-30"></div>
+                    <div class="glass-panel rounded-2xl p-8 h-[500px] relative shadow-2xl bg-white/80 dark:bg-obsidian-900/90 border border-slate-200 dark:border-white/10 backdrop-blur-xl flex flex-col">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+                                <span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">Live Data Stream</span>
+                            </div>
+                            <div class="px-2 py-1 rounded bg-slate-100 dark:bg-white/5 text-[10px] font-mono text-slate-500 border border-slate-200 dark:border-white/10">
+                                SOURCE: GARTNER / SEMRUSH
+                            </div>
+                        </div>
+                        <div class="flex-1 w-full h-full relative">
+                            <canvas id="shiftChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1064,110 +1092,6 @@
                     <i data-lucide="info" class="w-4 h-4 text-brand-blue"></i>
                     <span>Most brands fail at <strong>Layer 02</strong> (Semantics) or <strong>Layer 03</strong> (Trust). The book fixes both.</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VISUAL TOC GRID: The Learning Journey -->
-    <section id="get-the-guide" class="py-24 border-b border-white/5 bg-slate-50 dark:bg-brand-slate/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 dark:border-white/10 rounded-full bg-white dark:bg-white/5 text-[10px] uppercase tracking-widest mb-4 text-slate-500 dark:text-slate-400 font-bold">
-                    <i class="fas fa-map"></i> Your Roadmap
-                </div>
-                <h2 class="font-display font-bold text-3xl md:text-4xl text-slate-900 dark:text-white">What You Will Learn</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-sm mt-4">A step-by-step guide designed for clarity and action.</p>
-            </div>
-
-            <!-- Phase 1: Understanding -->
-            <div class="mb-12">
-                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 dark:border-white/10 pb-2">Phase 1: The Problem</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Intro -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-slate-500 mb-2 block">Introduction</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">The End of Search</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Why Google is changing and what it means for your business.</p>
-                    </div>
-                    <!-- Ch 1 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 01</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">The Death of the Click</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Traffic is dropping because answers are instant. Visibility is the new goal.</p>
-                    </div>
-                    <!-- Ch 2 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 02</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">From Links to Answers</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Understanding how AI writes answers instead of just listing websites.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Phase 2: The Solution -->
-            <div class="mb-12">
-                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 dark:border-white/10 pb-2">Phase 2: The System</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Ch 3 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 03</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">How AI Ranking Works</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">The 3 secrets: Clarity, Depth, and Verification.</p>
-                    </div>
-                    <!-- Ch 4 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 04</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">The HRP Protocol</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Our 7-step roadmap to make your brand visible to AI.</p>
-                    </div>
-                    <!-- Ch 5 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 05</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Technical Setup</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Setting up your website code so robots can read it easily.</p>
-                    </div>
-                    <!-- Ch 6 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 06</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Writing for Machines</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">How to write sentences that AI understands perfectly.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Phase 3: Execution -->
-            <div class="mb-12">
-                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 dark:border-white/10 pb-2">Phase 3: Execution & Defense</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Ch 7 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 07</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Formatting Content</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Using tables and lists to help AI extract your facts.</p>
-                    </div>
-                    <!-- Ch 8 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 08</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Building Trust</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">Getting other credible sites to mention you.</p>
-                    </div>
-                    <!-- Ch 9 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 09</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Measuring Success</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">New metrics to track beyond just "clicks".</p>
-                    </div>
-                    <!-- Ch 10 -->
-                    <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-all hover:-translate-y-1 duration-300">
-                        <span class="text-xs font-mono text-brand-blue font-bold mb-2 block">Chapter 10</span>
-                        <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">The Playbook</h4>
-                        <p class="text-sm text-slate-600 dark:text-slate-400">How to execute this plan and defend your position.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <button class="btn btn-primary w-full md:w-auto" onclick="document.getElementById('lead-form').scrollIntoView({behavior: 'smooth'})">Get the Full Manual</button>
             </div>
         </div>
     </section>
