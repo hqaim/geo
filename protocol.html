@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +10,24 @@
     <meta property="og:description" content="Explore the technical and strategic blueprint to be retrieved, cited, and trusted in AI systems. GEO is your new SEO.">
     <meta property="og:url" content="https://geo.hqaim.com/protocol.html">
     <meta property="og:image" content="https://geo.hqaim.com/assets/images/protocol-hero-graph.svg">
-    
+    <link rel="canonical" href="https://geo.hqaim.com/protocol.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -25,87 +36,187 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        brand: { dark: '#0B0F19', slate: '#1E293B', blue: '#3B82F6', accent: '#6366F1', surface: '#F8FAFC' }
+                        brand: {
+                            dark: '#0B0F19',
+                            slate: '#1E293B',
+                            blue: '#3B82F6',
+                            accent: '#6366F1',
+                            surface: '#F8FAFC',
+                            light: '#F1F5F9'
+                        }
                     },
                     backgroundImage: {
                         'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
         }
     </script>
+
     <style>
-        .hero-grid { background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 40%, transparent 100%); }
-        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-panel:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); }
-        .glow-icon { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        /* Smooth Transition for Theme Switch */
+        body, .glass-panel, nav, h1, h2, h3, p, a, div, span, button, section {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Adaptive Glass Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9); /* Increased opacity for light mode readability */
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .dark .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 20px -3px rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+        .dark .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Adaptive Hero Grid */
+        .hero-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+        .dark .hero-grid {
+            background-image: linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+        }
     </style>
 </head>
-<body class="bg-brand-dark text-white font-sans antialiased">
-    
-    <!-- Navigation (Exact Match) -->
-    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-brand-dark/90 backdrop-blur-md">
+<body class="bg-brand-light dark:bg-brand-dark text-slate-900 dark:text-white antialiased selection:bg-brand-blue selection:text-white font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-white/5 bg-white/90 dark:bg-brand-dark/90 backdrop-blur-xl transition-colors duration-300 shadow-sm dark:shadow-none">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8">
+            <!-- 1. Logo (Left) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8 group-hover:opacity-80 transition-opacity">
                 <div>
-                    <div class="font-display font-bold text-white text-sm tracking-wide">HQAIM</div>
-                    <div class="text-[9px] font-mono text-slate-400 uppercase tracking-widest">Visibility OS</div>
+                    <div class="font-display font-bold text-slate-900 dark:text-white text-sm tracking-wide transition-colors">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest transition-colors">Visibility OS</div>
                 </div>
             </a>
-            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
-                <a href="shift.html" class="hover:text-white transition-colors">Shift</a>
-                <a href="geo.html" class="hover:text-white transition-colors">GEO</a>
-                <a href="protocol.html" class="text-white transition-colors">Protocol</a>
-                <a href="labs.html" class="hover:text-white transition-colors">Labs</a>
-                <a href="resources.html" class="hover:text-white transition-colors">Resources</a>
+            
+            <!-- 2. Tabs (Center) -->
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                <a href="https://geo.hqaim.com/geo.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    GEO
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="shift.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Era
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="protocol.html" class="text-brand-blue dark:text-white transition-colors relative group">
+                    Protocol
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-blue transition-all"></span>
+                </a>
+                <a href="labs.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Labs
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="resources.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Kit
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
             </div>
-            <a href="https://hqaim.com" class="px-5 py-2 bg-white text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue hover:text-white transition-colors">
-                Audit My Brand
-            </a>
+
+            <!-- 3. Actions (Right) -->
+            <div class="flex items-center gap-4">
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20 transition-all focus:outline-none ring-offset-2 focus:ring-2 ring-brand-blue/50" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                </button>
+
+                <!-- Audit Button -->
+                <a href="https://geo.hqaim.com/website_audit.html" target="_blank" class="px-5 py-2.5 bg-brand-dark dark:bg-white text-white dark:text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue dark:hover:bg-brand-blue hover:text-white dark:hover:text-white transition-all shadow-lg hover:shadow-brand-blue/25 transform hover:-translate-y-0.5">
+                    Audit My Brand
+                </a>
+            </div>
         </div>
     </nav>
 
+    <!-- Header -->
     <header class="pt-32 pb-16 container mx-auto px-6 text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] hero-grid pointer-events-none"></div>
-        <!-- Decorative Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div class="relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.2] dark:opacity-[0.03] hero-grid pointer-events-none"></div>
+        <!-- Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none dark:opacity-30 opacity-20"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-blue/20 rounded-full bg-brand-blue/5 backdrop-blur-sm text-[10px] uppercase tracking-widest mb-8 text-brand-blue font-bold animate-fade-in-up shadow-sm">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-[10px] font-mono uppercase tracking-widest text-slate-300">Technical Specification v2.0</span>
+                Technical Specification v2.0
             </div>
-            <h1 class="font-display font-bold text-5xl md:text-7xl mb-6 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">The GEO Protocol</h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                <strong class="text-white">Structured for Machines. Verified by Context.</strong><br>
+            
+            <h1 class="font-display font-bold text-5xl md:text-7xl mb-8 leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm">
+                The GEO Protocol
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-light mb-12 leading-relaxed">
+                <strong class="text-slate-900 dark:text-white font-medium">Structured for Machines. Verified by Context.</strong><br>
                 The blueprint for encoding trust and citation into your digital footprint—transforming brands into retrievable entities.
             </p>
         </div>
     </header>
 
     <!-- Visual Architecture Diagram -->
-    <section class="pb-16 border-b border-white/5">
+    <section class="pb-16 border-b border-slate-200 dark:border-white/5">
         <div class="container mx-auto px-6">
-            <div class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden max-w-5xl mx-auto border border-white/10">
+            <div class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden max-w-5xl mx-auto border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5">
                 <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/5 via-purple-500/5 to-transparent opacity-50"></div>
                 <div class="relative z-10 text-center">
                     <h3 class="font-mono text-xs text-brand-blue uppercase tracking-widest mb-8">Protocol Architecture Flow</h3>
-                    <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-bold text-slate-300">
-                        <div class="p-4 bg-brand-dark rounded-xl border border-white/10 w-40 text-center">
-                            <i class="fas fa-database text-2xl text-slate-500 mb-2"></i><br>Unstructured Data
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-bold text-slate-600 dark:text-slate-300">
+                        <div class="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-slate-200 dark:border-white/10 w-48 text-center shadow-lg">
+                            <i class="fas fa-database text-3xl text-slate-400 mb-3"></i><br>Unstructured Data
                         </div>
-                        <i class="fas fa-arrow-right text-brand-blue hidden md:block"></i>
-                        <i class="fas fa-arrow-down text-brand-blue md:hidden"></i>
+                        <i class="fas fa-arrow-right text-brand-blue text-xl hidden md:block"></i>
+                        <i class="fas fa-arrow-down text-brand-blue text-xl md:hidden"></i>
                         
-                        <div class="p-4 bg-brand-blue/10 rounded-xl border border-brand-blue/30 w-48 text-center shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                            <i class="fas fa-layer-group text-2xl text-brand-blue mb-2"></i><br><span class="text-white">The GEO Protocol</span>
+                        <div class="p-6 bg-brand-blue/10 rounded-2xl border border-brand-blue/30 w-56 text-center shadow-[0_0_30px_rgba(59,130,246,0.15)] transform scale-110">
+                            <i class="fas fa-layer-group text-3xl text-brand-blue mb-3"></i><br><span class="text-brand-blue font-bold">The GEO Protocol</span>
                         </div>
                         
-                        <i class="fas fa-arrow-right text-brand-blue hidden md:block"></i>
-                        <i class="fas fa-arrow-down text-brand-blue md:hidden"></i>
-                        <div class="p-4 bg-brand-dark rounded-xl border border-white/10 w-40 text-center">
-                            <i class="fas fa-robot text-2xl text-purple-400 mb-2"></i><br>LLM Citation
+                        <i class="fas fa-arrow-right text-brand-blue text-xl hidden md:block"></i>
+                        <i class="fas fa-arrow-down text-brand-blue text-xl md:hidden"></i>
+                        <div class="p-6 bg-white dark:bg-brand-dark rounded-2xl border border-slate-200 dark:border-white/10 w-48 text-center shadow-lg">
+                            <i class="fas fa-robot text-3xl text-purple-500 mb-3"></i><br>LLM Citation
                         </div>
                     </div>
                 </div>
@@ -114,90 +225,90 @@
     </section>
 
     <!-- 6 Step Grid -->
-    <section class="py-24">
+    <section class="py-24 bg-brand-light dark:bg-brand-dark transition-colors">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Step 1 -->
-                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
+                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
                     <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-blue/20 to-brand-blue/5 flex items-center justify-center text-brand-blue mb-6 border border-brand-blue/20 group-hover:border-brand-blue/50 transition-colors">
                         <i class="fas fa-fingerprint text-2xl"></i>
                     </div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="text-[10px] font-mono text-slate-500">01 // IDENTITY</span>
+                        <span class="text-[10px] font-mono text-slate-500 font-bold tracking-wider">01 // IDENTITY</span>
                     </div>
-                    <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-brand-blue transition-colors">Register Entity Identity</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-brand-blue transition-colors">Register Entity Identity</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                         Anchor your digital signature in public knowledge graphs (Wikidata, Crunchbase, GLEIF). Establish the "Ground Truth" for your brand entity.
                     </p>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center text-purple-400 mb-6 border border-purple-500/20 group-hover:border-purple-500/50 transition-colors">
+                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center text-purple-500 dark:text-purple-400 mb-6 border border-purple-500/20 group-hover:border-purple-500/50 transition-colors">
                         <i class="fas fa-cubes text-2xl"></i>
                     </div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="text-[10px] font-mono text-slate-500">02 // DATA</span>
+                        <span class="text-[10px] font-mono text-slate-500 font-bold tracking-wider">02 // DATA</span>
                     </div>
-                    <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-purple-400 transition-colors">Publish Factual Triplets</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-purple-500 transition-colors">Publish Factual Triplets</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                         Rewrite copy using Subject-Predicate-Object format. Strip fluff. Embed atomic assertions that AI models can easily tokenize and ingest.
                     </p>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center text-emerald-400 mb-6 border border-emerald-500/20 group-hover:border-emerald-500/50 transition-colors">
+                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center text-emerald-500 dark:text-emerald-400 mb-6 border border-emerald-500/20 group-hover:border-emerald-500/50 transition-colors">
                         <i class="fas fa-network-wired text-2xl"></i>
                     </div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="text-[10px] font-mono text-slate-500">03 // SYNTAX</span>
+                        <span class="text-[10px] font-mono text-slate-500 font-bold tracking-wider">03 // SYNTAX</span>
                     </div>
-                    <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-emerald-400 transition-colors">Inject Nested Schema</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">Inject Nested Schema</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                         Implement advanced JSON-LD. Go beyond basic organization tags to build schema chains that define relationships between Products, People, and Concepts.
                     </p>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center text-orange-400 mb-6 border border-orange-500/20 group-hover:border-orange-500/50 transition-colors">
+                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center text-orange-500 dark:text-orange-400 mb-6 border border-orange-500/20 group-hover:border-orange-500/50 transition-colors">
                         <i class="fas fa-link text-2xl"></i>
                     </div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="text-[10px] font-mono text-slate-500">04 // TRUST</span>
+                        <span class="text-[10px] font-mono text-slate-500 font-bold tracking-wider">04 // TRUST</span>
                     </div>
-                    <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-orange-400 transition-colors">Build External Corroboration</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Secure citations in high-authority outlets. LLMs cross-check claims against news sites and Wikipedia. <span class="text-white font-medium">Unverified = Untrusted.</span>
+                    <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-orange-500 transition-colors">Build External Corroboration</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Secure citations in high-authority outlets. LLMs cross-check claims against news sites and Wikipedia. <span class="font-medium text-slate-900 dark:text-white">Unverified = Untrusted.</span>
                     </p>
                 </div>
 
                 <!-- Step 5 -->
-                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center text-cyan-400 mb-6 border border-cyan-500/20 group-hover:border-cyan-500/50 transition-colors">
+                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-6 border border-cyan-500/20 group-hover:border-cyan-500/50 transition-colors">
                         <i class="fas fa-compress text-2xl"></i>
                     </div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="text-[10px] font-mono text-slate-500">05 // CONTEXT</span>
+                        <span class="text-[10px] font-mono text-slate-500 font-bold tracking-wider">05 // CONTEXT</span>
                     </div>
-                    <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-cyan-400 transition-colors">Compress & Summarize</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-cyan-500 transition-colors">Compress & Summarize</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                         Optimize for context windows. Create concise, structured summary pages that train LLMs to retrieve your key facts efficiently. Redundancy beats elegance.
                     </p>
                 </div>
 
                 <!-- Step 6 -->
-                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center text-red-400 mb-6 border border-red-500/20 group-hover:border-red-500/50 transition-colors">
+                <div class="glass-panel p-8 rounded-2xl group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center text-red-500 dark:text-red-400 mb-6 border border-red-500/20 group-hover:border-red-500/50 transition-colors">
                         <i class="fas fa-magnifying-glass-chart text-2xl"></i>
                     </div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="text-[10px] font-mono text-slate-500">06 // MEASURE</span>
+                        <span class="text-[10px] font-mono text-slate-500 font-bold tracking-wider">06 // MEASURE</span>
                     </div>
-                    <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-red-400 transition-colors">Monitor Model Voice</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-3 group-hover:text-red-500 transition-colors">Monitor Model Voice</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                         Track presence inside answer engines. Use prompt injections and retrieval audits to measure Share of Model Voice (SoMV) and hallucination rates.
                     </p>
                 </div>
@@ -240,9 +351,9 @@
                 <div class="inline-block p-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-6">
                     <i class="fas fa-check-circle text-xl"></i>
                 </div>
-                <h2 class="font-display font-bold text-3xl mb-4">Protocol Outcome</h2>
-                <p class="text-xl text-slate-400 leading-relaxed">
-                    GEO turns websites into citation surfaces. It lets AI extract structured meaning, route facts back to your domain, and elevate your authority. <br><span class="text-white font-medium">This isn’t SEO—it’s entity-level architecture for the next Internet.</span>
+                <h2 class="font-display font-bold text-3xl mb-4 text-slate-900 dark:text-white">Protocol Outcome</h2>
+                <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                    GEO turns websites into citation surfaces. It lets AI extract structured meaning, route facts back to your domain, and elevate your authority. <br><span class="text-slate-900 dark:text-white font-medium">This isn’t SEO—it’s entity-level architecture for the next Internet.</span>
                 </p>
             </div>
         </div>
@@ -299,5 +410,32 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // --- Init Lucide Icons ---
+        lucide.createIcons();
+
+        // --- Theme Logic ---
+        const htmlRoot = document.documentElement;
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+            htmlRoot.classList.add('dark');
+        } else {
+            htmlRoot.classList.remove('dark');
+        }
+
+        // Toggle Function
+        function toggleTheme() {
+            htmlRoot.classList.toggle('dark');
+            
+            if (htmlRoot.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+    </script>
 </body>
 </html>
