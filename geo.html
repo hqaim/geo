@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +10,24 @@
     <meta property="og:description" content="Learn the frameworks and methods that position your brand for LLM citation, machine-readable credibility, and AI-driven discovery.">
     <meta property="og:url" content="https://geo.hqaim.com/geo.html">
     <meta property="og:image" content="https://geo.hqaim.com/assets/images/geo-playbook-og.png">
+    <link rel="canonical" href="https://geo.hqaim.com/geo.html">
     
+    <!-- Favicon -->
+    <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -25,155 +36,308 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        brand: { dark: '#0B0F19', slate: '#1E293B', blue: '#3B82F6', accent: '#6366F1', surface: '#F8FAFC' }
+                        brand: {
+                            dark: '#0B0F19',
+                            slate: '#1E293B',
+                            blue: '#3B82F6',
+                            accent: '#6366F1',
+                            surface: '#F8FAFC',
+                            light: '#F1F5F9'
+                        }
                     },
                     backgroundImage: {
                         'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
         }
     </script>
+
     <style>
-        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .hero-grid { background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 40%, transparent 100%); }
+        /* Smooth Transition for Theme Switch */
+        body, .glass-panel, nav, h1, h2, h3, p, a, div, span, button {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Adaptive Glass Panels */
+        .glass-panel {
+            /* Light Mode Default */
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        /* Dark Mode Override */
+        .dark .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+        }
+
+        .glass-panel:hover {
+            /* Light Mode Hover */
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 20px -3px rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+        .dark .glass-panel:hover {
+            /* Dark Mode Hover */
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Adaptive Hero Grid */
+        .hero-grid {
+            background-size: 40px 40px;
+            /* Light Mode Grid */
+            background-image: linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+        .dark .hero-grid {
+            /* Dark Mode Grid */
+            background-image: linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+        }
     </style>
 </head>
-<body class="bg-brand-dark text-white font-sans antialiased">
-    
-    <!-- Navigation (Exact Match) -->
-    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-brand-dark/90 backdrop-blur-md">
+<body class="bg-brand-light dark:bg-brand-dark text-slate-900 dark:text-white antialiased selection:bg-brand-blue selection:text-white font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-white/5 bg-white/90 dark:bg-brand-dark/90 backdrop-blur-xl transition-colors duration-300 shadow-sm dark:shadow-none">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8">
+            <!-- 1. Logo (Left) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8 group-hover:opacity-80 transition-opacity">
                 <div>
-                    <div class="font-display font-bold text-white text-sm tracking-wide">HQAIM</div>
-                    <div class="text-[9px] font-mono text-slate-400 uppercase tracking-widest">Visibility OS</div>
+                    <div class="font-display font-bold text-slate-900 dark:text-white text-sm tracking-wide transition-colors">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest transition-colors">Visibility OS</div>
                 </div>
             </a>
-            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
-                <a href="shift.html" class="hover:text-white transition-colors">Shift</a>
-                <a href="geo.html" class="text-white transition-colors">GEO</a>
-                <a href="protocol.html" class="hover:text-white transition-colors">Protocol</a>
-                <a href="labs.html" class="hover:text-white transition-colors">Labs</a>
-                <a href="resources.html" class="hover:text-white transition-colors">Resources</a>
+            
+            <!-- 2. Tabs (Center - Updated) -->
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                <a href="https://geo.hqaim.com/geo.html" class="text-brand-blue dark:text-white transition-colors relative group">
+                    GEO
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-blue transition-all"></span>
+                </a>
+                <a href="shift.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Era
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="protocol.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Protocol
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="labs.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Labs
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="resources.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Kit
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
             </div>
-            <a href="https://hqaim.com" class="px-5 py-2 bg-white text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue hover:text-white transition-colors">
-                Audit My Brand
-            </a>
+
+            <!-- 3. Actions (Right) -->
+            <div class="flex items-center gap-4">
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20 transition-all focus:outline-none ring-offset-2 focus:ring-2 ring-brand-blue/50" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                </button>
+
+                <!-- Audit Button -->
+                <a href="https://geo.hqaim.com/website_audit.html" target="_blank" class="px-5 py-2.5 bg-brand-dark dark:bg-white text-white dark:text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue dark:hover:bg-brand-blue hover:text-white dark:hover:text-white transition-all shadow-lg hover:shadow-brand-blue/25 transform hover:-translate-y-0.5">
+                    Audit My Brand
+                </a>
+            </div>
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 container mx-auto px-6 text-center relative">
+    <!-- Header -->
+    <header class="pt-32 pb-24 container mx-auto px-6 text-center relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] hero-grid pointer-events-none"></div>
+        <!-- Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-blue/20 rounded-full blur-[120px] pointer-events-none dark:opacity-40 opacity-20"></div>
+
         <div class="relative z-10">
-            <div class="inline-block px-4 py-1 mb-6 border border-brand-blue/30 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-bold uppercase tracking-widest">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-brand-blue/20 rounded-full bg-brand-blue/5 backdrop-blur-sm text-[10px] uppercase tracking-widest mb-8 text-brand-blue font-bold animate-fade-in-up shadow-sm">
                 Tactical Framework
             </div>
-            <h1 class="font-display font-bold text-5xl md:text-6xl mb-6">The GEO Playbook</h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                <strong class="text-white">Visibility doesn’t start with search anymore. It starts with synthesis.</strong><br>
+            
+            <h1 class="font-display font-bold text-5xl md:text-7xl mb-8 leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm">
+                The GEO Playbook
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
+                <strong class="text-slate-900 dark:text-white font-medium">Visibility doesn’t start with search anymore. It starts with synthesis.</strong><br>
                 This playbook reveals the exact methods to build AI-readable authority, optimize for LLM citation, and engineer trust at scale.
             </p>
         </div>
     </header>
 
-    <section class="py-16">
-        <div class="container mx-auto px-6 max-w-4xl space-y-16">
+    <section class="py-24 bg-brand-light dark:bg-brand-dark transition-colors border-t border-slate-200 dark:border-white/5">
+        <div class="container mx-auto px-6 max-w-5xl space-y-16">
             
             <!-- Step 1 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-brand-blue">
-                <div class="w-16 h-16 rounded-xl bg-brand-blue/10 flex items-center justify-center text-3xl text-brand-blue flex-shrink-0 border border-brand-blue/20">
+            <div class="glass-panel p-8 md:p-10 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-brand-blue hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300">
+                <div class="w-16 h-16 rounded-xl bg-blue-100 dark:bg-brand-blue/10 flex items-center justify-center text-3xl text-brand-blue flex-shrink-0 border border-brand-blue/20">
                     <i class="fas fa-fingerprint"></i>
                 </div>
                 <div>
-                    <h2 class="font-display font-bold text-2xl mb-4">1. Define Your Entity Signature</h2>
-                    <ul class="space-y-3 text-slate-400">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-brand-blue mt-1 text-xs"></i> <span>Structure content around a single high-priority entity (person, product, concept).</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-brand-blue mt-1 text-xs"></i> <span>Use schema: <code class="bg-white/10 px-1 rounded text-xs">Organization</code>, <code class="bg-white/10 px-1 rounded text-xs">Person</code>, <code class="bg-white/10 px-1 rounded text-xs">Product</code>, <code class="bg-white/10 px-1 rounded text-xs">Article</code> with <code class="bg-white/10 px-1 rounded text-xs">sameAs</code> links.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-brand-blue mt-1 text-xs"></i> <span>Ensure clarity in the first 100 words (avoid ambiguity, lead with entity claim).</span></li>
+                    <h2 class="font-display font-bold text-2xl md:text-3xl mb-4 text-slate-900 dark:text-white">1. Define Your Entity Signature</h2>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-brand-blue mt-1.5 text-xs"></i> <span>Structure content around a single high-priority entity (person, product, concept).</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-brand-blue mt-1.5 text-xs"></i> <span>Use schema: <code class="bg-slate-200 dark:bg-white/10 px-1.5 py-0.5 rounded text-xs font-mono text-slate-800 dark:text-slate-200">Organization</code>, <code class="bg-slate-200 dark:bg-white/10 px-1.5 py-0.5 rounded text-xs font-mono text-slate-800 dark:text-slate-200">Person</code>, <code class="bg-slate-200 dark:bg-white/10 px-1.5 py-0.5 rounded text-xs font-mono text-slate-800 dark:text-slate-200">Product</code>, with <code class="bg-slate-200 dark:bg-white/10 px-1.5 py-0.5 rounded text-xs font-mono text-slate-800 dark:text-slate-200">sameAs</code> links.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-brand-blue mt-1.5 text-xs"></i> <span>Ensure clarity in the first 100 words (avoid ambiguity, lead with entity claim).</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Step 2 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-purple-500">
-                <div class="w-16 h-16 rounded-xl bg-purple-500/10 flex items-center justify-center text-3xl text-purple-400 flex-shrink-0 border border-purple-500/20">
+            <div class="glass-panel p-8 md:p-10 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-purple-500 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300">
+                <div class="w-16 h-16 rounded-xl bg-purple-100 dark:bg-purple-500/10 flex items-center justify-center text-3xl text-purple-600 dark:text-purple-400 flex-shrink-0 border border-purple-500/20">
                     <i class="fas fa-code-branch"></i>
                 </div>
                 <div>
-                    <h2 class="font-display font-bold text-2xl mb-4">2. Engineer AI-Friendly Structure</h2>
-                    <ul class="space-y-3 text-slate-400">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-purple-400 mt-1 text-xs"></i> <span>Use semantic triplets: Subject → Verb → Object (e.g., "X improves Y").</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-purple-400 mt-1 text-xs"></i> <span>Add Markdown tables with headers (used verbatim by ChatGPT, Claude, etc.).</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-purple-400 mt-1 text-xs"></i> <span>Use bullets, short answers, and key stats early in the content.</span></li>
+                    <h2 class="font-display font-bold text-2xl md:text-3xl mb-4 text-slate-900 dark:text-white">2. Engineer AI-Friendly Structure</h2>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-purple-500 mt-1.5 text-xs"></i> <span>Use semantic triplets: Subject → Verb → Object (e.g., "X improves Y").</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-purple-500 mt-1.5 text-xs"></i> <span>Add Markdown tables with headers (used verbatim by ChatGPT, Claude, etc.).</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-purple-500 mt-1.5 text-xs"></i> <span>Use bullets, short answers, and key stats early in the content.</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Step 3 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-emerald-500">
-                <div class="w-16 h-16 rounded-xl bg-emerald-500/10 flex items-center justify-center text-3xl text-emerald-400 flex-shrink-0 border border-emerald-500/20">
+            <div class="glass-panel p-8 md:p-10 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-emerald-500 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300">
+                <div class="w-16 h-16 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 flex items-center justify-center text-3xl text-emerald-600 dark:text-emerald-400 flex-shrink-0 border border-emerald-500/20">
                     <i class="fas fa-link"></i>
                 </div>
                 <div>
-                    <h2 class="font-display font-bold text-2xl mb-4">3. Build a Citation Loop</h2>
-                    <ul class="space-y-3 text-slate-400">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1 text-xs"></i> <span>Crosslink all internal content by topic cluster and entity association.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1 text-xs"></i> <span>Publish thought leadership externally that links back to entity hubs.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1 text-xs"></i> <span>Create references in 3rd-party databases (Wikidata, Crunchbase, etc.).</span></li>
+                    <h2 class="font-display font-bold text-2xl md:text-3xl mb-4 text-slate-900 dark:text-white">3. Build a Citation Loop</h2>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-500 mt-1.5 text-xs"></i> <span>Crosslink all internal content by topic cluster and entity association.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-500 mt-1.5 text-xs"></i> <span>Publish thought leadership externally that links back to entity hubs.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-500 mt-1.5 text-xs"></i> <span>Create references in 3rd-party databases (Wikidata, Crunchbase, etc.).</span></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Visual Diagram -->
-            <div class="my-12 p-8 border border-white/10 rounded-3xl bg-brand-slate/30 text-center">
-                <img src="https://geo.hqaim.com/assets/images/geo-citation-loop.svg" alt="GEO Citation Loop Diagram" class="w-full max-w-2xl mx-auto rounded-lg shadow-2xl mb-4 hover:scale-[1.01] transition-transform duration-500" onerror="this.src='https://placehold.co/800x400/1e293b/white?text=Citation+Loop+Visualization'">
-                <p class="text-sm text-slate-500 italic">Figure 1: The citation loop structure feeding entity recognition & LLM synthesis.</p>
+            <!-- Visual Diagram: Animated Citation Loop -->
+            <div class="my-16 p-8 border border-slate-200 dark:border-white/10 rounded-3xl bg-slate-50 dark:bg-brand-slate/30 shadow-lg relative overflow-hidden group">
+                <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col items-center justify-center py-10">
+                    <!-- Animation Container -->
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <!-- Orbit Ring -->
+                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-slate-300 dark:border-white/10 animate-[spin_20s_linear_infinite]"></div>
+                        
+                        <!-- Flowing Particles (Simulated via rotating containers) -->
+                        <div class="absolute inset-0 rounded-full animate-[spin_3s_linear_infinite]">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1.5 w-3 h-3 bg-brand-blue rounded-full shadow-[0_0_10px_#3b82f6]"></div>
+                        </div>
+                        <div class="absolute inset-0 rounded-full animate-[spin_4s_linear_infinite_reverse]">
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1.5 w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981]"></div>
+                        </div>
+
+                        <!-- Nodes -->
+                        <!-- Top Node: Entity Hub -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white dark:bg-brand-dark border-2 border-brand-blue rounded-2xl flex items-center justify-center shadow-lg z-10">
+                            <i class="fas fa-server text-brand-blue text-xl"></i>
+                            <div class="absolute -top-8 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest whitespace-nowrap">Entity Hub</div>
+                        </div>
+
+                        <!-- Bottom Right: External Authority -->
+                        <div class="absolute bottom-[15%] right-[5%] w-16 h-16 bg-white dark:bg-brand-dark border-2 border-purple-500 rounded-full flex items-center justify-center shadow-lg z-10">
+                            <i class="fas fa-newspaper text-purple-500 text-xl"></i>
+                            <div class="absolute -bottom-8 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest whitespace-nowrap">External Auth</div>
+                        </div>
+
+                        <!-- Bottom Left: Knowledge Graph -->
+                        <div class="absolute bottom-[15%] left-[5%] w-16 h-16 bg-white dark:bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-lg z-10">
+                            <i class="fas fa-project-diagram text-emerald-500 text-xl"></i>
+                            <div class="absolute -bottom-8 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest whitespace-nowrap">Knowledge Graph</div>
+                        </div>
+
+                        <!-- Center Label -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                            <div class="text-3xl font-display font-bold text-slate-900 dark:text-white">LLM</div>
+                            <div class="text-[10px] text-slate-400 uppercase tracking-widest">Synthesis</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-center text-sm text-slate-500 dark:text-slate-400 italic mt-8 relative z-10">Figure 1: The recursive signal flow between owned entities, external validation, and knowledge graph grounding.</p>
             </div>
 
             <!-- Step 4 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-orange-500">
-                <div class="w-16 h-16 rounded-xl bg-orange-500/10 flex items-center justify-center text-3xl text-orange-400 flex-shrink-0 border border-orange-500/20">
+            <div class="glass-panel p-8 md:p-10 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-orange-500 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300">
+                <div class="w-16 h-16 rounded-xl bg-orange-100 dark:bg-orange-500/10 flex items-center justify-center text-3xl text-orange-600 dark:text-orange-400 flex-shrink-0 border border-orange-500/20">
                     <i class="fas fa-bullhorn"></i>
                 </div>
                 <div>
-                    <h2 class="font-display font-bold text-2xl mb-4">4. Amplify with Digital PR</h2>
-                    <ul class="space-y-3 text-slate-400">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-orange-400 mt-1 text-xs"></i> <span>Prioritize unlinked mentions on authoritative domains over backlinks alone.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-orange-400 mt-1 text-xs"></i> <span>Include quotes in expert roundups, interviews, and press releases.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-orange-400 mt-1 text-xs"></i> <span>Ensure these citations repeat key entity phrases and roles.</span></li>
+                    <h2 class="font-display font-bold text-2xl md:text-3xl mb-4 text-slate-900 dark:text-white">4. Amplify with Digital PR</h2>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-orange-500 mt-1.5 text-xs"></i> <span>Prioritize unlinked mentions on authoritative domains over backlinks alone.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-orange-500 mt-1.5 text-xs"></i> <span>Include quotes in expert roundups, interviews, and press releases.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-orange-500 mt-1.5 text-xs"></i> <span>Ensure these citations repeat key entity phrases and roles.</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Step 5 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-red-500">
-                <div class="w-16 h-16 rounded-xl bg-red-500/10 flex items-center justify-center text-3xl text-red-400 flex-shrink-0 border border-red-500/20">
+            <div class="glass-panel p-8 md:p-10 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-red-500 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300">
+                <div class="w-16 h-16 rounded-xl bg-red-100 dark:bg-red-500/10 flex items-center justify-center text-3xl text-red-600 dark:text-red-400 flex-shrink-0 border border-red-500/20">
                     <i class="fas fa-shield-halved"></i>
                 </div>
                 <div>
-                    <h2 class="font-display font-bold text-2xl mb-4">5. GEO Hygiene Checklist</h2>
-                    <ul class="space-y-3 text-slate-400">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-400 mt-1 text-xs"></i> <span>Robots.txt must not block AI crawlers (Gemini, Claude, ChatGPT).</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-400 mt-1 text-xs"></i> <span>Pages must load fast and serve indexable HTML.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-400 mt-1 text-xs"></i> <span>Use canonical URLs, sitemap.xml, and structured JSON-LD.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-400 mt-1 text-xs"></i> <span>Always update timestamps and refresh stale sections quarterly.</span></li>
+                    <h2 class="font-display font-bold text-2xl md:text-3xl mb-4 text-slate-900 dark:text-white">5. GEO Hygiene Checklist</h2>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-500 mt-1.5 text-xs"></i> <span>Robots.txt must not block AI crawlers (Gemini, Claude, ChatGPT).</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-500 mt-1.5 text-xs"></i> <span>Pages must load fast and serve indexable HTML.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-500 mt-1.5 text-xs"></i> <span>Use canonical URLs, sitemap.xml, and structured JSON-LD.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-red-500 mt-1.5 text-xs"></i> <span>Always update timestamps and refresh stale sections quarterly.</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Step 6 -->
-            <div class="glass-panel p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-cyan-500">
-                <div class="w-16 h-16 rounded-xl bg-cyan-500/10 flex items-center justify-center text-3xl text-cyan-400 flex-shrink-0 border border-cyan-500/20">
+            <div class="glass-panel p-8 md:p-10 rounded-2xl flex flex-col md:flex-row gap-8 items-start border-l-4 border-l-cyan-500 hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-300">
+                <div class="w-16 h-16 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 flex items-center justify-center text-3xl text-cyan-600 dark:text-cyan-400 flex-shrink-0 border border-cyan-500/20">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div>
-                    <h2 class="font-display font-bold text-2xl mb-4">6. Track AI Visibility</h2>
-                    <ul class="space-y-3 text-slate-400">
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1 text-xs"></i> <span>Use Google Search Console (AI Mode), Perplexity, and ChatGPT tracking tools.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1 text-xs"></i> <span>Prompt LLMs with target queries and log which brands get cited.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1 text-xs"></i> <span>Monitor for mentions, not clicks. Share-of-voice now matters more than traffic.</span></li>
+                    <h2 class="font-display font-bold text-2xl md:text-3xl mb-4 text-slate-900 dark:text-white">6. Track AI Visibility</h2>
+                    <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-500 mt-1.5 text-xs"></i> <span>Use Google Search Console (AI Mode), Perplexity, and ChatGPT tracking tools.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-500 mt-1.5 text-xs"></i> <span>Prompt LLMs with target queries and log which brands get cited.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-500 mt-1.5 text-xs"></i> <span>Monitor for mentions, not clicks. Share-of-voice now matters more than traffic.</span></li>
                     </ul>
                 </div>
             </div>
@@ -181,56 +345,87 @@
         </div>
     </section>
 
-    <!-- Footer (Exact Match) -->
-    <footer class="bg-brand-dark text-white pt-20 pb-10 border-t border-white/10">
+    <!-- Footer -->
+    <footer class="bg-slate-900 dark:bg-brand-dark text-white pt-24 pb-12 border-t border-slate-200 dark:border-white/5 transition-colors">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
                 <div>
-                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-6">
-                    <p class="text-slate-400 text-sm max-w-sm mb-6">
+                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-8">
+                    <p class="text-slate-400 text-sm max-w-sm mb-8 leading-relaxed">
                         Building the credibility infrastructure for the AI-first web. Helping brands become recognizable, retrievable, and reputable.
                     </p>
                     <div class="flex gap-4">
-                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue hover:text-white text-slate-400 transition-all" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="YouTube">
+                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue hover:text-white text-slate-400 transition-all" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="https://www.instagram.com/hqaim_studios/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="Instagram">
+                        <a href="https://www.instagram.com/hqaim_studios/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue hover:text-white text-slate-400 transition-all" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-12 text-sm text-slate-400">
+                <div class="grid grid-cols-2 gap-16 text-sm text-slate-400">
                     <div>
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Protocol</h4>
-                        <ul class="space-y-2">
-                            <li><a href="shift.html" class="hover:text-brand-blue">The Shift</a></li>
-                            <li><a href="geo.html" class="hover:text-brand-blue">GEO Playbook</a></li>
-                            <li><a href="protocol.html" class="hover:text-brand-blue">Framework</a></li>
+                        <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Protocol</h4>
+                        <ul class="space-y-4">
+                            <li><a href="shift.html" class="hover:text-brand-blue transition-colors">Era</a></li>
+                            <li><a href="https://geo.hqaim.com/geo.html" class="hover:text-brand-blue transition-colors">GEO Playbook</a></li>
+                            <li><a href="protocol.html" class="hover:text-brand-blue transition-colors">Framework</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Studio</h4>
-                        <ul class="space-y-2">
-                            <li><a href="https://www.hqaim.com/p/about.html" class="hover:text-brand-blue">About HQAIM</a></li>
-                            <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue">Contact</a></li>
-                            <li><a href="https://www.hqaim.com/p/privacy.html" class="hover:text-brand-blue">Privacy</a></li>
+                        <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Studio</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.hqaim.com/p/about.html" class="hover:text-brand-blue transition-colors">About HQAIM</a></li>
+                            <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue transition-colors">Contact</a></li>
+                            <li><a href="https://www.hqaim.com/p/privacy.html" class="hover:text-brand-blue transition-colors">Privacy</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
                 <p>&copy; 2026 HQAIM Studios. All rights reserved.</p>
                 <div class="flex items-center gap-2 mt-4 md:mt-0">
-                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     Systems Operational
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // --- Init Lucide Icons ---
+        lucide.createIcons();
+
+        // --- Theme Logic ---
+        const htmlRoot = document.documentElement;
+        
+        // 1. Check LocalStorage or System Preference
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+            htmlRoot.classList.add('dark');
+        } else {
+            htmlRoot.classList.remove('dark');
+        }
+
+        // 2. Toggle Function
+        function toggleTheme() {
+            htmlRoot.classList.toggle('dark');
+            
+            // Save preference
+            if (htmlRoot.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+    </script>
 </body>
 </html>
