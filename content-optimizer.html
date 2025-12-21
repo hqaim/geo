@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEO Content Optimizer | HQAIM Visibility OS</title>
+    <meta name="description" content="Optimize your content for Generative Engine Optimization. Check entity salience, structure, and citation readiness for LLMs.">
+    <meta name="author" content="Abdullah Khan">
+    <meta property="og:title" content="GEO Content Optimizer | HQAIM">
+    <meta property="og:description" content="Simulate how AI models perceive your content. Optimize for retrieval and citation.">
+    <meta property="og:url" content="https://geo.hqaim.com/labs.html">
+    <meta property="og:image" content="https://geo.hqaim.com/assets/images/labs-og.svg">
+    <link rel="canonical" href="https://geo.hqaim.com/labs.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            slate: '#1E293B',
+                            blue: '#3B82F6',
+                            accent: '#6366F1',
+                            surface: '#F8FAFC',
+                            light: '#F1F5F9'
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Transition for Theme Switch */
+        body, .glass-panel, nav, h1, h2, h3, p, a, div, span, button, section, textarea, pre {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Adaptive Glass Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .dark .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 20px -3px rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+        .dark .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Adaptive Hero Grid */
+        .hero-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+        .dark .hero-grid {
+            background-image: linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-brand-light dark:bg-brand-dark text-slate-900 dark:text-white antialiased selection:bg-brand-blue selection:text-white font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-white/5 bg-white/90 dark:bg-brand-dark/90 backdrop-blur-xl transition-colors duration-300 shadow-sm dark:shadow-none">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- 1. Logo (Left) -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" onerror="this.src='https://placehold.co/32x32/1e293b/white?text=H'" alt="HQAIM" class="w-8 h-8 group-hover:opacity-80 transition-opacity">
+                <div>
+                    <div class="font-display font-bold text-slate-900 dark:text-white text-sm tracking-wide transition-colors">HQAIM</div>
+                    <div class="text-[9px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest transition-colors">Visibility OS</div>
+                </div>
+            </a>
+            
+            <!-- 2. Tabs (Center) -->
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                <a href="https://geo.hqaim.com/geo.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    GEO
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="shift.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Era
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="protocol.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Protocol
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="labs.html" class="text-brand-blue dark:text-white transition-colors relative group">
+                    Labs
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-blue transition-all"></span>
+                </a>
+                <a href="resources.html" class="hover:text-brand-blue dark:hover:text-white transition-colors relative group">
+                    Kit
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all group-hover:w-full"></span>
+                </a>
+            </div>
+
+            <!-- 3. Actions (Right) -->
+            <div class="flex items-center gap-4">
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20 transition-all focus:outline-none ring-offset-2 focus:ring-2 ring-brand-blue/50" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                </button>
+
+                <!-- Audit Button -->
+                <a href="https://geo.hqaim.com/website_audit.html" target="_blank" class="px-5 py-2.5 bg-brand-dark dark:bg-white text-white dark:text-brand-dark font-bold text-xs rounded-full hover:bg-brand-blue dark:hover:bg-brand-blue hover:text-white dark:hover:text-white transition-all shadow-lg hover:shadow-brand-blue/25 transform hover:-translate-y-0.5">
+                    Audit My Brand
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-12 container mx-auto px-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.2] dark:opacity-[0.03] hero-grid pointer-events-none"></div>
+        <!-- Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none dark:opacity-30 opacity-20"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-cyan-500/20 rounded-full bg-cyan-500/5 backdrop-blur-sm text-[10px] uppercase tracking-widest mb-8 text-cyan-600 dark:text-cyan-400 font-bold animate-fade-in-up shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                HQAIM Labs
+            </div>
+            
+            <h1 class="font-display font-bold text-5xl md:text-7xl mb-8 leading-tight tracking-tight text-slate-900 dark:text-white drop-shadow-sm">
+                GEO Content Optimizer
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-light mb-12 leading-relaxed">
+                Paste in your content. Restructure it for LLM retrieval and citation alignment in one click. <strong class="text-slate-900 dark:text-white font-medium">Turn text into knowledge.</strong>
+            </p>
+        </div>
+    </header>
+
+    <!-- Optimizer Interface -->
+    <section class="pb-24 bg-brand-light dark:bg-brand-dark transition-colors">
+        <div class="container mx-auto px-6 max-w-5xl">
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Input Panel -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 flex flex-col h-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fas fa-pen-nib text-cyan-500"></i> Original Content
+                        </h3>
+                        <span class="text-xs text-slate-400 font-mono">Input</span>
+                    </div>
+                    <textarea id="contentInput" class="w-full flex-grow bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl p-4 text-sm font-mono text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 resize-none min-h-[400px]" placeholder="Paste your article, blog post, or product description here..."></textarea>
+                    <div class="mt-4 flex justify-end">
+                        <button onclick="simulateOptimization()" class="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg transition-all shadow-lg hover:shadow-cyan-500/30 flex items-center gap-2">
+                            <i class="fas fa-wand-magic-sparkles"></i> Analyze & Optimize
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Output Panel (Initially Hidden/Placeholder) -->
+                <div id="outputPanel" class="glass-panel p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 flex flex-col h-full relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fas fa-robot text-purple-500"></i> Optimized Structure
+                        </h3>
+                        <div class="flex gap-2">
+                            <span class="text-xs font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded hidden" id="scoreBadge">98/100 GEO Score</span>
+                            <span class="text-xs text-slate-400 font-mono">Output</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Loading State -->
+                    <div id="loadingState" class="absolute inset-0 bg-white/90 dark:bg-[#0B0F19]/90 backdrop-blur-sm flex flex-col items-center justify-center z-20 hidden">
+                        <div class="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mb-4"></div>
+                        <p class="text-sm text-cyan-500 font-mono animate-pulse">Analyzing Entities...</p>
+                    </div>
+
+                    <!-- Placeholder State -->
+                    <div id="placeholderState" class="flex-grow flex flex-col items-center justify-center text-slate-400 opacity-50 border-2 border-dashed border-slate-300 dark:border-white/10 rounded-xl min-h-[400px]">
+                        <i class="fas fa-arrow-left text-4xl mb-4"></i>
+                        <p class="text-sm">Waiting for input...</p>
+                    </div>
+
+                    <!-- Result State -->
+                    <div id="resultState" class="hidden flex-grow overflow-y-auto pr-2 custom-scrollbar">
+                        <div class="space-y-4">
+                            <!-- Semantic Triplets Block -->
+                            <div class="bg-slate-50 dark:bg-black/20 rounded-lg p-4 border border-slate-200 dark:border-white/5">
+                                <h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Semantic Triplets</h4>
+                                <div class="flex gap-2 mb-2">
+                                    <span class="bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs px-2 py-1 rounded border border-blue-500/20">Subject</span>
+                                    <i class="fas fa-arrow-right text-slate-400 text-xs self-center"></i>
+                                    <span class="bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs px-2 py-1 rounded border border-purple-500/20">Predicate</span>
+                                    <i class="fas fa-arrow-right text-slate-400 text-xs self-center"></i>
+                                    <span class="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs px-2 py-1 rounded border border-emerald-500/20">Object</span>
+                                </div>
+                                <p class="text-sm font-mono text-slate-700 dark:text-slate-300">"HQAIM (Subject) improves (Predicate) AI visibility (Object)."</p>
+                            </div>
+
+                            <!-- Markdown Table Block -->
+                            <div class="bg-slate-50 dark:bg-black/20 rounded-lg p-4 border border-slate-200 dark:border-white/5">
+                                <h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Structured Data Table</h4>
+                                <table class="w-full text-xs text-left text-slate-600 dark:text-slate-400">
+                                    <thead class="text-xs text-slate-700 dark:text-slate-200 uppercase bg-slate-100 dark:bg-white/5">
+                                        <tr>
+                                            <th scope="col" class="px-2 py-1 rounded-l">Feature</th>
+                                            <th scope="col" class="px-2 py-1 rounded-r">Benefit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-slate-200 dark:border-white/5">
+                                            <td class="px-2 py-1">Entity Schema</td>
+                                            <td class="px-2 py-1">Knowledge Graph Entry</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-2 py-1">Vector Density</td>
+                                            <td class="px-2 py-1">Higher Relevance Score</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Optimized Copy -->
+                            <div class="bg-slate-50 dark:bg-black/20 rounded-lg p-4 border border-slate-200 dark:border-white/5">
+                                <h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Optimized Copy</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    <strong>Summary:</strong> <span id="optimizedSummary">HQAIM is a Visibility Operating System designed for the post-search era. It enables brands to optimize for Generative Engine Optimization (GEO) by structuring data for LLM retrieval.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Exact Match) -->
+    <footer class="bg-brand-dark text-white pt-24 pb-12 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
+                <div>
+                    <img src="https://aiartisan.hqaim.com/assets/images/HQAIM_LOGO_Gradient_Minimal.svg" onerror="this.src='https://placehold.co/120x32/1e293b/white?text=HQAIM'" alt="HQAIM Logo" class="h-8 mb-8">
+                    <p class="text-slate-400 text-sm max-w-sm mb-8 leading-relaxed">
+                        Building the credibility infrastructure for the AI-first web. Helping brands become recognizable, retrievable, and reputable.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/hqaim" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC9YeyPindibagFpHSNg17wA" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/hqaim_studios/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-blue transition-colors" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-16 text-sm text-slate-400">
+                    <div>
+                        <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Protocol</h4>
+                        <ul class="space-y-4">
+                            <li><a href="shift.html" class="hover:text-brand-blue transition-colors">Era</a></li>
+                            <li><a href="https://geo.hqaim.com/geo.html" class="hover:text-brand-blue transition-colors">GEO Playbook</a></li>
+                            <li><a href="protocol.html" class="hover:text-brand-blue transition-colors">Framework</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Studio</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.hqaim.com/p/about.html" class="hover:text-brand-blue transition-colors">About HQAIM</a></li>
+                            <li><a href="https://www.hqaim.com/p/contact.html" class="hover:text-brand-blue transition-colors">Contact</a></li>
+                            <li><a href="https://www.hqaim.com/p/privacy.html" class="hover:text-brand-blue transition-colors">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 HQAIM Studios. All rights reserved.</p>
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    Systems Operational
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Init Lucide Icons ---
+        lucide.createIcons();
+
+        // --- Theme Logic ---
+        const htmlRoot = document.documentElement;
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+            htmlRoot.classList.add('dark');
+        } else {
+            htmlRoot.classList.remove('dark');
+        }
+
+        // Toggle Function
+        function toggleTheme() {
+            htmlRoot.classList.toggle('dark');
+            
+            if (htmlRoot.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // --- Simulation Logic ---
+        function simulateOptimization() {
+            const input = document.getElementById('contentInput').value;
+            const loading = document.getElementById('loadingState');
+            const placeholder = document.getElementById('placeholderState');
+            const result = document.getElementById('resultState');
+            const scoreBadge = document.getElementById('scoreBadge');
+
+            if (!input.trim()) {
+                alert("Please paste some content first.");
+                return;
+            }
+
+            // Show Loading
+            loading.classList.remove('hidden');
+            
+            // Simulate API Delay
+            setTimeout(() => {
+                loading.classList.add('hidden');
+                placeholder.classList.add('hidden');
+                result.classList.remove('hidden');
+                scoreBadge.classList.remove('hidden');
+                
+                // Update summary with snippet of input
+                const summary = input.substring(0, 100) + "...";
+                document.getElementById('optimizedSummary').innerText = `Optimized Entity Summary: ${summary}`;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
