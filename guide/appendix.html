@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appendix | The Definitive 2026 Guide to AI Ranking</title>
+    <title>Appendix | AI Ranking Guide</title>
     
     <!-- Meta -->
-    <meta name="description" content="Assess your brand's visibility posture across AI systems. A 20-point diagnostic for Entity Salience, Schema, and LLM Trust.">
-    <meta name="author" content="Abdullah Khan">
+    <meta name="description" content="Appendix: The Practical Execution Toolkit. Templates, checklists, schemas, and protocols for implementing HRP v2.0 and achieving AI visibility.">
+    <meta name="author" content="Abdullah Khan, HQAIM">
     <link rel="canonical" href="https://geo.hqaim.com/guide/appendix.html">
-    <meta property="og:title" content="Trust Audit Checklist | HQAIM Visibility OS">
+    <meta property="og:title" content="Execution Toolkit | HQAIM Visibility OS">
     <meta property="og:url" content="https://geo.hqaim.com/guide/appendix.html">
     <meta property="og:image" content="https://geo.hqaim.com/assets/images/audit-og.svg">
     
     <!-- Favicon -->
     <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CLNGX8ETN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2CLNGX8ETN');
+    </script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -57,7 +66,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "name": "Appendix: Templates, Checklists & Schemas",
+      "name": "Appendix: Execution Toolkit",
       "headline": "The Practical Execution Toolkit for AI Ranking & Generative Visibility",
       "description": "Actionable infrastructure including launch checklists, HRP v2.0 master checklist, and schema templates for AI ranking.",
       "author": {
@@ -94,11 +103,11 @@
         }
 
         html:not(.dark) {
-            --bg-color: #f8fafc;
+            --bg-color: #ffffff;
             --text-color: #0f172a;
             --accent-color: #2563eb;
             --border-color: #e2e8f0;
-            --card-bg: #ffffff;
+            --card-bg: #ffffff; /* White blocks on white background */
         }
 
         body {
@@ -135,6 +144,9 @@
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 0 0.5rem 0.5rem 0;
+            border-right: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .checklist-item {
@@ -153,58 +165,84 @@
             color: var(--accent-color);
         }
 
+        .code-block {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
         /* --- PRINT ENGINEERING (A4 OPTIMIZATION) --- */
         @media print {
             @page {
                 size: A4;
-                margin: 2cm;
+                margin: 1.5cm;
             }
             
             body {
                 background: white !important;
                 color: black !important;
-                font-size: 11pt;
-                line-height: 1.5;
+                font-size: 10pt;
+                line-height: 1.4;
             }
 
-            /* Hide UI */
-            nav, .theme-toggle, .no-print, .copy-btn {
+            nav, .theme-toggle, .no-print, .copy-btn, footer {
                 display: none !important;
             }
 
-            /* Layout Reset */
             .max-w-3xl { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
             .min-h-screen { min-height: auto !important; }
             
-            /* Flow Control */
             h1, h2, h3 { 
                 page-break-after: avoid; 
                 break-after: avoid; 
                 color: black !important;
             }
             
-            p, li, .insight-card, pre {
+            p, li, .insight-card, .code-block, article {
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
 
-            /* Component Resets */
             .insight-card {
-                border-left: 4px solid #000 !important;
-                background: #f3f4f6 !important;
+                border-left: 3px solid #000 !important;
+                background: #f9fafb !important;
                 color: #000 !important;
             }
             
-            pre {
+            .code-block {
+                background: #f1f5f9 !important;
+                color: #0f172a !important;
                 border: 1px solid #ccc !important;
-                background: #f9fafb !important;
-                color: #000 !important;
                 white-space: pre-wrap !important;
+                word-wrap: break-word !important;
+                font-size: 8pt !important;
             }
 
-            /* Links */
             a { text-decoration: none !important; color: #000 !important; }
-            a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 0.8em; }
+            a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 0.7em; }
         }
     </style>
 </head>
@@ -214,15 +252,19 @@
     <div class="fixed inset-0 pointer-events-none opacity-[0.03] bg-noise z-0"></div>
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 glass-nav bg-white/90 dark:bg-obsidian-900/90 border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <nav class="sticky top-0 z-50 glass-nav bg-white/90 dark:bg-obsidian-900/90 border-b border-slate-200 dark:border-white/10 transition-colors duration-300 no-print">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM Icon" class="w-8 h-8">
-                <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase hidden md:block">AI Ranking & Generative Visibility</span>
-                <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase md:hidden">AI Ranking</span>
+                <a href="https://geo.hqaim.com/guide/index.html" class="flex items-center gap-3 group">
+                    <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM Icon" class="w-8 h-8 group-hover:opacity-80 transition-opacity">
+                    <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase hidden md:block">AI Ranking Guide</span>
+                </a>
             </div>
             
             <div class="flex items-center gap-4">
+                <a href="https://geo.hqaim.com/guide/ai-ranking.html" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Home">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                </a>
                 <button onclick="window.print()" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Print to PDF">
                     <i data-lucide="printer" class="w-5 h-5"></i>
                 </button>
@@ -330,7 +372,7 @@
             <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A2. Hybrid Ranking Protocol (HRP v2.0) Master Checklist</h3>
             
             <div class="space-y-6">
-                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 1: Technical Infrastructure</h4>
                     <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
                         <li>☐ Schema hyper-definition complete</li>
@@ -339,7 +381,7 @@
                         <li>☐ Performance and accessibility validated</li>
                     </ul>
                 </div>
-                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 2: Semantic Engineering</h4>
                     <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
                         <li>☐ Core entities clearly defined</li>
@@ -348,7 +390,7 @@
                         <li>☐ Topic focus maintained per page</li>
                     </ul>
                 </div>
-                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 3: RAG-Ready Formatting</h4>
                     <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
                         <li>☐ Tables used where comparisons exist</li>
@@ -357,7 +399,7 @@
                         <li>☐ Answer snippets formatted</li>
                     </ul>
                 </div>
-                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">Phase 4: Authority Distribution</h4>
                     <ul class="text-sm space-y-1 text-slate-600 dark:text-slate-400">
                         <li>☐ External mentions secured</li>
@@ -375,16 +417,22 @@
             <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A3. Robots.txt – AI Visibility Template</h3>
             <p class="text-sm text-slate-500 mb-4">Use this template to ensure AI systems can legally and technically access your content.</p>
             
-            <div class="relative group mb-4">
-                <button onclick="copyToClipboard('robots-code')" class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-slate-700 rounded text-xs text-white">Copy</button>
-                <pre id="robots-code" class="bg-slate-100 dark:bg-obsidian-900 border border-slate-200 dark:border-white/10 p-4 rounded-lg text-xs font-mono overflow-x-auto text-slate-800 dark:text-slate-300">
-User-agent: GPTBot
+            <div class="code-block mb-4">
+                <button onclick="copyToClipboard('robots-code', this)" class="copy-btn">Copy</button>
+                <pre id="robots-code">User-agent: GPTBot
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Block common scrapers if needed
+User-agent: anthropic-ai
 Allow: /
 
 User-agent: *
@@ -401,21 +449,27 @@ Disallow:</pre>
             <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A4. Organization Schema (JSON-LD Template)</h3>
             <p class="text-sm text-slate-500 mb-4">Use this as a base and customize for your brand. This connects your brand to trusted knowledge graph nodes.</p>
             
-            <div class="relative group">
-                <button onclick="copyToClipboard('org-schema')" class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-slate-700 rounded text-xs text-white">Copy</button>
-                <pre id="org-schema" class="bg-slate-100 dark:bg-obsidian-900 border border-slate-200 dark:border-white/10 p-4 rounded-lg text-xs font-mono overflow-x-auto text-slate-800 dark:text-slate-300">
+            <div class="code-block">
+                <button onclick="copyToClipboard('org-schema', this)" class="copy-btn">Copy</button>
+                <pre id="org-schema">&lt;script type="application/ld+json"&gt;
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Your Brand Name",
   "url": "https://www.yoursite.com",
   "logo": "https://www.yoursite.com/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-555-555-5555",
+    "contactType": "customer service"
+  },
   "sameAs": [
     "https://www.linkedin.com/company/yourbrand",
     "https://twitter.com/yourbrand",
     "https://www.crunchbase.com/organization/yourbrand"
   ]
-}</pre>
+}
+&lt;/script&gt;</pre>
             </div>
         </article>
 
@@ -424,9 +478,9 @@ Disallow:</pre>
             <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A5. FAQPage Schema (AI Answer Accelerator)</h3>
             <p class="text-sm text-slate-500 mb-4">Use FAQ schema to increase direct answer eligibility. Keep answers Short, Direct, and Non-promotional.</p>
             
-            <div class="relative group">
-                <button onclick="copyToClipboard('faq-schema')" class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-slate-700 rounded text-xs text-white">Copy</button>
-                <pre id="faq-schema" class="bg-slate-100 dark:bg-obsidian-900 border border-slate-200 dark:border-white/10 p-4 rounded-lg text-xs font-mono overflow-x-auto text-slate-800 dark:text-slate-300">
+            <div class="code-block">
+                <button onclick="copyToClipboard('faq-schema', this)" class="copy-btn">Copy</button>
+                <pre id="faq-schema">&lt;script type="application/ld+json"&gt;
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -438,7 +492,8 @@ Disallow:</pre>
       "text": "Generative Engine Optimization is the process of structuring content so it can be retrieved, cited, and used by AI answer engines like ChatGPT and Gemini."
     }
   }]
-}</pre>
+}
+&lt;/script&gt;</pre>
             </div>
         </article>
 
@@ -447,7 +502,7 @@ Disallow:</pre>
             <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A6. Author Bio Page Template (E-E-A-T Critical)</h3>
             <p class="text-sm text-slate-500 mb-4">Every author must have a dedicated page. This converts content into expert-authored knowledge.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-sm uppercase mb-2">Required Sections</h4>
                     <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
                         <li>• Full name</li>
@@ -458,7 +513,7 @@ Disallow:</pre>
                         <li>• SameAs links (LinkedIn, Twitter)</li>
                     </ul>
                 </div>
-                <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-sm uppercase mb-2">Example Structure</h4>
                     <div class="text-sm text-slate-600 dark:text-slate-400 space-y-1 font-mono text-xs">
                         <p><strong>Name:</strong> Jane Smith</p>
@@ -469,13 +524,35 @@ Disallow:</pre>
                     </div>
                 </div>
             </div>
+            
+            <div class="code-block mt-6">
+                <button onclick="copyToClipboard('author-schema', this)" class="copy-btn">Copy Schema</button>
+                <pre id="author-schema">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "[Author Name]",
+  "url": "https://www.yourdomain.com/author/[name]",
+  "image": "https://www.yourdomain.com/author/photo.jpg",
+  "jobTitle": "[Job Title]",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "[Brand Name]"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/[profile]",
+    "https://twitter.com/[profile]"
+  ]
+}
+&lt;/script&gt;</pre>
+            </div>
         </article>
 
         <!-- A7. Case Study -->
         <article class="mb-16 print:break-inside-avoid">
             <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">A7. Case Study Template (Proof-Driven Trust)</h3>
             <p class="text-sm text-slate-500 mb-4">Replace vague testimonials. AI systems trust data more than quotes.</p>
-            <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+            <div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <strong class="block text-slate-900 dark:text-white">Client Context</strong>
@@ -506,7 +583,7 @@ Disallow:</pre>
             <h3 class="font-display text-2xl font-bold mb-6 text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">Additional Protocols</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">A8. Triangulated Authority Checklist</h4>
                     <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
                         <li>☐ Claim stated clearly on your site</li>
@@ -517,7 +594,7 @@ Disallow:</pre>
                     <p class="text-xs text-slate-500 mt-2 italic">If one leg is missing, trust weakens.</p>
                 </div>
 
-                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">A9. AI Visibility Audit Template</h4>
                     <p class="text-xs text-slate-500 mb-2">Run monthly using ChatGPT, Gemini, Perplexity.</p>
                     <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
@@ -527,7 +604,7 @@ Disallow:</pre>
                     </ul>
                 </div>
 
-                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">A10. AI Metrics Dashboard</h4>
                     <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1">
                         <li>• Share of Model Voice (SoMV)</li>
@@ -537,14 +614,14 @@ Disallow:</pre>
                     </ul>
                 </div>
 
-                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
+                <div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">A11. Risk Reversal Copy</h4>
                     <p class="text-sm text-slate-600 dark:text-slate-400 italic">
                         "If you’re not satisfied within 30 days, we’ll refund you in full—no questions asked. You keep all delivered materials."
                     </p>
                 </div>
 
-                <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10 md:col-span-2">
+                <div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-slate-200 dark:border-white/10 md:col-span-2">
                     <h4 class="font-bold text-slate-900 dark:text-white mb-2">A12. Quarterly Maintenance</h4>
                     <div class="flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400">
                         <span>☐ Update timestamps</span>
@@ -565,10 +642,19 @@ Disallow:</pre>
             </p>
         </div>
 
+        <!-- Chapter Footer -->
+        <section class="text-center py-12 border-t border-slate-200 dark:border-white/10 no-print">
+            <div class="flex justify-center gap-4">
+                <a href="https://geo.hqaim.com/guide/ai-ranking.html" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-white dark:hover:bg-slate-200 text-white dark:text-obsidian-900 font-bold rounded-lg transition-colors shadow-lg hover:shadow-xl">
+                    Back to Guide Home
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-slate-200 dark:border-white/10 text-center text-xs font-mono text-slate-400 uppercase tracking-widest relative z-10 bg-slate-50 dark:bg-obsidian-900">
+    <footer class="py-12 border-t border-slate-200 dark:border-white/10 text-center text-xs font-mono text-slate-400 uppercase tracking-widest relative z-10 bg-white dark:bg-obsidian-900 no-print">
         <div class="flex flex-wrap justify-center gap-6 mb-6">
             <a href="https://www.hqaim.com" class="hover:text-slate-900 dark:hover:text-white font-bold">HQAIM.COM</a>
             <a href="https://www.hqaim.com/p/privacy.html" class="hover:text-slate-900 dark:hover:text-white">Privacy</a>
@@ -586,11 +672,40 @@ Disallow:</pre>
             localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
         }
 
-        function copyToClipboard(id) {
+        // Reliable fallback copy function using a temporary textarea
+        function copyToClipboard(id, btn) {
             const el = document.getElementById(id);
-            navigator.clipboard.writeText(el.innerText).then(() => {
-                alert('Copied to clipboard');
-            });
+            const textToCopy = el.innerText || el.textContent;
+            
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful && btn) {
+                    const originalText = btn.innerText;
+                    btn.innerText = "Copied!";
+                    btn.classList.add('bg-emerald-600', 'border-emerald-500');
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.classList.remove('bg-emerald-600', 'border-emerald-500');
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+
+            document.body.removeChild(textArea);
         }
 
         // Init Theme
@@ -600,7 +715,7 @@ Disallow:</pre>
         } else if (savedTheme === 'dark') {
             document.documentElement.classList.add('dark');
         } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            // Default to system, but prefer dark for this aesthetic
+            // Default to system preference for clean white light mode
             document.documentElement.classList.remove('dark');
         }
 
