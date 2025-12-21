@@ -13,6 +13,15 @@
     <!-- Favicon -->
     <link rel="icon" href="https://aiartisan.hqaim.com/images/favicon.ico" type="image/x-icon" />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CLNGX8ETN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2CLNGX8ETN');
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -173,12 +182,16 @@
     <nav class="sticky top-0 z-50 glass-nav bg-white/90 dark:bg-obsidian-900/90 border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM Icon" class="w-8 h-8">
-                <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase hidden md:block">AI Ranking & Generative Visibility</span>
-                <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase md:hidden">AI Ranking</span>
+                <a href="https://geo.hqaim.com/guide/index.html" class="flex items-center gap-3 group">
+                    <img src="https://aiartisan.hqaim.com/images/HQAIM_ICON.svg" alt="HQAIM Icon" class="w-8 h-8 group-hover:opacity-80 transition-opacity">
+                    <span class="font-display font-bold text-sm tracking-widest text-slate-900 dark:text-white uppercase hidden md:block">AI Ranking</span>
+                </a>
             </div>
             
             <div class="flex items-center gap-4">
+                <a href="https://geo.hqaim.com/guide/ai-ranking.html" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Home">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                </a>
                 <button onclick="window.print()" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 transition-colors" title="Print to PDF">
                     <i data-lucide="printer" class="w-5 h-5"></i>
                 </button>
